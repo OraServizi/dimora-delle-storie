@@ -3,6 +3,7 @@
 import html, json, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from storie_data import CAPITOLI, ARTICOLI, IN_ARRIVO
+import logodraw as LD
 
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://www.dimoradellestorie.com"
@@ -346,7 +347,10 @@ def storie_page():
     {seo}
   </main>
 '''
-    foot = FOOT.replace('</body>', f'<script>{AUDIO_JS}{BOOK_JS}</script>\n</body>')
+    while '<img src="/img/logo-chiaro.svg" alt="" class="cover-logo">' in body:
+        body = body.replace('<img src="/img/logo-chiaro.svg" alt="" class="cover-logo">', LD.svg(cls="cover-logo", start=0.6), 1)
+    h += f"<style>{LD.CSS}</style>\n"
+    foot = FOOT.replace('</body>', f'<script>{AUDIO_JS}{BOOK_JS}</script>\n{LD.JS}</body>')
     return absolutize(h + BODY_OPEN + body + foot)
 
 ARTICLE_CSS = '''
