@@ -129,7 +129,8 @@ BOOK_CSS = r'''
 .face.recto{border-radius:2px 6px 6px 2px;box-shadow:inset 26px 0 40px -22px rgba(60,45,25,.38)}
 .face.verso{border-radius:6px 2px 2px 6px;box-shadow:inset -26px 0 40px -22px rgba(60,45,25,.38)}
 .face::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 70px rgba(120,95,60,.16)}
-.face.cover{color:#E2B76A;background:#121B52;background-image:radial-gradient(90% 70% at 30% 25%,rgba(143,162,230,.28),rgba(18,27,82,0) 60%),radial-gradient(80% 80% at 80% 90%,rgba(0,0,0,.45),rgba(0,0,0,0) 60%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='v'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.3' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .6 0 0 0 0 .65 0 0 0 0 .95 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23v)'/%3E%3C/svg%3E");box-shadow:inset 10px 0 18px -8px rgba(0,0,0,.6),inset 0 0 0 1px rgba(226,183,106,.25)}
+.face.cover{color:#E2B76A;background-color:#121B52;background-image:radial-gradient(90% 70% at 28% 22%,rgba(170,185,240,.16),rgba(18,27,82,0) 60%),radial-gradient(120% 100% at 50% 50%,rgba(0,0,0,0) 55%,rgba(0,0,0,.45) 100%),url("/img/velluto.jpg");background-size:auto,auto,cover;background-position:center;box-shadow:inset 10px 0 18px -8px rgba(0,0,0,.6),inset 0 0 0 1px rgba(226,183,106,.25)}
+.face.back-cover{background-position:center,center,30% 70%}
 .face.cover::after{box-shadow:inset 0 0 90px rgba(0,0,0,.45)}
 .cover-frame{position:absolute;inset:7%;border:1px solid rgba(226,183,106,.55);outline:1px solid rgba(226,183,106,.25);outline-offset:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;padding:6%}
 .cover-logo{width:42%;max-width:190px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}.cover-logo.small{width:22%}
