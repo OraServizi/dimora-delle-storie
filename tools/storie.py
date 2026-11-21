@@ -39,7 +39,7 @@ def header_html():
     return '''    <header style="position:relative;display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;padding:32px clamp(20px,4.5vw,64px)">
       <a href="/" aria-label="Dimora delle Storie — home" style="display:inline-flex;min-height:44px;align-items:center"><img src="/img/logo-icona.svg" alt="" style="height:52px;width:auto"></a>
       <nav class="topnav" style="display:flex;flex-wrap:wrap;gap:28px;align-items:center;font-size:13px;letter-spacing:.06em;padding:12px 28px;border-radius:999px;background:rgba(239,232,220,.08);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.18)">
-        <a href="/#dimore" style="text-decoration:none">Dimore</a><a href="/storie" style="text-decoration:none">Storie</a><a href="/#tempio" style="text-decoration:none">Tempio</a><a href="/#prenota" style="text-decoration:none">Contatti</a>
+        <a href="/#dimore" style="text-decoration:none">Dimore</a><a href="/storie" style="text-decoration:none">Storie</a><a href="/tempio-pausania" style="text-decoration:none">Tempio</a><a href="/#prenota" style="text-decoration:none">Contatti</a>
       </nav>
     </header>'''
 
@@ -113,6 +113,9 @@ for k in range(N // 2):
 deck = "".join(f'<div class="dpage">{face(i)}</div>' for i in range(N))
 
 BOOK_CSS = r'''
+.book-wrap::before{content:'';position:absolute;inset:-6% -14%;background:radial-gradient(50% 50% at 50% 52%,rgba(3,5,16,.82),rgba(3,5,16,.45) 55%,rgba(3,5,16,0) 75%);pointer-events:none;z-index:0}
+.book,.deck{z-index:1}.book-shadow{z-index:1;bottom:-34px;height:56px;background:radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.85),rgba(0,0,0,0))}
+.storie-main .indice-seo{background:rgba(6,9,26,.55);padding:40px;border-radius:4px;backdrop-filter:blur(2px)}
 .corner{position:absolute;width:21%;aspect-ratio:1;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23FBE7B0'/%3E%3Cstop offset='.22' stop-color='%23D9A851'/%3E%3Cstop offset='.45' stop-color='%23F6D995'/%3E%3Cstop offset='.7' stop-color='%23B07F33'/%3E%3Cstop offset='1' stop-color='%236E4818'/%3E%3C/linearGradient%3E%3CradialGradient id='r' cx='.35' cy='.35' r='.7'%3E%3Cstop offset='0' stop-color='%23FFF4D2'/%3E%3Cstop offset='.5' stop-color='%23D4A24C'/%3E%3Cstop offset='1' stop-color='%235E3D12'/%3E%3C/radialGradient%3E%3Cfilter id='s' x='-20%25' y='-20%25' width='160%25' height='160%25'%3E%3CfeDropShadow dx='2' dy='3' stdDeviation='2.2' flood-color='%23000' flood-opacity='.6'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23s)'%3E%3Cpath d='M0 0H116L104 12H52L12 52V104L0 116Z' fill='url(%23g)' stroke='%235E3D12' stroke-width='1.2'/%3E%3Cpath d='M7 7H98M7 7V98' stroke='%23FFF1C8' stroke-opacity='.55' stroke-width='1.4' fill='none'/%3E%3Cpath d='M100 9L50 9L9 50L9 100' stroke='%236E4818' stroke-opacity='.7' stroke-width='1.1' fill='none'/%3E%3Cg fill='none' stroke='%237A531C' stroke-opacity='.65' stroke-width='1.1'%3E%3Ccircle cx='30' cy='24' r='3.4'/%3E%3Ccircle cx='24' cy='30' r='3.4'/%3E%3Ccircle cx='36' cy='30' r='3.4'/%3E%3Ccircle cx='30' cy='36' r='3.4'/%3E%3C/g%3E%3Ccircle cx='30' cy='30' r='1.8' fill='%23FFF1C8' fill-opacity='.7'/%3E%3Cpath d='M44 14Q52 18 60 14M14 44Q18 52 14 60' stroke='%237A531C' stroke-opacity='.6' stroke-width='1.2' fill='none'/%3E%3Ccircle cx='16' cy='16' r='4.2' fill='url(%23r)' stroke='%235E3D12' stroke-width='.8'/%3E%3Ccircle cx='84' cy='6.5' r='3' fill='url(%23r)'/%3E%3Ccircle cx='6.5' cy='84' r='3' fill='url(%23r)'/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain;z-index:3;pointer-events:none}.corner.tl{top:-1px;left:-1px}.corner.tr{top:-1px;right:-1px;transform:scaleX(-1)}.corner.bl{bottom:-1px;left:-1px;transform:scaleY(-1)}.corner.br{bottom:-1px;right:-1px;transform:scale(-1,-1)}
 @media (max-width:440px){.topnav{gap:16px!important;padding:10px 16px!important;font-size:12px!important}}
 .storie-main{padding:12px clamp(16px,4.5vw,64px) 96px;display:flex;flex-direction:column;align-items:center;gap:28px}
@@ -129,7 +132,8 @@ BOOK_CSS = r'''
 .face.recto{border-radius:2px 6px 6px 2px;box-shadow:inset 26px 0 40px -22px rgba(60,45,25,.38)}
 .face.verso{border-radius:6px 2px 2px 6px;box-shadow:inset -26px 0 40px -22px rgba(60,45,25,.38)}
 .face::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 70px rgba(120,95,60,.16)}
-.face.cover{color:#E2B76A;background-color:#121B52;background-image:radial-gradient(90% 70% at 28% 22%,rgba(170,185,240,.16),rgba(18,27,82,0) 60%),radial-gradient(120% 100% at 50% 50%,rgba(0,0,0,0) 55%,rgba(0,0,0,.45) 100%),url("/img/velluto.jpg");background-size:auto,auto,cover;background-position:center;box-shadow:inset 10px 0 18px -8px rgba(0,0,0,.6),inset 0 0 0 1px rgba(226,183,106,.25)}
+.face.cover{overflow:visible;color:#E2B76A;background-color:#121B52;background-image:radial-gradient(90% 70% at 28% 22%,rgba(170,185,240,.16),rgba(18,27,82,0) 60%),radial-gradient(120% 100% at 50% 50%,rgba(0,0,0,0) 55%,rgba(0,0,0,.45) 100%),url("/img/velluto.jpg");background-size:auto,auto,cover;background-position:center;box-shadow:inset 10px 0 18px -8px rgba(0,0,0,.6),inset 0 0 0 1px rgba(226,183,106,.25),0 34px 70px rgba(0,0,0,.75),0 6px 18px rgba(0,0,0,.55)}
+.face.cover{filter:brightness(1.12) saturate(1.08)}
 .face.back-cover{background-position:center,center,30% 70%}
 .face.cover::after{box-shadow:inset 0 0 90px rgba(0,0,0,.45)}
 .cover-frame{position:absolute;inset:7%;border:1px solid rgba(226,183,106,.55);outline:1px solid rgba(226,183,106,.25);outline-offset:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;padding:6%}
@@ -143,7 +147,7 @@ BOOK_CSS = r'''
 @keyframes hintp{0%,100%{opacity:.35}50%{opacity:1}}
 .exlibris,.opener{margin:auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;max-width:34ch}
 .ex-k,.op-n,.pg-k{margin:0;font-size:clamp(9px,.9vw,11px);letter-spacing:.3em;text-transform:uppercase;color:#9A7434;font-weight:500}
-.ex-t{margin:0;'''+SERIF+''';font-style:italic;font-size:clamp(15px,1.6vw,21px);line-height:1.5;font-variation-settings:'opsz' 11}
+.ex-t{margin:0;'''+SERIF+''';font-style:italic;text-transform:uppercase;letter-spacing:.07em;font-size:clamp(12px,1.25vw,16px);line-height:1.6;font-variation-settings:'opsz' 11}
 .ex-s{margin:0;font-size:clamp(11px,1vw,13px);line-height:1.6;color:#5A5650}
 .op-t{margin:0;'''+SERIF+''';font-weight:400;font-size:clamp(22px,3vw,40px);letter-spacing:.08em;text-transform:uppercase;line-height:1.15;font-variation-settings:'opsz' 11}
 .op-rule{width:64px;height:1px;background:#B8893F;position:relative}.op-rule::before{content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;background:#B8893F;transform:translate(-50%,-50%) rotate(45deg)}
@@ -153,7 +157,7 @@ BOOK_CSS = r'''
 .pg{display:flex;flex-direction:column;gap:12px;height:100%}
 .pg-t{margin:0;'''+SERIF+''';font-weight:400;font-size:clamp(17px,2vw,27px);line-height:1.25;letter-spacing:.06em;text-transform:uppercase;font-variation-settings:'opsz' 11}
 .pg-t a{text-decoration:none;color:inherit}.pg-t a:hover{color:#7A5A22}
-.pg-st{margin:0;'''+SERIF+''';font-style:italic;font-size:clamp(13px,1.3vw,17px);color:#5A5650;font-variation-settings:'opsz' 11}
+.pg-st{margin:0;'''+SERIF+''';font-style:italic;text-transform:uppercase;letter-spacing:.07em;font-size:clamp(11px,1.05vw,14px);color:#5A5650;font-variation-settings:'opsz' 11}
 .pg-p{margin:0;font-size:clamp(12px,1.15vw,15px);line-height:1.75;color:#33302B}
 .dropcap::first-letter{float:left;'''+SERIF+''';font-size:3.4em;line-height:.85;padding:4px 8px 0 0;color:#9A7434}
 .pg-more{margin-top:auto;align-self:flex-start;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#121B52;text-decoration:none;border-bottom:1px solid #B8893F;padding-bottom:3px;min-height:24px}
@@ -348,7 +352,7 @@ def storie_page():
 ARTICLE_CSS = '''
 @media (max-width:440px){.topnav{gap:16px!important;padding:10px 16px!important;font-size:12px!important}}
 .art{max-width:720px;margin:0 auto;padding:72px clamp(20px,4.5vw,64px) 96px;font-size:18px;line-height:1.85;color:rgba(239,232,220,.86)}
-.art .lead{font-family:'Bodoni Moda',Georgia,serif;font-variation-settings:'opsz' 11;font-size:clamp(20px,2.2vw,25px);line-height:1.6;color:#EFE8DC}
+.art .lead{font-family:'Bodoni Moda',Georgia,serif;font-variation-settings:'opsz' 11;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(16px,1.7vw,20px);line-height:1.75;color:#EFE8DC}
 .art .lead::first-letter{float:left;font-size:3.6em;line-height:.8;padding:6px 10px 0 0;color:#E2B76A}
 .art h2{font-family:'Bodoni Moda',Georgia,serif;font-variation-settings:'opsz' 11;font-weight:400;font-size:clamp(18px,1.9vw,23px);letter-spacing:.08em;text-transform:uppercase;color:#EFE8DC;margin:56px 0 8px}
 .art p{margin:0 0 18px}.art ul{margin:0 0 18px;padding-left:20px}.art li{margin:0 0 10px}
@@ -383,7 +387,7 @@ def article_page(a):
     <div style="position:relative;flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:14px;padding:0 clamp(20px,4.5vw,64px) 48px;max-width:960px">
       <span style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#8FA2E6"><a href="/storie" style="text-decoration:none">Il Libro delle Storie</a> · Capitolo {c["n"]} · {e(c["titolo"])}</span>
       <h1 style="margin:0;{SERIF};font-weight:400;font-size:clamp(24px,3.6vw,50px);line-height:1.18;text-transform:uppercase;letter-spacing:.07em;font-variation-settings:'opsz' 11">{e(a["titolo"])}</h1>
-      <p style="margin:0;{SERIF};font-style:italic;font-size:clamp(17px,1.8vw,22px);color:rgba(239,232,220,.8);font-variation-settings:'opsz' 11">{e(a["sottotitolo"])}</p>
+      <p style="margin:0;{SERIF};font-style:italic;text-transform:uppercase;letter-spacing:.07em;font-size:clamp(13px,1.35vw,16px);color:rgba(239,232,220,.8);font-variation-settings:'opsz' 11">{e(a["sottotitolo"])}</p>
       <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,232,220,.55)"><time datetime="{a['data']}">{e(a["data_it"])}</time></span>
     </div>
   </section>
