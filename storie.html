@@ -111,6 +111,12 @@ body::after{content:"";position:fixed;inset:-10%;z-index:-1;pointer-events:none;
 .vpage footer{background:linear-gradient(180deg,rgba(5,7,20,.2),rgba(5,7,20,.85))}
 .vpage main.art{background:radial-gradient(70% 100% at 50% 40%,rgba(8,10,28,.55),rgba(8,10,28,0) 80%),linear-gradient(180deg,#0F111A 0,rgba(15,17,26,0) 240px)}
 </style>
+<style id="tutto-maiuscolo">
+body,body *{text-transform:uppercase}
+p{letter-spacing:.045em}
+.art p,.art li,.pg-p,.ex-s,.op-i,.indice-seo p,input,textarea{text-transform:none!important;letter-spacing:normal!important}
+input::placeholder{text-transform:uppercase}
+</style>
 <style>
 .book-wrap::before{content:'';position:absolute;inset:-6% -14%;background:radial-gradient(50% 50% at 50% 52%,rgba(3,5,16,.82),rgba(3,5,16,.45) 55%,rgba(3,5,16,0) 75%);pointer-events:none;z-index:0}
 .book,.deck{z-index:1}.book-shadow{z-index:1;bottom:-34px;height:56px;background:radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.85),rgba(0,0,0,0))}

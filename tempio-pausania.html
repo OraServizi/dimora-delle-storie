@@ -111,6 +111,12 @@ body::after{content:"";position:fixed;inset:-10%;z-index:-1;pointer-events:none;
 .vpage footer{background:linear-gradient(180deg,rgba(5,7,20,.2),rgba(5,7,20,.85))}
 .vpage main.art{background:radial-gradient(70% 100% at 50% 40%,rgba(8,10,28,.55),rgba(8,10,28,0) 80%),linear-gradient(180deg,#0F111A 0,rgba(15,17,26,0) 240px)}
 </style>
+<style id="tutto-maiuscolo">
+body,body *{text-transform:uppercase}
+p{letter-spacing:.045em}
+.art p,.art li,.pg-p,.ex-s,.op-i,.indice-seo p,input,textarea{text-transform:none!important;letter-spacing:normal!important}
+input::placeholder{text-transform:uppercase}
+</style>
 <style>
 @media (max-width:440px){.topnav{gap:16px!important;padding:10px 16px!important;font-size:12px!important}}
 .t-hero{position:relative;min-height:100svh;overflow:hidden;display:flex;flex-direction:column}
