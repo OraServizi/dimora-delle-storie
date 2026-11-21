@@ -101,6 +101,7 @@ a{color:#EFE8DC}a:hover{color:#D4A65A}
 
 <style>html{scroll-behavior:smooth}</style>
 <style>
+.corner{position:absolute;width:21%;aspect-ratio:1;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23FBE7B0'/%3E%3Cstop offset='.22' stop-color='%23D9A851'/%3E%3Cstop offset='.45' stop-color='%23F6D995'/%3E%3Cstop offset='.7' stop-color='%23B07F33'/%3E%3Cstop offset='1' stop-color='%236E4818'/%3E%3C/linearGradient%3E%3CradialGradient id='r' cx='.35' cy='.35' r='.7'%3E%3Cstop offset='0' stop-color='%23FFF4D2'/%3E%3Cstop offset='.5' stop-color='%23D4A24C'/%3E%3Cstop offset='1' stop-color='%235E3D12'/%3E%3C/radialGradient%3E%3Cfilter id='s' x='-20%25' y='-20%25' width='160%25' height='160%25'%3E%3CfeDropShadow dx='2' dy='3' stdDeviation='2.2' flood-color='%23000' flood-opacity='.6'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23s)'%3E%3Cpath d='M0 0H116L104 12H52L12 52V104L0 116Z' fill='url(%23g)' stroke='%235E3D12' stroke-width='1.2'/%3E%3Cpath d='M7 7H98M7 7V98' stroke='%23FFF1C8' stroke-opacity='.55' stroke-width='1.4' fill='none'/%3E%3Cpath d='M100 9L50 9L9 50L9 100' stroke='%236E4818' stroke-opacity='.7' stroke-width='1.1' fill='none'/%3E%3Cg fill='none' stroke='%237A531C' stroke-opacity='.65' stroke-width='1.1'%3E%3Ccircle cx='30' cy='24' r='3.4'/%3E%3Ccircle cx='24' cy='30' r='3.4'/%3E%3Ccircle cx='36' cy='30' r='3.4'/%3E%3Ccircle cx='30' cy='36' r='3.4'/%3E%3C/g%3E%3Ccircle cx='30' cy='30' r='1.8' fill='%23FFF1C8' fill-opacity='.7'/%3E%3Cpath d='M44 14Q52 18 60 14M14 44Q18 52 14 60' stroke='%237A531C' stroke-opacity='.6' stroke-width='1.2' fill='none'/%3E%3Ccircle cx='16' cy='16' r='4.2' fill='url(%23r)' stroke='%235E3D12' stroke-width='.8'/%3E%3Ccircle cx='84' cy='6.5' r='3' fill='url(%23r)'/%3E%3Ccircle cx='6.5' cy='84' r='3' fill='url(%23r)'/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain;z-index:3;pointer-events:none}.corner.tl{top:-1px;left:-1px}.corner.tr{top:-1px;right:-1px;transform:scaleX(-1)}.corner.bl{bottom:-1px;left:-1px;transform:scaleY(-1)}.corner.br{bottom:-1px;right:-1px;transform:scale(-1,-1)}
 @media (max-width:440px){.topnav{gap:16px!important;padding:10px 16px!important;font-size:12px!important}}
 .storie-main{padding:12px clamp(16px,4.5vw,64px) 96px;display:flex;flex-direction:column;align-items:center;gap:28px}
 .book-wrap{position:relative;width:min(1120px,100%,calc((100svh - 230px)*1.48));min-width:min(680px,100%)}
@@ -197,8 +198,8 @@ a{color:#EFE8DC}a:hover{color:#D4A65A}
     <div class="book-wrap">
       <div class="book closed-front" role="region" aria-label="Il Libro delle Storie, da sfogliare">
         <div class="leaf" data-k="0" style="z-index:9"><div class="side front"><div class="face recto cover" data-p="0"><div class="cover-frame"><img src="/img/logo-chiaro.svg" alt="" class="cover-logo">
-<p class="cover-kicker">Dimora delle Storie</p><h2 class="cover-title">Il Libro<br>delle Storie</h2>
-<p class="cover-sub">Tempio Pausania · Gallura</p><span class="cover-hint">Aprite il libro</span></div></div></div><div class="side back"><div class="face verso " data-p="1"><div class="exlibris"><img src="/img/logo-icona.svg" alt="" width="64" height="64">
+<h2 class="cover-title">Il Libro<br>delle Storie</h2>
+<p class="cover-sub">Tempio Pausania · Gallura</p><span class="cover-hint">Aprite il libro</span></div><span class="corner tl" aria-hidden="true"></span><span class="corner tr" aria-hidden="true"></span><span class="corner bl" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span></div></div><div class="side back"><div class="face verso " data-p="1"><div class="exlibris"><img src="/img/logo-icona.svg" alt="" width="64" height="64">
 <p class="ex-k">Ex libris</p><p class="ex-t">Questo libro appartiene a chi passa da Tempio e ha voglia di ascoltarne le storie.</p>
 <p class="ex-s">Sfogliatelo con un clic sul bordo delle pagine, con le frecce della tastiera o dall'indice qui accanto.</p></div><span class="folio">1</span></div></div></div><div class="leaf" data-k="1" style="z-index:8"><div class="side front"><div class="face recto " data-p="2"><div class="pg"><span class="pg-k">Indice</span><h3 class="pg-t">Capitoli</h3><ol class="toc"><li><button type="button" data-go="3"><span class="toc-n">I</span><span class="toc-t">Le dimore</span><span class="toc-p">3</span></button></li><li><button type="button" data-go="6"><span class="toc-n">II</span><span class="toc-t">Storie di Tempio</span><span class="toc-p">6</span></button></li><li><button type="button" data-go="9"><span class="toc-n">III</span><span class="toc-t">Poesia</span><span class="toc-p">9</span></button></li><li><button type="button" data-go="11"><span class="toc-n">IV</span><span class="toc-t">Lingua gallurese</span><span class="toc-p">11</span></button></li><li><button type="button" data-go="13"><span class="toc-n">V</span><span class="toc-t">Calendario</span><span class="toc-p">13</span></button></li></ol></div><span class="folio">2</span></div></div><div class="side back"><div class="face verso opener-page" data-p="3"><div class="opener"><span class="op-n">Capitolo I</span><h2 class="op-t">Le dimore</h2>
 <span class="op-rule" aria-hidden="true"></span><p class="op-i">Oggetti, stanze e stagioni delle tre case: il velluto del Loft, la sala da tè, il granito della Latteria.</p></div><span class="folio">3</span></div></div></div><div class="leaf" data-k="2" style="z-index:7"><div class="side front"><div class="face recto " data-p="4"><div class="pg"><span class="pg-k">Le tre case</span><h3 class="pg-t">Dove abitano le storie</h3>
@@ -219,12 +220,12 @@ a{color:#EFE8DC}a:hover{color:#D4A65A}
 <h3 class="pg-t">Natale nella Città di pietra</h3><p class="pg-p">Luci, tradizioni e cosa fare in centro a dicembre.</p><span class="soon-seal" aria-hidden="true">In arrivo</span></div><span class="folio">14</span></div></div><div class="side back"><div class="face verso " data-p="15"><div class="pg soon"><span class="pg-k">Calendario · prossimamente</span>
 <h3 class="pg-t">Carrasciali Timpiesu</h3><p class="pg-p">Il Carnevale storico di Tempio: date e consigli.</p><span class="soon-seal" aria-hidden="true">In arrivo</span></div><span class="folio">15</span></div></div></div><div class="leaf" data-k="8" style="z-index:1"><div class="side front"><div class="face recto " data-p="16"><div class="pg end"><span class="pg-k">Continua…</span><h3 class="pg-t">Le pagine si scrivono ogni settimana</h3>
 <p class="pg-p">Nuove storie su Tempio, la Gallura, la poesia e la lingua gallurese. E la prossima, magari, la vivete voi.</p>
-<a class="pg-more" href="https://wa.me/393791656864">Scriveteci su WhatsApp →</a></div><span class="folio">16</span></div></div><div class="side back"><div class="face verso cover back-cover" data-p="17"><div class="cover-frame back"><img src="/img/logo-icona.svg" alt="" class="cover-logo small"><p class="cover-sub">dimoradellestorie.com</p></div></div></div></div>
+<a class="pg-more" href="https://wa.me/393791656864">Scriveteci su WhatsApp →</a></div><span class="folio">16</span></div></div><div class="side back"><div class="face verso cover back-cover" data-p="17"><div class="cover-frame back"><img src="/img/logo-icona.svg" alt="" class="cover-logo small"><p class="cover-sub">dimoradellestorie.com</p></div><span class="corner tl" aria-hidden="true"></span><span class="corner tr" aria-hidden="true"></span><span class="corner bl" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span></div></div></div>
       </div>
       <div class="book-shadow" aria-hidden="true"></div>
       <div class="deck" role="region" aria-label="Il Libro delle Storie, da scorrere"><div class="dpage"><div class="face recto cover" data-p="0"><div class="cover-frame"><img src="/img/logo-chiaro.svg" alt="" class="cover-logo">
-<p class="cover-kicker">Dimora delle Storie</p><h2 class="cover-title">Il Libro<br>delle Storie</h2>
-<p class="cover-sub">Tempio Pausania · Gallura</p><span class="cover-hint">Aprite il libro</span></div></div></div><div class="dpage"><div class="face verso " data-p="1"><div class="exlibris"><img src="/img/logo-icona.svg" alt="" width="64" height="64">
+<h2 class="cover-title">Il Libro<br>delle Storie</h2>
+<p class="cover-sub">Tempio Pausania · Gallura</p><span class="cover-hint">Aprite il libro</span></div><span class="corner tl" aria-hidden="true"></span><span class="corner tr" aria-hidden="true"></span><span class="corner bl" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span></div></div><div class="dpage"><div class="face verso " data-p="1"><div class="exlibris"><img src="/img/logo-icona.svg" alt="" width="64" height="64">
 <p class="ex-k">Ex libris</p><p class="ex-t">Questo libro appartiene a chi passa da Tempio e ha voglia di ascoltarne le storie.</p>
 <p class="ex-s">Sfogliatelo con un clic sul bordo delle pagine, con le frecce della tastiera o dall'indice qui accanto.</p></div><span class="folio">1</span></div></div><div class="dpage"><div class="face recto " data-p="2"><div class="pg"><span class="pg-k">Indice</span><h3 class="pg-t">Capitoli</h3><ol class="toc"><li><button type="button" data-go="3"><span class="toc-n">I</span><span class="toc-t">Le dimore</span><span class="toc-p">3</span></button></li><li><button type="button" data-go="6"><span class="toc-n">II</span><span class="toc-t">Storie di Tempio</span><span class="toc-p">6</span></button></li><li><button type="button" data-go="9"><span class="toc-n">III</span><span class="toc-t">Poesia</span><span class="toc-p">9</span></button></li><li><button type="button" data-go="11"><span class="toc-n">IV</span><span class="toc-t">Lingua gallurese</span><span class="toc-p">11</span></button></li><li><button type="button" data-go="13"><span class="toc-n">V</span><span class="toc-t">Calendario</span><span class="toc-p">13</span></button></li></ol></div><span class="folio">2</span></div></div><div class="dpage"><div class="face verso opener-page" data-p="3"><div class="opener"><span class="op-n">Capitolo I</span><h2 class="op-t">Le dimore</h2>
 <span class="op-rule" aria-hidden="true"></span><p class="op-i">Oggetti, stanze e stagioni delle tre case: il velluto del Loft, la sala da tè, il granito della Latteria.</p></div><span class="folio">3</span></div></div><div class="dpage"><div class="face recto " data-p="4"><div class="pg"><span class="pg-k">Le tre case</span><h3 class="pg-t">Dove abitano le storie</h3>
@@ -245,14 +246,14 @@ a{color:#EFE8DC}a:hover{color:#D4A65A}
 <h3 class="pg-t">Natale nella Città di pietra</h3><p class="pg-p">Luci, tradizioni e cosa fare in centro a dicembre.</p><span class="soon-seal" aria-hidden="true">In arrivo</span></div><span class="folio">14</span></div></div><div class="dpage"><div class="face verso " data-p="15"><div class="pg soon"><span class="pg-k">Calendario · prossimamente</span>
 <h3 class="pg-t">Carrasciali Timpiesu</h3><p class="pg-p">Il Carnevale storico di Tempio: date e consigli.</p><span class="soon-seal" aria-hidden="true">In arrivo</span></div><span class="folio">15</span></div></div><div class="dpage"><div class="face recto " data-p="16"><div class="pg end"><span class="pg-k">Continua…</span><h3 class="pg-t">Le pagine si scrivono ogni settimana</h3>
 <p class="pg-p">Nuove storie su Tempio, la Gallura, la poesia e la lingua gallurese. E la prossima, magari, la vivete voi.</p>
-<a class="pg-more" href="https://wa.me/393791656864">Scriveteci su WhatsApp →</a></div><span class="folio">16</span></div></div><div class="dpage"><div class="face verso cover back-cover" data-p="17"><div class="cover-frame back"><img src="/img/logo-icona.svg" alt="" class="cover-logo small"><p class="cover-sub">dimoradellestorie.com</p></div></div></div></div>
+<a class="pg-more" href="https://wa.me/393791656864">Scriveteci su WhatsApp →</a></div><span class="folio">16</span></div></div><div class="dpage"><div class="face verso cover back-cover" data-p="17"><div class="cover-frame back"><img src="/img/logo-icona.svg" alt="" class="cover-logo small"><p class="cover-sub">dimoradellestorie.com</p></div><span class="corner tl" aria-hidden="true"></span><span class="corner tr" aria-hidden="true"></span><span class="corner bl" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span></div></div></div>
     </div>
     <div class="book-ui">
       <button type="button" class="bk-btn" id="bk-prev" aria-label="Pagina precedente">←</button>
       <span class="bk-count" id="bk-count" aria-live="polite">Copertina</span>
       <button type="button" class="bk-btn" id="bk-next" aria-label="Pagina successiva">→</button>
       <button type="button" class="bk-btn" id="bk-sfx" aria-pressed="true"><span>Pagine: suono sì</span></button>
-      <button type="button" class="bk-btn" id="bk-amb" aria-pressed="false"><span>Atmosfera: no</span></button>
+      <button type="button" class="bk-btn" id="bk-amb" aria-pressed="false"><span>Pianoforte: no</span></button>
     </div>
     <section class="indice-seo" aria-label="Indice delle storie"><div><h2>I · Le dimore</h2><p>Oggetti, stanze e stagioni delle tre case: il velluto del Loft, la sala da tè, il granito della Latteria. Prime storie in arrivo.</p></div><div><h2>II · Storie di Tempio</h2><p><a href="/storie/dove-dormire-a-tempio-pausania">Dove dormire a Tempio Pausania</a> — Tempio sorge su un altopiano di granito ai piedi del Limbara. Dormire nel centro storico vuol dire avere piazze, chiese e fonti a portata di passeggiata, e la Gallura intera a meno di un&#x27;ora.</p></div><div><h2>III · Poesia</h2><p>Versi dal libro della casa e dai poeti della Gallura, da leggere la sera. Prime storie in arrivo.</p></div><div><h2>IV · Lingua gallurese</h2><p>Parole, modi di dire e tradizioni di una lingua che a Tempio si parla ancora per strada. Prime storie in arrivo.</p></div><div><h2>V · Calendario</h2><p>Feste, anniversari e appuntamenti: dal Natale in centro al Carnevale tempiese. Prime storie in arrivo.</p></div></section>
   </main>
@@ -262,45 +263,75 @@ a{color:#EFE8DC}a:hover{color:#D4A65A}
   </footer>
 </div>
 <script>
-const Sound=(()=>{let ctx=null,amb=null,noise=null;
-const get=()=>{if(!ctx){const C=window.AudioContext||window.webkitAudioContext;if(!C)return null;ctx=new C();
- const len=ctx.sampleRate*1.2;noise=ctx.createBuffer(1,len,ctx.sampleRate);const d=noise.getChannelData(0);let b=0;for(let i=0;i<len;i++){const w=Math.random()*2-1;b=(b+0.04*w)/1.04;d[i]=w*0.55+b*2.2;}}
- if(ctx.state==='suspended')ctx.resume();return ctx;};
-function flip(strength=1){const c=get();if(!c)return;const t=c.currentTime;
- const s=c.createBufferSource();s.buffer=noise;s.playbackRate.value=0.9+Math.random()*0.25;
- const bp=c.createBiquadFilter();bp.type='bandpass';bp.Q.value=0.7;bp.frequency.setValueAtTime(3200,t);bp.frequency.exponentialRampToValueAtTime(700,t+0.55);
- const hp=c.createBiquadFilter();hp.type='highpass';hp.frequency.value=260;
- const g=c.createGain();g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(0.22*strength,t+0.05);
- g.gain.setValueAtTime(0.22*strength,t+0.16);g.gain.exponentialRampToValueAtTime(0.05*strength,t+0.42);g.gain.exponentialRampToValueAtTime(0.0001,t+0.72);
- s.connect(bp).connect(hp).connect(g).connect(c.destination);s.start(t,Math.random()*0.3,0.8);
- const s2=c.createBufferSource();s2.buffer=noise;const lp=c.createBiquadFilter();lp.type='lowpass';lp.frequency.value=900;
- const g2=c.createGain();const t2=t+0.78;g2.gain.setValueAtTime(0.0001,t2);g2.gain.exponentialRampToValueAtTime(0.16*strength,t2+0.008);g2.gain.exponentialRampToValueAtTime(0.0001,t2+0.12);
- s2.connect(lp).connect(g2).connect(c.destination);s2.start(t2,0.5,0.14);}
-function startAmb(){const c=get();if(!c||amb)return;const out=c.createGain();out.gain.value=0.0001;out.gain.exponentialRampToValueAtTime(0.5,c.currentTime+4);
- const lp=c.createBiquadFilter();lp.type='lowpass';lp.frequency.value=1100;lp.Q.value=0.3;
- const dl=c.createDelay(2);dl.delayTime.value=0.42;const fb=c.createGain();fb.gain.value=0.38;const wet=c.createGain();wet.gain.value=0.35;
- dl.connect(fb).connect(dl);dl.connect(wet).connect(out);lp.connect(out);lp.connect(dl);out.connect(c.destination);
- const hz=m=>440*Math.pow(2,(m-69)/12);
- const chords=[[45,52,55,59,60],[41,48,52,57,64],[48,55,59,64,67],[43,50,55,59,62]];let ci=0;let voices=[];
- function chord(){const t=c.currentTime;voices.forEach(v=>{v.g.gain.cancelScheduledValues(t);v.g.gain.setValueAtTime(v.g.gain.value,t);v.g.gain.linearRampToValueAtTime(0,t+4);v.o.forEach(o=>o.stop(t+4.2));});
-  voices=chords[ci%chords.length].map((m,i)=>{const g=c.createGain();g.gain.value=0;g.gain.linearRampToValueAtTime(0.018,t+4);
-   const os=[-5,5].map(dt=>{const o=c.createOscillator();o.type=i<1?'sine':'triangle';o.frequency.value=hz(m);o.detune.value=dt;o.connect(g);o.start(t);return o;});g.connect(lp);return{g,o:os};});ci++;}
- const pent=[69,72,74,76,79,81,84];
- function bell(){const t=c.currentTime;const o=c.createOscillator();o.type='sine';o.frequency.value=hz(pent[Math.floor(Math.random()*pent.length)]);
-  const o2=c.createOscillator();o2.type='sine';o2.frequency.value=o.frequency.value*2.01;const g=c.createGain();g.gain.setValueAtTime(0.0001,t);
-  g.gain.exponentialRampToValueAtTime(0.03,t+0.01);g.gain.exponentialRampToValueAtTime(0.0001,t+2.6);const g2=c.createGain();g2.gain.value=0.25;
-  o.connect(g);o2.connect(g2).connect(g);g.connect(lp);o.start(t);o2.start(t);o.stop(t+2.8);o2.stop(t+2.8);}
- chord();const i1=setInterval(chord,9000);let tb;(function loop(){bell();tb=setTimeout(loop,1800+Math.random()*3800);})();
- amb={out,stop(){const t=c.currentTime;out.gain.cancelScheduledValues(t);out.gain.setValueAtTime(out.gain.value,t);out.gain.exponentialRampToValueAtTime(0.0001,t+1.5);clearInterval(i1);clearTimeout(tb);setTimeout(()=>{voices.forEach(v=>v.o.forEach(o=>{try{o.stop()}catch(e){}}));out.disconnect();},1700);}};}
-function stopAmb(){if(amb){amb.stop();amb=null;}}
-return{flip,startAmb,stopAmb};})();
+const Sound=(()=>{let ctx=null,noise=null,bus=null,piano=null;
+const hz=m=>440*Math.pow(2,(m-69)/12);
+function get(){if(!ctx){const C=window.AudioContext||window.webkitAudioContext;if(!C)return null;ctx=new C();
+ const len=ctx.sampleRate*1.5;noise=ctx.createBuffer(1,len,ctx.sampleRate);const d=noise.getChannelData(0);for(let i=0;i<len;i++)d[i]=Math.random()*2-1;}
+ if(ctx.state==='suspended')ctx.resume();return ctx;}
+/* --- fruscio di carta: tanti piccoli granelli di rumore filtrato, niente risonanze --- */
+function grain(c,t,dur,f,q,g,dest){const s=c.createBufferSource();s.buffer=noise;const bp=c.createBiquadFilter();bp.type='bandpass';bp.frequency.value=f;bp.Q.value=q;
+ const e=c.createGain();e.gain.setValueAtTime(0.0001,t);e.gain.exponentialRampToValueAtTime(g,t+0.002);e.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+ s.connect(bp).connect(e).connect(dest);s.start(t,Math.random()*1.3,dur+0.02);}
+function flip(strength=1){const c=get();if(!c)return;const t0=c.currentTime+0.01;
+ const out=c.createGain();out.gain.value=0.9*strength;const lp=c.createBiquadFilter();lp.type='lowpass';lp.frequency.value=5200;lp.Q.value=0.2;
+ const hp=c.createBiquadFilter();hp.type='highpass';hp.frequency.value=180;out.connect(lp).connect(hp).connect(c.destination);
+ // soffio d'aria del foglio che si solleva
+ const s=c.createBufferSource();s.buffer=noise;const air=c.createBiquadFilter();air.type='lowpass';air.Q.value=0.1;
+ air.frequency.setValueAtTime(380,t0);air.frequency.linearRampToValueAtTime(1100,t0+0.32);air.frequency.linearRampToValueAtTime(420,t0+0.7);
+ const ag=c.createGain();ag.gain.setValueAtTime(0.0001,t0);ag.gain.exponentialRampToValueAtTime(0.11,t0+0.18);ag.gain.exponentialRampToValueAtTime(0.0001,t0+0.75);
+ s.connect(air).connect(ag).connect(out);s.start(t0,Math.random(),0.8);
+ // fruscio granulare (la carta che struscia)
+ const D=0.5;let t=t0;while(t<t0+D){const x=(t-t0)/D;const env=Math.sin(Math.PI*Math.min(1,x*1.15))**1.4;
+  grain(c,t,0.006+Math.random()*0.022,900+Math.random()*2600,0.5+Math.random()*0.5,0.0001+0.06*env*(0.35+Math.random()*0.65),out);
+  t+=0.004+Math.random()*0.011;}
+ // il foglio che si posa: piccolo colpo sordo + due crepitii
+ const tl=t0+0.6;const th=c.createBufferSource();th.buffer=noise;const tlp=c.createBiquadFilter();tlp.type='lowpass';tlp.frequency.value=420;
+ const tg=c.createGain();tg.gain.setValueAtTime(0.0001,tl);tg.gain.exponentialRampToValueAtTime(0.22,tl+0.006);tg.gain.exponentialRampToValueAtTime(0.0001,tl+0.09);
+ th.connect(tlp).connect(tg).connect(out);th.start(tl,Math.random(),0.12);
+ for(let i=0;i<3;i++)grain(c,tl+0.01+i*0.018*Math.random(),0.01,1500+Math.random()*1500,0.6,0.035,out);}
+/* --- pianoforte verticale: note sintetizzate con corde, martelletto in feltro e riverbero di stanza --- */
+function reverb(c){const len=c.sampleRate*2.6,ir=c.createBuffer(2,len,c.sampleRate);
+ for(let ch=0;ch<2;ch++){const d=ir.getChannelData(ch);for(let i=0;i<len;i++){const x=i/len;d[i]=(Math.random()*2-1)*Math.pow(1-x,3.2)*(i<c.sampleRate*0.012?0.3:1);}}
+ const cv=c.createConvolver();cv.buffer=ir;return cv;}
+function note(c,dest,m,t,vel,dur){const f=hz(m);const reg=Math.max(0,Math.min(1,(m-36)/48));
+ const felt=c.createBiquadFilter();felt.type='lowpass';felt.frequency.value=700+vel*2600+reg*900;felt.Q.value=0.4;felt.connect(dest);
+ const B=0.00028;const base=4.2-reg*2.6;
+ for(let k=1;k<=7;k++){const o=c.createOscillator();o.type='sine';o.frequency.value=f*k*Math.sqrt(1+B*k*k);o.detune.value=(Math.random()-.5)*3;
+  const g=c.createGain();const a=vel*0.22/Math.pow(k,1.15)*(k===2?0.8:1);const tau=Math.max(0.25,base/(0.7+0.45*k));
+  g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(a,t+0.005);g.gain.setTargetAtTime(a*0.45,t+0.005,0.12);g.gain.setTargetAtTime(0.00001,t+0.12,tau);
+  g.gain.setTargetAtTime(0.00001,t+dur,0.18);o.connect(g).connect(felt);o.start(t);o.stop(t+dur+1.4);}
+ const h=c.createBufferSource();h.buffer=noise;const hl=c.createBiquadFilter();hl.type='lowpass';hl.frequency.value=900+reg*1200;
+ const hg=c.createGain();hg.gain.setValueAtTime(0.0001,t);hg.gain.exponentialRampToValueAtTime(0.012*vel,t+0.002);hg.gain.exponentialRampToValueAtTime(0.0001,t+0.035);
+ h.connect(hl).connect(hg).connect(felt);h.start(t,Math.random(),0.05);}
+function startPiano(){const c=get();if(!c||piano)return;
+ const master=c.createGain();master.gain.value=0.0001;master.gain.exponentialRampToValueAtTime(0.55,c.currentTime+2.5);master.connect(c.destination);
+ const dry=c.createGain();dry.gain.value=0.75;const wet=c.createGain();wet.gain.value=0.42;const rv=reverb(c);
+ const bus=c.createGain();bus.connect(dry).connect(master);bus.connect(rv).connect(wet).connect(master);
+ // Re maggiore, tempo lento: D – Bm – Gmaj7 – A(sus4→A)
+ const prog=[{lh:[38,45,50,54],ct:[74,78,81]},{lh:[35,42,50,54],ct:[74,78,83]},{lh:[31,43,50,54],ct:[74,78,79,83]},{lh:[33,45,49,52],ct:[73,76,81]},
+             {lh:[38,45,50,54],ct:[78,81,86]},{lh:[35,42,50,54],ct:[74,79,83]},{lh:[31,43,50,54],ct:[71,74,79]},{lh:[33,45,50,52],ct:[74,76,81]}];
+ const scale=[69,71,73,74,76,78,79,81,83,85,86];const pat=[0,1,2,3,2,1,2,1];
+ const e8=60/66/2;let bar=0,next=c.currentTime+0.3,mel=78,stop=false;
+ function schedBar(t){const ch=prog[bar%prog.length];const human=()=>(Math.random()-.5)*0.018;
+  pat.forEach((ix,i)=>note(c,bus,ch.lh[ix],t+i*e8+human(),0.26+(i===0?0.08:0)+Math.random()*0.05,i===0?e8*8:e8*2.2));
+  const rest=(bar%8===7)&&Math.random()<0.6;if(!rest){
+   const slots=[0,2,3,4,6].filter((s,j)=>j===0||Math.random()<0.45);
+   slots.forEach((s,j)=>{let target;if(j===0){target=ch.ct.reduce((a,b)=>Math.abs(b-mel)<Math.abs(a-mel)?b:a);}
+     else{const i=scale.indexOf(mel);const step=[-2,-1,-1,1,1,2][Math.floor(Math.random()*6)];target=scale[Math.max(0,Math.min(scale.length-1,(i<0?5:i)+step))];}
+     mel=target;const len=(slots[j+1]??8)-s;note(c,bus,mel,t+s*e8+human()+0.01,0.34+Math.random()*0.12,len*e8*1.1);});}
+  bar++;}
+ const iv=setInterval(()=>{if(stop)return;while(next<c.currentTime+1.2){schedBar(next);next+=e8*8;}},250);
+ piano={stop(){stop=true;clearInterval(iv);const t=c.currentTime;master.gain.cancelScheduledValues(t);master.gain.setValueAtTime(master.gain.value,t);
+  master.gain.exponentialRampToValueAtTime(0.0001,t+1.8);setTimeout(()=>master.disconnect(),2200);}};}
+function stopPiano(){if(piano){piano.stop();piano=null;}}
+return{flip,startAmb:startPiano,stopAmb:stopPiano};})();
 
 (function(){
 const store={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let sfx=store.get('dds-sfx')!=='0';let ambOn=false;
 const bSfx=document.getElementById('bk-sfx'),bAmb=document.getElementById('bk-amb');
-const syncBtns=()=>{bSfx.setAttribute('aria-pressed',sfx);bAmb.setAttribute('aria-pressed',ambOn);bAmb.querySelector('span').textContent=ambOn?'Atmosfera: sì':'Atmosfera: no';bSfx.querySelector('span').textContent=sfx?'Pagine: suono sì':'Pagine: suono no';};
+const syncBtns=()=>{bSfx.setAttribute('aria-pressed',sfx);bAmb.setAttribute('aria-pressed',ambOn);bAmb.querySelector('span').textContent=ambOn?'Pianoforte: sì':'Pianoforte: no';bSfx.querySelector('span').textContent=sfx?'Pagine: suono sì':'Pagine: suono no';};
 bSfx.onclick=()=>{sfx=!sfx;store.set('dds-sfx',sfx?'1':'0');syncBtns();if(sfx)Sound.flip(.8);};
 bAmb.onclick=()=>{ambOn=!ambOn;ambOn?Sound.startAmb():Sound.stopAmb();syncBtns();};
 syncBtns();
