@@ -331,7 +331,7 @@ ARTICLE_CSS = '''
 def article_page(a):
     c = cap(a["cap"])
     url = f"{BASE}/storie/{a['slug']}"
-    title = f"{a['titolo']}: {a['sottotitolo'].lower()} | Dimora delle Storie"
+    title = f"{a['titolo']} — {a['sottotitolo']} | Dimora delle Storie"
     ld = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": a["titolo"], "description": a["descrizione"],
           "datePublished": a["data"], "dateModified": a["data"], "inLanguage": "it-IT", "mainEntityOfPage": url,
           "image": f"{BASE}{a['img']}", "articleSection": c["titolo"],
