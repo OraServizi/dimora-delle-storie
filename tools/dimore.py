@@ -4,7 +4,7 @@ dell'Antica Latteria 1930, pagina /la-dimora (facciata, sala da tè, leggenda),
 voce «La casa» nel menu. Idempotente: si può rilanciare."""
 import html, json, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from storie_data import LEGGENDA_ANTIQUARIO as ANTIQUARIO, LEGGENDA_LATTERIA as LAT_LEGGENDA, LEGGENDA_VIAGGIATORE as VIAGGIATORE
+from storie_data import LEGGENDA_ANTIQUARIO as ANTIQUARIO, LEGGENDA_LATTERIA as LAT_LEGGENDA, LEGGENDA_VIAGGIATORE as VIAGGIATORE, LEGGENDA_SALA_TE as SALA_TE
 
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://www.dimoradellestorie.com"
@@ -95,6 +95,13 @@ CSS = '''<style id="galleria">
 .casa-sec{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr));gap:clamp(32px,5vw,80px);padding:clamp(64px,8vw,110px) clamp(20px,4.5vw,64px) 40px;align-items:end}
 .casa-sec h2{margin:0 0 20px;font-family:'Bodoni Moda',Georgia,serif;font-variation-settings:'opsz' 11;font-weight:400;font-size:clamp(26px,3.6vw,48px);letter-spacing:.08em;line-height:1.15}
 .casa-sec p{margin:0 0 18px;font-size:17px;line-height:1.8;color:rgba(239,232,220,.82)}
+.riti{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:clamp(16px,2vw,28px)}
+.rito{padding:32px 28px;border:1px solid rgba(226,183,106,.28);background:linear-gradient(180deg,rgba(15,17,40,.55),rgba(15,17,40,.25));box-shadow:0 22px 60px rgba(0,0,0,.35)}
+.rito h3{margin:12px 0 14px;font-family:'Bodoni Moda',Georgia,serif;font-variation-settings:'opsz' 11;font-weight:400;font-size:clamp(18px,1.7vw,22px);letter-spacing:.08em;color:#EFE8DC}
+.rito p{margin:0;font-size:15px;line-height:1.75;color:rgba(239,232,220,.8)}
+.te-cta{max-width:760px;margin:0 auto clamp(40px,5vw,72px);padding:40px clamp(20px,4.5vw,48px);text-align:center;border-top:1px solid rgba(226,183,106,.3);border-bottom:1px solid rgba(226,183,106,.3)}
+.te-cta p{margin:14px 0 22px;font-family:'Bodoni Moda',Georgia,serif;font-variation-settings:'opsz' 11;font-size:clamp(16px,1.6vw,20px);letter-spacing:.06em;line-height:1.6;color:#EFE8DC}
+.te-cta a{display:inline-flex;align-items:center;min-height:44px;padding:0 28px;border-radius:999px;background:#D4A65A;color:#0F111A;text-decoration:none;font-size:12px;font-weight:500;letter-spacing:.14em}
 .dim-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(16px,2vw,28px);padding:0 clamp(20px,4.5vw,64px) clamp(80px,9vw,120px)}
 .dim-card{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;text-decoration:none;box-shadow:0 22px 60px rgba(0,0,0,.45)}
 .dim-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.6s cubic-bezier(.2,.7,.1,1)}
@@ -182,13 +189,18 @@ def latteria():
     return put_block(put_css(s), block)
 
 def loft():
-    s = rd("loft-dell-antiquario.html")
+    s = ospiti(rd("loft-dell-antiquario.html"), ">Ultimo piano · 45 mq · Tempio Pausania<", ">Ultimo piano · 45 mq · 2 ospiti · Tempio Pausania<")
     teaser = racconto("Una leggenda della Dimora", "La leggenda dell'Antiquario", ANTIQUARIO, '<a href="/storie/leggenda-dell-antiquario" style="color:#8FA2E6">Anche nel Libro delle Storie →</a>', "leggenda")
     block = '<section class="gal-sec">' + galleria("loft", "Galleria · 12 foto", "Dentro il loft", "Loft dell'Antiquario") + '</section>\n' + teaser
     return put_block(put_css(s), block)
 
+def ospiti(s, kick_old, kick_new):
+    s = s.replace(kick_old, kick_new)
+    s = re.sub(r', "occupancy": \{[^}]*\}', '', s)
+    return s.replace('"floorSize": {"@type": "QuantitativeValue", "value": 25, "unitCode": "MTK"}', '"floorSize": {"@type": "QuantitativeValue", "value": 25, "unitCode": "MTK"}, "occupancy": {"@type": "QuantitativeValue", "maxValue": 2}').replace('"floorSize": {"@type": "QuantitativeValue", "value": 45, "unitCode": "MTK"}', '"floorSize": {"@type": "QuantitativeValue", "value": 45, "unitCode": "MTK"}, "occupancy": {"@type": "QuantitativeValue", "maxValue": 2}')
+
 def suite():
-    s = rd("suite-del-viaggiatore.html")
+    s = ospiti(rd("suite-del-viaggiatore.html"), ">Primo piano · 25 mq · Tempio Pausania<", ">Primo piano · 25 mq · 2 ospiti · Tempio Pausania<")
     block = ('<section class="gal-sec">' + galleria("suite", "Galleria · 8 foto", "Dentro la suite", "Suite del Viaggiatore") + '</section>\n'
              + racconto("Una leggenda della Dimora", "La leggenda del Viaggiatore", VIAGGIATORE, '<a href="/storie/leggenda-del-viaggiatore" style="color:#8FA2E6">Anche nel Libro delle Storie →</a>', "leggenda"))
     return put_block(put_css(s), block)
@@ -239,13 +251,22 @@ def la_dimora():
     <p class="reveal">Nella piazza adiacente ci sono parcheggi gratuiti.</p></div>
   </section>
   <section class="gal-sec" style="padding-top:12px"><div class="gal" data-gal>{galleria("est", "", "", "Dimora delle Storie").split('<div class="gal" data-gal>',1)[1]}</section>'''
+    riti = [
+        ("Il tè", "Il rito del pomeriggio", "Un tavolino d'epoca con il servizio da tè e da caffè, le tazze di porcellana e il tempo che rallenta. Il momento giusto per scegliere un libro dalla vetrina o pianificare la giornata."),
+        ("Il pianoforte", "Il cuore della sala", "Il pianoforte verticale con i candelieri d'ottone è il centro della stanza. La musica è di casa a Tempio: qui è nato Gavino Gabriel, compositore e studioso dei canti della Gallura."),
+        ("La poesia", "Versi da leggere la sera", "La Gallura ha una tradizione poetica antica: a Tempio è nato Don Baignu, Gavino Pes, tra i grandi poeti sardi del Settecento. Nel Libro delle Storie un capitolo intero è dedicato alla poesia."),
+    ]
+    riti_html = '<div class="riti">' + "".join(
+        f'<div class="rito reveal"><span class="gal-k">{e(k)}</span><h3>{e(t)}</h3><p>{e(x)}</p></div>' for k, t, x in riti) + '</div>'
     te = f'''  <section class="casa-sec" id="sala-da-te">
-    <div><span class="gal-k reveal" style="display:block;margin-bottom:16px">Lo spazio comune</span><h2 class="reveal">La sala da tè</h2></div>
-    <div><p class="reveal">Al centro della Dimora c'è un'area comune accogliente: il pianoforte verticale, un divano d'epoca a righe, la vetrina con i libri su Tempio e sulla Gallura e un tavolino per il tè e il caffè.</p>
-    <p class="reveal">È il posto giusto per scegliere un libro, pianificare la giornata o concedersi un momento di tranquillità prima di uscire.</p></div>
+    <div><span class="gal-k reveal" style="display:block;margin-bottom:16px">Tè · Poesia · Pianoforte</span><h2 class="reveal">La sala da tè</h2></div>
+    <div><p class="reveal">Al centro della Dimora c'è la stanza più amata della casa: il pianoforte verticale, il divano d'epoca a righe, la vetrina con i libri su Tempio e sulla Gallura e un tavolino per il tè e il caffè.</p>
+    <p class="reveal">È lo spazio comune degli ospiti, pensato per le ore lente: una tazza di tè, una poesia, una musica.</p></div>
   </section>
-  <section class="gal-sec" style="padding-top:12px"><div class="gal" data-gal>{galleria("te", "", "", "Sala da tè").split('<div class="gal" data-gal>',1)[1]}</section>'''
-    legg = racconto("Una leggenda della Dimora", "La leggenda dell'Antiquario", ANTIQUARIO, '<a href="/storie/leggenda-dell-antiquario" style="color:#8FA2E6">Anche nel Libro delle Storie →</a>', "leggenda")
+  <section class="gal-sec" style="padding-top:12px;padding-bottom:0">{riti_html}</section>
+  <section class="gal-sec" style="padding-top:clamp(40px,5vw,72px)"><div class="gal" data-gal>{galleria("te", "", "", "Sala da tè").split('<div class="gal" data-gal>',1)[1]}</section>
+{racconto("Una leggenda della Dimora", "La leggenda della sala da tè", SALA_TE, '<a href="/storie/leggenda-della-sala-da-te" style="color:#8FA2E6">Anche nel Libro delle Storie →</a>', "leggenda-sala-da-te")}
+  <section class="te-cta reveal"><span class="gal-k">Il Libro delle Storie</span><p>Sfogliate le storie di Tempio e le poesie della Gallura con il pianoforte in sottofondo.</p><a href="/storie">Apri il libro →</a></section>'''
     cards = '''  <section class="casa-sec" style="padding-bottom:40px"><div><span class="gal-k reveal" style="display:block;margin-bottom:16px">Dove dormire</span><h2 class="reveal">Le dimore</h2></div><div></div></section>
   <div class="dim-cards">''' + "".join(
         f'<a class="dim-card reveal" href="/{slug}"><img src="/img/{img}" alt="{e(n)}" loading="lazy"><span><small>{e(k)}</small><b>{e(n)}</b></span></a>'
@@ -268,6 +289,11 @@ NAV_CSS = """<style id="nav-chiara">
 LOGO_RE = re.compile(r'<a href="(?:/|#)" aria-label="Dimora delle Storie[^"]*" style="[^"]*"><img src="(/?img/logo-icona\.svg)" alt="" style="[^"]*"></a>')
 LINK = 'style="text-decoration:none"'
 
+FOOT_ADDR = "<span>Piazza Eleonora d'Arborea 6<br>07029 Tempio Pausania (SS)</span>"
+def cin(s):
+    if "IT090070C2000S8992" in s: return s
+    return s.replace(FOOT_ADDR, FOOT_ADDR + '<span style="font-size:12px;letter-spacing:.12em;color:rgba(239,232,220,.55)">CIN IT090070C2000S8992</span>')
+
 def header_chiaro(s, attivo):
     s = re.sub(r'<style id="nav-chiara">.*?</style>\n?', '', s, flags=re.S).replace('</head>', NAV_CSS + '\n</head>', 1)
     s = LOGO_RE.sub(lambda m: f'<a class="brand" href="/" aria-label="Dimora delle Storie — torna alla home"><img src="{m.group(1)}" alt="" style="height:52px;width:auto;display:block"><b>Dimora<br>delle Storie</b></a>', s)
@@ -288,6 +314,8 @@ for p in ["index.html", "storie.html", "tempio-pausania.html", "storie/dove-dorm
 idx = rd("index.html")
 idx = idx.replace("[N] ospiti · [N] mq · [dotazioni]", "Vasca con i piedini · Giradischi · Climatizzazione · [N] ospiti")
 idx = idx.replace("Vasca con i piedini · Giradischi · Climatizzazione · [N] ospiti", "Vasca con i piedini · Giradischi · Climatizzazione · 2 ospiti").replace("03 — GRANITO E LEGNO", "03 — DUE LIVELLI · 38 MQ")
+idx = idx.replace("Tavolo per 4 · [N] ospiti", "Tavolo per 4 · 2 ospiti").replace("Climatizzazione · [N] ospiti", "Climatizzazione · 2 ospiti")
+idx = idx.replace("[CIN / codice identificativo]", "CIN IT090070C2000S8992")
 wr("index.html", idx)
 sm = rd("sitemap.xml")
 if "/la-dimora<" not in sm:
@@ -296,7 +324,7 @@ if "/la-dimora<" not in sm:
     sm = re.sub(r'(antica-latteria-1930</loc><lastmod>)[^<]*', r'\g<1>2026-11-22', sm)
     wr("sitemap.xml", sm)
 sm = rd("sitemap.xml")
-for slug in ["leggenda-dell-antiquario", "leggenda-del-viaggiatore", "leggenda-della-latteria"]:
+for slug in ["leggenda-dell-antiquario", "leggenda-del-viaggiatore", "leggenda-della-sala-da-te", "leggenda-della-latteria"]:
     if f"/storie/{slug}<" not in sm:
         sm = sm.replace("</urlset>", f"  <url><loc>{BASE}/storie/{slug}</loc><lastmod>2026-11-22</lastmod><priority>0.7</priority></url>\n</urlset>")
 wr("sitemap.xml", sm)
@@ -308,5 +336,5 @@ ATTIVO = {"index.html": "/", "loft-dell-antiquario.html": "/#dimore", "suite-del
           "tempio-pausania.html": "/tempio-pausania"}
 for p in ["index.html", "la-dimora.html", "loft-dell-antiquario.html", "suite-del-viaggiatore.html", "antica-latteria-1930.html",
           "storie.html", "tempio-pausania.html"] + [os.path.relpath(x, SITE) for x in glob.glob(f"{SITE}/storie/*.html")]:
-    wr(p, header_chiaro(nav(rd(p)), ATTIVO.get(p, "/storie")))
+    wr(p, cin(header_chiaro(nav(rd(p)), ATTIVO.get(p, "/storie"))))
 print("ok")

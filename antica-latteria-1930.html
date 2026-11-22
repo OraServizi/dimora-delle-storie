@@ -155,6 +155,13 @@ input::placeholder{text-transform:uppercase}
 .casa-sec{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr));gap:clamp(32px,5vw,80px);padding:clamp(64px,8vw,110px) clamp(20px,4.5vw,64px) 40px;align-items:end}
 .casa-sec h2{margin:0 0 20px;font-family:'Bodoni Moda',Georgia,serif;font-variation-settings:'opsz' 11;font-weight:400;font-size:clamp(26px,3.6vw,48px);letter-spacing:.08em;line-height:1.15}
 .casa-sec p{margin:0 0 18px;font-size:17px;line-height:1.8;color:rgba(239,232,220,.82)}
+.riti{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:clamp(16px,2vw,28px)}
+.rito{padding:32px 28px;border:1px solid rgba(226,183,106,.28);background:linear-gradient(180deg,rgba(15,17,40,.55),rgba(15,17,40,.25));box-shadow:0 22px 60px rgba(0,0,0,.35)}
+.rito h3{margin:12px 0 14px;font-family:'Bodoni Moda',Georgia,serif;font-variation-settings:'opsz' 11;font-weight:400;font-size:clamp(18px,1.7vw,22px);letter-spacing:.08em;color:#EFE8DC}
+.rito p{margin:0;font-size:15px;line-height:1.75;color:rgba(239,232,220,.8)}
+.te-cta{max-width:760px;margin:0 auto clamp(40px,5vw,72px);padding:40px clamp(20px,4.5vw,48px);text-align:center;border-top:1px solid rgba(226,183,106,.3);border-bottom:1px solid rgba(226,183,106,.3)}
+.te-cta p{margin:14px 0 22px;font-family:'Bodoni Moda',Georgia,serif;font-variation-settings:'opsz' 11;font-size:clamp(16px,1.6vw,20px);letter-spacing:.06em;line-height:1.6;color:#EFE8DC}
+.te-cta a{display:inline-flex;align-items:center;min-height:44px;padding:0 28px;border-radius:999px;background:#D4A65A;color:#0F111A;text-decoration:none;font-size:12px;font-weight:500;letter-spacing:.14em}
 .dim-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(16px,2vw,28px);padding:0 clamp(20px,4.5vw,64px) clamp(80px,9vw,120px)}
 .dim-card{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;text-decoration:none;box-shadow:0 22px 60px rgba(0,0,0,.45)}
 .dim-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.6s cubic-bezier(.2,.7,.1,1)}
@@ -223,7 +230,7 @@ addEventListener('keydown',ev=>{if(!lb.classList.contains('on'))return;if(ev.key
 let x0=null;lb.addEventListener('touchstart',ev=>x0=ev.touches[0].clientX,{passive:true});lb.addEventListener('touchend',ev=>{if(x0===null)return;const d=ev.changedTouches[0].clientX-x0;if(Math.abs(d)>40)show(i+(d<0?1:-1));x0=null});})();</script>
 <!--/dimore-->
   <footer style="border-top:1px solid rgba(239,232,220,.12);padding:56px clamp(20px,4.5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:32px;font-size:14px;line-height:1.8;color:rgba(239,232,220,.74)">
-    <div style="display:flex;flex-direction:column;gap:8px"><a href="/" style="text-decoration:none;font-family:'Bodoni Moda',Georgia,serif;font-size:19px;color:#EFE8DC;text-transform:uppercase;letter-spacing:.08em">Dimora delle Storie</a><span>Piazza Eleonora d'Arborea 6<br>07029 Tempio Pausania (SS)</span></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><a href="/" style="text-decoration:none;font-family:'Bodoni Moda',Georgia,serif;font-size:19px;color:#EFE8DC;text-transform:uppercase;letter-spacing:.08em">Dimora delle Storie</a><span>Piazza Eleonora d'Arborea 6<br>07029 Tempio Pausania (SS)</span><span style="font-size:12px;letter-spacing:.12em;color:rgba(239,232,220,.55)">CIN IT090070C2000S8992</span></div>
     <div style="display:flex;flex-direction:column;gap:4px"><a href="tel:+393791656864" style="text-decoration:none">+39 379 165 6864</a><a href="mailto:info@dimoradellestorie.com" style="text-decoration:none">info@dimoradellestorie.com</a><a href="https://www.instagram.com/dimoradellestorie" style="text-decoration:none">Instagram · @dimoradellestorie</a></div>
   </footer>
 </div>
