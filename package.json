@@ -1,0 +1,7 @@
+{
+  "name": "dimora-delle-storie",
+  "private": true,
+  "dependencies": {
+    "nodemailer": "^6.10.1"
+  }
+}

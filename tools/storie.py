@@ -58,7 +58,7 @@ def page(inner, cls=""):
 pages = []
 # 0 copertina
 pages.append(page('''<div class="cover-frame"><img src="/img/logo-chiaro.svg" alt="" class="cover-logo">
-<h2 class="cover-title">Il Libro<br>delle Storie</h2>
+<h2 class="cover-title" data-t="Il Libro&#10;delle Storie">Il Libro<br>delle Storie</h2>
 <p class="cover-sub">Tempio Pausania · Gallura</p><span class="cover-hint">Aprite il libro</span></div>'''+CORN, "cover"))
 # 1 ex libris
 pages.append(page('''<div class="exlibris"><img src="/img/logo-icona.svg" alt="" width="64" height="64">
@@ -90,7 +90,7 @@ for c in CAPITOLI:
 # pagina finale
 pages.append(page('''<div class="pg end"><span class="pg-k">Continua…</span><h3 class="pg-t">Le pagine si scrivono ogni settimana</h3>
 <p class="pg-p">Nuove storie su Tempio, la Gallura, la poesia e la lingua gallurese. E la prossima, magari, la vivete voi.</p>
-<a class="pg-more" href="https://wa.me/393791656864">Scriveteci su WhatsApp →</a></div>'''))
+<a class="pg-more" href="/scrivi-la-tua-storia">Scrivi la tua storia →</a></div>'''))
 if len(pages) % 2 == 0:   # la quarta di copertina deve stare sul retro di un foglio
     pages.append(page('<div class="pg blank" aria-hidden="true"></div>'))
 pages.append(page('<div class="cover-frame back"><img src="/img/logo-icona.svg" alt="" class="cover-logo small"><p class="cover-sub">dimoradellestorie.com</p></div>'+CORN, "cover back-cover"))
@@ -140,9 +140,11 @@ BOOK_CSS = r'''
 .cover-frame{position:absolute;inset:7%;border:1px solid rgba(226,183,106,.55);outline:1px solid rgba(226,183,106,.25);outline-offset:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;padding:6%}
 .cover-logo{width:42%;max-width:190px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}.cover-logo.small{width:22%}
 .cover-kicker{margin:0;font-size:clamp(9px,1.1vw,12px);letter-spacing:.34em;text-transform:uppercase;opacity:.8}
-.cover-title{margin:0;'''+SERIF+''';font-weight:400;font-size:clamp(20px,3.1vw,40px);line-height:1.2;letter-spacing:.1em;text-transform:uppercase;font-variation-settings:'opsz' 11;
- background:linear-gradient(100deg,#B8893F 0%,#F3D38F 35%,#C99A4E 55%,#F6DDA5 75%,#B8893F 100%);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:220% 100%;animation:gild 7s ease-in-out infinite}
-@keyframes gild{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
+.cover-title{position:relative;margin:0;'''+SERIF+''';font-weight:600;font-size:clamp(20px,3.1vw,40px);line-height:1.2;letter-spacing:.1em;text-transform:uppercase;font-variation-settings:'opsz' 11;
+ background:linear-gradient(180deg,#FFF4D2 0%,#F6DA9A 16%,#E0B465 34%,#9C6A26 50%,#6E4818 54%,#B8893F 62%,#F2CF84 80%,#FBE7B0 90%,#B07F33 100%);background-size:100% 1.2em;background-repeat:repeat-y;
+ -webkit-background-clip:text;background-clip:text;color:transparent;
+ filter:drop-shadow(0 -.5px 0 rgba(255,246,220,.55)) drop-shadow(0 1px 0 #7A531C) drop-shadow(0 1px 0 #5E3D12) drop-shadow(0 1.5px 0 #3E280C) drop-shadow(0 7px 9px rgba(0,0,0,.6))}
+.cover-title::after{content:attr(data-t);position:absolute;inset:0;white-space:pre-line;color:transparent;-webkit-text-stroke:.5px rgba(255,240,200,.35);pointer-events:none}
 .cover-sub{margin:0;font-size:clamp(9px,1vw,12px);letter-spacing:.28em;text-transform:uppercase;color:rgba(239,232,220,.7)}
 .cover-hint{margin-top:10px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(239,232,220,.85);animation:hintp 2.6s ease-in-out infinite}
 @keyframes hintp{0%,100%{opacity:.35}50%{opacity:1}}
@@ -190,7 +192,7 @@ BOOK_CSS = r'''
  .dpage .face{border-radius:4px;padding:28px 24px}
  .pg-p{font-size:14px}.pg-t{font-size:20px}.op-t{font-size:26px}.cover-title{font-size:30px}
 }
-@media (prefers-reduced-motion:reduce){.leaf,.book{transition:none}.cover-title,.cover-hint{animation:none}}
+@media (prefers-reduced-motion:reduce){.leaf,.book{transition:none}.cover-hint{animation:none}}
 .indice-seo{width:min(1120px,100%);border-top:1px solid rgba(239,232,220,.12);padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:28px}
 .indice-seo h2{margin:0 0 8px;'''+SERIF+''';font-weight:400;font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:rgba(239,232,220,.7);font-variation-settings:'opsz' 11}
 .indice-seo a{color:#EFE8DC;text-decoration:none}.indice-seo a:hover{color:#E2B76A}

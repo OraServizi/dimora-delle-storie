@@ -10,6 +10,8 @@ CAPITOLI = [
      "intro": "Parole, modi di dire e tradizioni di una lingua che a Tempio si parla ancora per strada."},
     {"n": "V", "id": "calendario", "titolo": "Calendario",
      "intro": "Feste, anniversari e appuntamenti: dal Natale in centro al Carnevale tempiese."},
+    {"n": "VI", "id": "ospiti", "titolo": "Le storie degli ospiti",
+     "intro": "Ricordi, avventure e piccole poesie scritte da chi ha soggiornato alla Dimora."},
 ]
 
 # Leggende della Dimora (usate nelle pagine delle dimore e nel Libro)
@@ -147,4 +149,5 @@ IN_ARRIVO = {
     "lingua": [("La parola della settimana", "Una parola gallurese, il suo significato e come si pronuncia.")],
     "calendario": [("Natale nella Città di pietra", "Luci, tradizioni e cosa fare in centro a dicembre."),
                    ("Carrasciali Timpiesu", "Il Carnevale storico di Tempio: date e consigli.")],
+    "ospiti": [("La vostra storia", "Questa pagina aspetta voi: scrivete la vostra storia su dimoradellestorie.com/scrivi-la-tua-storia.")],
 }
