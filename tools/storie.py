@@ -58,7 +58,7 @@ def page(inner, cls=""):
 pages = []
 # 0 copertina
 pages.append(page('''<div class="cover-frame"><img src="/img/logo-chiaro.svg" alt="" class="cover-logo">
-<h2 class="cover-title" data-t="Il Libro&#10;delle Storie">Il Libro<br>delle Storie</h2>
+<h2 class="cover-title-img"><img src="/img/titolo-libro-oro.webp" alt="Il Libro delle Storie" width="1400" height="371"></h2>
 <p class="cover-sub">Tempio Pausania · Gallura</p><span class="cover-hint">Aprite il libro</span></div>'''+CORN, "cover"))
 # 1 ex libris
 pages.append(page('''<div class="exlibris"><img src="/img/logo-icona.svg" alt="" width="64" height="64">
@@ -150,6 +150,7 @@ BOOK_CSS = r'''
  background:linear-gradient(180deg,#FFF4D2 0%,#F6DA9A 16%,#E0B465 34%,#9C6A26 50%,#6E4818 54%,#B8893F 62%,#F2CF84 80%,#FBE7B0 90%,#B07F33 100%);background-size:100% 1.2em;background-repeat:repeat-y;
  -webkit-background-clip:text;background-clip:text;color:transparent;
  filter:drop-shadow(0 -.5px 0 rgba(255,246,220,.55)) drop-shadow(0 1px 0 #7A531C) drop-shadow(0 1px 0 #5E3D12) drop-shadow(0 1.5px 0 #3E280C) drop-shadow(0 7px 9px rgba(0,0,0,.6))}
+.cover-title-img{margin:2px 0 0;width:92%;line-height:0}.cover-title-img img{width:100%;height:auto;filter:drop-shadow(0 1px 0 rgba(40,24,6,.6)) drop-shadow(0 7px 9px rgba(0,0,0,.55))}
 .cover-title::after{content:attr(data-t);position:absolute;inset:0;white-space:pre-line;color:transparent;-webkit-text-stroke:.5px rgba(255,240,200,.35);pointer-events:none}
 .cover-sub{margin:0;font-size:clamp(9px,1vw,12px);letter-spacing:.28em;text-transform:uppercase;color:rgba(239,232,220,.7)}
 .cover-hint{margin-top:10px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(239,232,220,.85);animation:hintp 2.6s ease-in-out infinite}
