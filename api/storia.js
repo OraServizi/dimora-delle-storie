@@ -30,7 +30,9 @@ module.exports = async (req, res) => {
   if (!DIMORE.includes(d.dimora)) d.dimora = "Non indicata";
   if (errori.length) return res.status(400).json({ ok: false, errori });
 
-  const { SMTP_HOST = "authsmtp.securemail.pro", SMTP_PORT = "465", SMTP_USER, SMTP_PASS, STORIE_TO } = process.env;
+  const { SMTP_HOST = "authsmtp.securemail.pro", SMTP_PORT = "465", SMTP_USER, STORIE_TO } = process.env;
+  // la password è stata salvata su Vercel come CLIENT_KEY: si accettano entrambi i nomi
+  const SMTP_PASS = process.env.SMTP_PASS || process.env.CLIENT_KEY;
   if (!SMTP_USER || !SMTP_PASS) return res.status(503).json({ ok: false, errore: "invio non configurato" });
 
   const allegati = [];
