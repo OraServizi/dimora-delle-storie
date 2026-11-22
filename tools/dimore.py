@@ -29,18 +29,20 @@ FOTO = {
          ("04",L,"Un libro e un bicchiere di rosso"),("05",L,"Il soggiorno di granito"),("06",L,"Il giradischi"),
          ("07",L,"La scala e il lampadario"),("08",L,"I piedini della vasca"),("09",L,"Il letto"),
          ("10",P,"Il bidone del latte e i libri del Limbara"),("11",P,"Lo specchio barocco"),("12",P,"La doccia a colori"),
-         ("13",L,"La lanterna"),("14",L,"Caffè e tè"),("15",P,"La chiave"),("16",P,"La facciata della Latteria")],
+         ("13",L,"La lanterna"),("14",L,"Caffè e tè"),("15",P,"La chiave"),("16",P,"La facciata della Latteria"),("18",P,"La palazzina di fronte alla Dimora"),("19",P,"Il vicolo della Latteria")],
 }
 RIGHE = {
  "loft": [["01"],["03","02"],["04","05"],["07","06","11"],["09","10"],["08","12"]],
  "suite":[["01"],["05","02"],["03","04"],["08","06","07"]],
  "te":   [["01"],["04","02"],["03","05"],["06","07","08"]],
  "est":  [["02","01"],["03","04"],["05","06"]],
- "lat":  [["01"],["02","05"],["10","07"],["06","04","08"],["03","09"],["11","12","13"],["15","14","16"]],
+ "lat":  [["01"],["02","05"],["10","07"],["06","04","08"],["03","09"],["11","12","13"],["15","14"]],
+ "latfuori": [["18","16","19"]],
 }
 
 def galleria(key, kicker, titolo, alt_pre):
-    info = {n: (o, c) for n, o, c in FOTO[key]}
+    fk = "lat" if key == "latfuori" else key
+    info = {n: (o, c) for n, o, c in FOTO[fk]}
     rows = []
     for riga in RIGHE[key]:
         figs = []
@@ -48,7 +50,7 @@ def galleria(key, kicker, titolo, alt_pre):
             o, c = info[n]
             ar = "2/3" if o == P else "3/2"
             grow = "0.6667" if o == P else "1.5"
-            src = f"/img/foto/{key}-{n}.webp"
+            src = f"/img/foto/{fk}-{n}.webp"
             figs.append(f'<figure class="gf reveal" style="flex:{grow} 1 0;aspect-ratio:{ar}"><a href="{src}" data-cap="{e(c)}">'
                         f'<img src="{src}" alt="{e(alt_pre + " — " + c)}" loading="lazy" decoding="async" width="{1067 if o==P else 1600}" height="{1600 if o==P else 1067}"></a>'
                         f'<figcaption>{e(c)}</figcaption></figure>')
@@ -172,7 +174,12 @@ def latteria():
     s = re.sub(r'("@type": "Accommodation", "name": "Antica Latteria 1930", "description": ")[^"]*(")', lambda m: m.group(1) + desc + m.group(2), s)
     s = re.sub(r'"amenityFeature": \[.*?\]', '"amenityFeature": ' + json.dumps(
         [{"@type": "LocationFeatureSpecification", "name": d, "value": True} for d in LAT_DOT], ensure_ascii=False), s, count=1, flags=re.S)
-    block = ('<section class="gal-sec">' + galleria("lat", "Galleria · 16 foto", "Dentro la Latteria", "Antica Latteria 1930") + '</section>\n'
+    fuori = ('''  <section class="casa-sec" style="padding-top:0">
+    <div><span class="gal-k reveal" style="display:block;margin-bottom:16px">Fuori</span><h2 class="reveal">La palazzina di fronte</h2></div>
+    <div><p class="reveal">La Latteria è nella palazzina proprio di fronte alla Dimora: facciata bianca, balcone in ferro battuto e portone azzurro, tra le case di granito del centro storico. Un ingresso tutto suo, a pochi passi dalla sala da tè.</p></div>
+  </section>
+  <section class="gal-sec" style="padding-top:12px"><div class="gal" data-gal>''' + galleria("latfuori", "", "", "Antica Latteria 1930").split('<div class="gal" data-gal>',1)[1] + '</section>\n')
+    block = fuori + ('<section class="gal-sec">' + galleria("lat", "Galleria · 15 foto", "Dentro la Latteria", "Antica Latteria 1930") + '</section>\n'
              + racconto("Una leggenda della Dimora", "La leggenda della Latteria", LAT_LEGGENDA, "", "leggenda"))
     return put_block(put_css(s), block)
 
