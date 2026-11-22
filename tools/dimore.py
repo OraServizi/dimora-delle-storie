@@ -2,7 +2,9 @@
 """Completa le pagine delle dimore: gallerie fotografiche con lightbox, testi
 dell'Antica Latteria 1930, pagina /la-dimora (facciata, sala da tè, leggenda),
 voce «La casa» nel menu. Idempotente: si può rilanciare."""
-import html, json, os, re
+import html, json, os, re, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from storie_data import LEGGENDA_ANTIQUARIO as ANTIQUARIO, LEGGENDA_LATTERIA as LAT_LEGGENDA
 
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://www.dimoradellestorie.com"
@@ -144,16 +146,10 @@ LAT_P = [
 LAT_DOT = ["Camera matrimoniale al piano superiore", "Vasca freestanding con i piedini", "Doccia con luci colorate",
            "Angolo cottura a induzione e macchina del caffè", "Giradischi e selezione di vinili", "Smart TV",
            "Climatizzazione inverno/estate", "Wi-Fi", "Biancheria da letto e da bagno, linea cortesia"]
-LAT_LEGGENDA = [
- "Nel 1930, nella palazzina di fronte al palazzetto dell'Antiquario, aprì la latteria di Caterina Pes. Ogni mattina, prima che le campane di San Pietro suonassero le sei, i carri scendevano dal Limbara con i bidoni ancora freddi della notte. Caterina li faceva entrare uno alla volta e li allineava contro la parete di granito, che d'estate teneva il latte fresco meglio di qualunque ghiacciaia.",
- "Sul bancone c'erano un mestolo d'ottone, una bilancia e un grammofono. Caterina diceva che il latte si conserva meglio con la musica, e così la via si svegliava ogni giorno con un disco di canti galluresi. Le donne del vicinato arrivavano con le brocche, i bambini con le monete strette nel pugno, e Vittorio Sanna, l'antiquario, attraversava la piazza per la sua tazza di latte caldo, raccontando l'ultimo tesoro trovato.",
- "Al piano di sopra, sotto le travi di legno, Caterina aveva la sua stanza: un comò ereditato dalla nonna, un lampadario comprato a Sassari con i risparmi di un anno, e un sogno che raccontava a tutti: una vasca da bagno con i piedini, come quelle dei grandi alberghi del continente.",
- "La latteria chiuse molti anni dopo, ma la pietra ha custodito tutto: il fresco del mattino, l'odore del legno, l'eco dei dischi. Oggi il giradischi suona di nuovo accanto al granito, un vecchio bidone del latte veglia sui libri del Limbara e, al piano di sopra, la vasca che Caterina aveva tanto sognato aspetta gli ospiti sotto il lampadario.",
-]
 
 def racconto(kicker, titolo, paras, firma, rid):
     return (f'<section class="racconto reveal" id="{rid}"><span class="k">{e(kicker)}</span><h2>{e(titolo)}</h2>'
-            + "".join(f"<p>{e(p)}</p>" for p in paras) + (f'<div class="firma">{e(firma)}</div>' if firma else '') + '</section>')
+            + "".join(f"<p>{e(p)}</p>" for p in paras) + (f'<div class="firma">{firma}</div>' if firma else '') + '</section>')
 
 def p_style(color="rgba(239,232,220,.82)"):
     return f'class="reveal" style="margin:0;font-size:17px;line-height:1.8;color:{color}"'
@@ -182,7 +178,7 @@ def latteria():
     s = re.sub(r', "floorSize": \{[^}]*\}, "occupancy": \{[^}]*\}', '', s)
     s = re.sub(r'("amenityFeature": \[.*?\])', lambda m: m.group(1) + ', "floorSize": {"@type": "QuantitativeValue", "value": 38, "unitCode": "MTK"}, "occupancy": {"@type": "QuantitativeValue", "maxValue": 2}', s, count=1, flags=re.S)
     block = fuori + ('<section class="gal-sec">' + galleria("lat", "Galleria · 15 foto", "Dentro la Latteria", "Antica Latteria 1930") + '</section>\n'
-             + racconto("Una leggenda della Dimora", "La leggenda della Latteria", LAT_LEGGENDA, "", "leggenda"))
+             + racconto("Una leggenda della Dimora", "La leggenda della Latteria", LAT_LEGGENDA, '<a href="/storie/leggenda-della-latteria" style="color:#8FA2E6">Anche nel Libro delle Storie →</a>', "leggenda"))
     return put_block(put_css(s), block)
 
 def loft():
@@ -200,13 +196,6 @@ def suite():
     return put_block(put_css(s), block)
 
 # ------------------------------------------------------------------ /la-dimora
-ANTIQUARIO = [
- "Nel cuore del centro storico di Tempio Pausania viveva un tempo un antiquario di nome Vittorio Sanna. Nato nel 1875 in una famiglia di commercianti legata da sempre alla città, era un uomo colto e affascinante, con un occhio acuto per il bello e una curiosità che non si spegneva mai.",
- "Il suo negozio, in una delle vie più antiche della città, era uno scrigno del tempo: oggetti che raccontavano epoche passate e culture lontane, e clienti che arrivavano da tutta la Sardegna. Ma la sua vera passione erano le case antiche, e quando scoprì questo palazzetto di granito, se ne innamorò.",
- "Passò lunghi pomeriggi a restaurarne ogni angolo. Dipinse le pareti con colori ricchi e profondi, scelse il vetro, l'argento e il velluto blu, e fece dipingere una grande parete di peonie blu, il fiore all'occhiello della casa. Il loft all'ultimo piano divenne il suo rifugio: lì, tra i libri e i tesori, trovava ispirazione per le sue ricerche.",
- "La dimora divenne presto un luogo d'incontro per artisti, scrittori e collezionisti. Si diceva che, tra un bicchiere di vino e una conversazione, Vittorio raccontasse la storia di ogni oggetto, portando i suoi ospiti in un viaggio attraverso il tempo.",
- "Soggiornare oggi alla Dimora delle Storie significa sentire l'eco di quei racconti: ogni stanza custodisce una storia, e la vostra è la prossima.",
-]
 
 def la_dimora():
     tpl = rd("loft-dell-antiquario.html")
@@ -258,7 +247,7 @@ def la_dimora():
     <p class="reveal">È il posto giusto per scegliere un libro, pianificare la giornata o concedersi un momento di tranquillità prima di uscire.</p></div>
   </section>
   <section class="gal-sec" style="padding-top:12px"><div class="gal" data-gal>{galleria("te", "", "", "Sala da tè").split('<div class="gal" data-gal>',1)[1]}</section>'''
-    legg = racconto("Una leggenda della Dimora", "La leggenda dell'Antiquario", ANTIQUARIO, "", "leggenda")
+    legg = racconto("Una leggenda della Dimora", "La leggenda dell'Antiquario", ANTIQUARIO, '<a href="/storie/leggenda-dell-antiquario" style="color:#8FA2E6">Anche nel Libro delle Storie →</a>', "leggenda")
     cards = '''  <section class="casa-sec" style="padding-bottom:40px"><div><span class="gal-k reveal" style="display:block;margin-bottom:16px">Dove dormire</span><h2 class="reveal">Le dimore</h2></div><div></div></section>
   <div class="dim-cards">''' + "".join(
         f'<a class="dim-card reveal" href="/{slug}"><img src="/img/{img}" alt="{e(n)}" loading="lazy"><span><small>{e(k)}</small><b>{e(n)}</b></span></a>'
@@ -267,6 +256,29 @@ def la_dimora():
                                 ("antica-latteria-1930", "latteria.jpg", "Antica Latteria 1930", "Due livelli · 38 mq")]) + '</div>'
     body = hero_html + "\n" + intro + "\n" + facc + "\n" + te + "\n" + legg + "\n" + cards + "\n<!--dimore-->\n" + LB + "\n<!--/dimore-->\n"
     return put_css(h + body_open + body + tpl[foot:])
+
+
+# ------------------------------------------------------------------ navigazione: Home esplicita, nome accanto alla chiave, pagina attiva
+NAV_CSS = """<style id="nav-chiara">
+.brand{display:inline-flex;align-items:center;gap:14px;min-height:44px;text-decoration:none}
+.brand b{font-family:'Bodoni Moda',Georgia,serif;font-variation-settings:'opsz' 11;font-weight:400;font-size:15px;letter-spacing:.16em;line-height:1.25;color:#EFE8DC}
+.brand:hover b{color:#D4A65A}
+.topnav a[aria-current]{color:#D4A65A;position:relative}
+.topnav a[aria-current]::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:1px;background:#D4A65A}
+@media (max-width:700px){.brand b{display:none}.topnav a[href="/"][aria-current]{display:none}.topnav{gap:13px!important;padding-left:18px!important;padding-right:18px!important}}
+</style>"""
+LOGO_RE = re.compile(r'<a href="(?:/|#)" aria-label="Dimora delle Storie[^"]*" style="[^"]*"><img src="(/?img/logo-icona\.svg)" alt="" style="[^"]*"></a>')
+LINK = 'style="text-decoration:none"'
+
+def header_chiaro(s, attivo):
+    s = re.sub(r'<style id="nav-chiara">.*?</style>\n?', '', s, flags=re.S).replace('</head>', NAV_CSS + '\n</head>', 1)
+    s = LOGO_RE.sub(lambda m: f'<a class="brand" href="/" aria-label="Dimora delle Storie — torna alla home"><img src="{m.group(1)}" alt="" style="height:52px;width:auto;display:block"><b>Dimora<br>delle Storie</b></a>', s)
+    s = s.replace(' aria-current="page"', '')
+    for h in ['#dimore', '/#dimore']:
+        s = s.replace(f'<a href="{h}" {LINK}>Dimore</a>', f'<a href="/" {LINK}>Home</a><a href="{h}" {LINK}>Dimore</a>') if f'<a href="/" {LINK}>Home</a><a href="{h}"' not in s else s
+    if attivo:
+        s = s.replace(f'<a href="{attivo}" {LINK}>', f'<a href="{attivo}" {LINK} aria-current="page">', 1)
+    return s
 
 # ------------------------------------------------------------------ esecuzione
 wr("antica-latteria-1930.html", nav(latteria()))
@@ -285,4 +297,18 @@ if "/la-dimora<" not in sm:
                     "  <url><loc>https://www.dimoradellestorie.com/la-dimora</loc><lastmod>2026-11-22</lastmod></url>\n  <url><loc>https://www.dimoradellestorie.com/storie</loc>")
     sm = re.sub(r'(antica-latteria-1930</loc><lastmod>)[^<]*', r'\g<1>2026-11-22', sm)
     wr("sitemap.xml", sm)
+sm = rd("sitemap.xml")
+for slug in ["leggenda-dell-antiquario", "leggenda-della-latteria"]:
+    if f"/storie/{slug}<" not in sm:
+        sm = sm.replace("</urlset>", f"  <url><loc>{BASE}/storie/{slug}</loc><lastmod>2026-11-22</lastmod><priority>0.7</priority></url>\n</urlset>")
+wr("sitemap.xml", sm)
+import subprocess, glob
+for t in ["storie.py", "tempio.py"]:
+    subprocess.run([sys.executable, "-B", f"{SITE}/tools/{t}"], check=True, stdout=subprocess.DEVNULL)
+ATTIVO = {"index.html": "/", "loft-dell-antiquario.html": "/#dimore", "suite-del-viaggiatore.html": "/#dimore",
+          "antica-latteria-1930.html": "/#dimore", "la-dimora.html": "/la-dimora", "storie.html": "/storie",
+          "tempio-pausania.html": "/tempio-pausania"}
+for p in ["index.html", "la-dimora.html", "loft-dell-antiquario.html", "suite-del-viaggiatore.html", "antica-latteria-1930.html",
+          "storie.html", "tempio-pausania.html"] + [os.path.relpath(x, SITE) for x in glob.glob(f"{SITE}/storie/*.html")]:
+    wr(p, header_chiaro(nav(rd(p)), ATTIVO.get(p, "/storie")))
 print("ok")

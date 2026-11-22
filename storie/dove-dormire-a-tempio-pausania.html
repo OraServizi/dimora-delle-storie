@@ -117,6 +117,9 @@ p{letter-spacing:.045em}
 .art p,.art li,.pg-p,.ex-s,.op-i,.indice-seo p,input,textarea{text-transform:none!important;letter-spacing:normal!important}
 input::placeholder{text-transform:uppercase}
 </style>
+
+
+
 <style>
 @media (max-width:440px){.topnav{gap:16px!important;padding:10px 16px!important;font-size:12px!important}}
 .art{max-width:720px;margin:0 auto;padding:72px clamp(20px,4.5vw,64px) 96px;font-size:18px;line-height:1.85;color:rgba(239,232,220,.86)}
@@ -133,6 +136,14 @@ input::placeholder{text-transform:uppercase}
 .art-nav a{min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center;padding:0 24px;border-radius:999px;border:1px solid rgba(255,255,255,.2);font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#EFE8DC}
 .art-nav a.gold{background:#D4A65A;color:#0F111A;border-color:#D4A65A}
 </style>
+<style id="nav-chiara">
+.brand{display:inline-flex;align-items:center;gap:14px;min-height:44px;text-decoration:none}
+.brand b{font-family:'Bodoni Moda',Georgia,serif;font-variation-settings:'opsz' 11;font-weight:400;font-size:15px;letter-spacing:.16em;line-height:1.25;color:#EFE8DC}
+.brand:hover b{color:#D4A65A}
+.topnav a[aria-current]{color:#D4A65A;position:relative}
+.topnav a[aria-current]::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:1px;background:#D4A65A}
+@media (max-width:700px){.brand b{display:none}.topnav a[href="/"][aria-current]{display:none}.topnav{gap:13px!important;padding-left:18px!important;padding-right:18px!important}}
+</style>
 </head>
 <body>
 <div class="vpage" style="width:100%;background:transparent;color:#EFE8DC;font-family:'Inter',system-ui,sans-serif;font-weight:300">
@@ -141,9 +152,9 @@ input::placeholder{text-transform:uppercase}
     <img src="/img/loft.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55">
     <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,26,.75) 0%,rgba(15,17,26,.35) 40%,rgba(15,17,26,1) 100%)"></div>
     <header style="position:relative;display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;padding:32px clamp(20px,4.5vw,64px)">
-      <a href="/" aria-label="Dimora delle Storie — home" style="display:inline-flex;min-height:44px;align-items:center"><img src="/img/logo-icona.svg" alt="" style="height:52px;width:auto"></a>
+      <a class="brand" href="/" aria-label="Dimora delle Storie — torna alla home"><img src="/img/logo-icona.svg" alt="" style="height:52px;width:auto;display:block"><b>Dimora<br>delle Storie</b></a>
       <nav class="topnav" style="display:flex;flex-wrap:wrap;gap:28px;align-items:center;font-size:13px;letter-spacing:.06em;padding:12px 28px;border-radius:999px;background:rgba(239,232,220,.08);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.18)">
-        <a href="/#dimore" style="text-decoration:none">Dimore</a><a href="/la-dimora" style="text-decoration:none">La casa</a><a href="/storie" style="text-decoration:none">Storie</a><a href="/tempio-pausania" style="text-decoration:none">Tempio</a><a href="/#prenota" style="text-decoration:none">Contatti</a>
+        <a href="/" style="text-decoration:none">Home</a><a href="/#dimore" style="text-decoration:none">Dimore</a><a href="/la-dimora" style="text-decoration:none">La casa</a><a href="/storie" style="text-decoration:none" aria-current="page">Storie</a><a href="/tempio-pausania" style="text-decoration:none">Tempio</a><a href="/#prenota" style="text-decoration:none">Contatti</a>
       </nav>
     </header>
     <div style="position:relative;flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:14px;padding:0 clamp(20px,4.5vw,64px) 48px;max-width:960px">
@@ -180,7 +191,7 @@ input::placeholder{text-transform:uppercase}
 </ul>
 <p>Si prenota direttamente con noi, senza intermediari: scriveteci su <a href="https://wa.me/393791656864">WhatsApp</a> o chiamate il +39 379 165 6864.</p>
 
-    <div class="art-nav"><a class="gold" href="https://wa.me/393791656864">Verifica disponibilità</a><a href="/storie#p7">Torna al libro</a></div>
+    <div class="art-nav"><a class="gold" href="https://wa.me/393791656864">Verifica disponibilità</a><a href="/storie#p9">Torna al libro</a></div>
     <aside class="fonti"><h3>Fonti</h3><ul><li><a href="https://www.sardegnaturismo.it/it/esplora/tempio-pausania" rel="noopener">Sardegna Turismo — Tempio Pausania</a></li><li><a href="https://www.italia.it/it/sardegna/tempio-pausania" rel="noopener">Italia.it — Tempio Pausania</a></li><li><a href="https://www.touringclub.it/destinazioni/tempio-pausania" rel="noopener">Touring Club Italiano — Tempio Pausania</a></li><li><a href="https://it.wikivoyage.org/wiki/Tempio_Pausania" rel="noopener">Wikivoyage — Tempio Pausania</a></li><li><a href="https://sardegnaturismo.it/it/esplora/monte-limbara" rel="noopener">Sardegna Turismo — Monte Limbara</a></li><li><a href="https://www.italia.it/it/sardegna/massiccio-del-limbara" rel="noopener">Italia.it — Massiccio del Limbara</a></li></ul></aside>
   </main>
   <footer style="border-top:1px solid rgba(239,232,220,.12);padding:56px clamp(20px,4.5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:32px;font-size:14px;line-height:1.8;color:rgba(239,232,220,.74)">

@@ -12,7 +12,48 @@ CAPITOLI = [
      "intro": "Feste, anniversari e appuntamenti: dal Natale in centro al Carnevale tempiese."},
 ]
 
+# Leggende della Dimora (usate nelle pagine delle dimore e nel Libro)
+LEGGENDA_ANTIQUARIO = [
+ "Nel cuore del centro storico di Tempio Pausania viveva un tempo un antiquario di nome Vittorio Sanna. Nato nel 1875 in una famiglia di commercianti legata da sempre alla città, era un uomo colto e affascinante, con un occhio acuto per il bello e una curiosità che non si spegneva mai.",
+ "Il suo negozio, in una delle vie più antiche della città, era uno scrigno del tempo: oggetti che raccontavano epoche passate e culture lontane, e clienti che arrivavano da tutta la Sardegna. Ma la sua vera passione erano le case antiche, e quando scoprì questo palazzetto di granito, se ne innamorò.",
+ "Passò lunghi pomeriggi a restaurarne ogni angolo. Dipinse le pareti con colori ricchi e profondi, scelse il vetro, l'argento e il velluto blu, e fece dipingere una grande parete di peonie blu, il fiore all'occhiello della casa. Il loft all'ultimo piano divenne il suo rifugio: lì, tra i libri e i tesori, trovava ispirazione per le sue ricerche.",
+ "La dimora divenne presto un luogo d'incontro per artisti, scrittori e collezionisti. Si diceva che, tra un bicchiere di vino e una conversazione, Vittorio raccontasse la storia di ogni oggetto, portando i suoi ospiti in un viaggio attraverso il tempo.",
+ "Soggiornare oggi alla Dimora delle Storie significa sentire l'eco di quei racconti: ogni stanza custodisce una storia, e la vostra è la prossima.",
+]
+LEGGENDA_LATTERIA = [
+ "Nel 1930, nella palazzina di fronte al palazzetto dell'Antiquario, aprì la latteria di Caterina Pes. Ogni mattina, prima che le campane di San Pietro suonassero le sei, i carri scendevano dal Limbara con i bidoni ancora freddi della notte. Caterina li faceva entrare uno alla volta e li allineava contro la parete di granito, che d'estate teneva il latte fresco meglio di qualunque ghiacciaia.",
+ "Sul bancone c'erano un mestolo d'ottone, una bilancia e un grammofono. Caterina diceva che il latte si conserva meglio con la musica, e così la via si svegliava ogni giorno con un disco di canti galluresi. Le donne del vicinato arrivavano con le brocche, i bambini con le monete strette nel pugno, e Vittorio Sanna, l'antiquario, attraversava la piazza per la sua tazza di latte caldo, raccontando l'ultimo tesoro trovato.",
+ "Al piano di sopra, sotto le travi di legno, Caterina aveva la sua stanza: un comò ereditato dalla nonna, un lampadario comprato a Sassari con i risparmi di un anno, e un sogno che raccontava a tutti: una vasca da bagno con i piedini, come quelle dei grandi alberghi del continente.",
+ "La latteria chiuse molti anni dopo, ma la pietra ha custodito tutto: il fresco del mattino, l'odore del legno, l'eco dei dischi. Oggi il giradischi suona di nuovo accanto al granito, un vecchio bidone del latte veglia sui libri del Limbara e, al piano di sopra, la vasca che Caterina aveva tanto sognato aspetta gli ospiti sotto il lampadario.",
+]
+
 ARTICOLI = [
+    {
+        "slug": "leggenda-dell-antiquario",
+        "cap": "dimore",
+        "titolo": "La leggenda dell'Antiquario",
+        "sottotitolo": "Vittorio Sanna e il palazzetto di granito",
+        "data": "2026-11-22",
+        "data_it": "22 novembre 2026",
+        "descrizione": "La leggenda di Vittorio Sanna, l'antiquario di Tempio Pausania che si innamorò del palazzetto di granito oggi Dimora delle Storie, e del suo loft di velluto blu e peonie.",
+        "img": "/img/foto/loft-01.webp",
+        "estratto": "Un antiquario nato nel 1875, un palazzetto di granito nel centro di Tempio e una parete di peonie blu: la storia da cui nasce il Loft dell'Antiquario.",
+        "corpo": "".join(("<p class=\"lead\">" if i == 0 else "<p>") + p + "</p>\n" for i, p in enumerate(LEGGENDA_ANTIQUARIO)) + """<p><em>Una leggenda della Dimora: un racconto nato tra queste mura, da leggere la sera.</em> <a href="/loft-dell-antiquario">Scopri il Loft dell'Antiquario →</a></p>""",
+        "fonti": [],
+    },
+    {
+        "slug": "leggenda-della-latteria",
+        "cap": "dimore",
+        "titolo": "La leggenda della Latteria",
+        "sottotitolo": "Caterina Pes, il latte del Limbara e un grammofono",
+        "data": "2026-11-22",
+        "data_it": "22 novembre 2026",
+        "descrizione": "La leggenda di Caterina Pes e della latteria aperta nel 1930 di fronte alla Dimora delle Storie, a Tempio Pausania: i bidoni dal Limbara, il grammofono e la vasca con i piedini.",
+        "img": "/img/foto/lat-03.webp",
+        "estratto": "Nel 1930 Caterina Pes aprì la sua latteria di fronte al palazzetto dell'Antiquario: bidoni freddi dal Limbara, canti galluresi e un sogno al piano di sopra.",
+        "corpo": "".join(("<p class=\"lead\">" if i == 0 else "<p>") + p + "</p>\n" for i, p in enumerate(LEGGENDA_LATTERIA)) + """<p><em>Una leggenda della Dimora: un racconto nato tra queste mura, da leggere la sera.</em> <a href="/antica-latteria-1930">Scopri l'Antica Latteria 1930 →</a></p>""",
+        "fonti": [],
+    },
     {
         "slug": "dove-dormire-a-tempio-pausania",
         "cap": "tempio",

@@ -117,6 +117,9 @@ p{letter-spacing:.045em}
 .art p,.art li,.pg-p,.ex-s,.op-i,.indice-seo p,input,textarea{text-transform:none!important;letter-spacing:normal!important}
 input::placeholder{text-transform:uppercase}
 </style>
+
+
+
 <style>
 @media (max-width:440px){.topnav{gap:16px!important;padding:10px 16px!important;font-size:12px!important}}
 .t-hero{position:relative;min-height:100svh;overflow:hidden;display:flex;flex-direction:column}
@@ -160,6 +163,14 @@ input::placeholder{text-transform:uppercase}
 .t-src a{color:rgba(239,232,220,.7)}
 @media (prefers-reduced-motion:reduce){.t-scroll{animation:none}}
 </style>
+<style id="nav-chiara">
+.brand{display:inline-flex;align-items:center;gap:14px;min-height:44px;text-decoration:none}
+.brand b{font-family:'Bodoni Moda',Georgia,serif;font-variation-settings:'opsz' 11;font-weight:400;font-size:15px;letter-spacing:.16em;line-height:1.25;color:#EFE8DC}
+.brand:hover b{color:#D4A65A}
+.topnav a[aria-current]{color:#D4A65A;position:relative}
+.topnav a[aria-current]::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:1px;background:#D4A65A}
+@media (max-width:700px){.brand b{display:none}.topnav a[href="/"][aria-current]{display:none}.topnav{gap:13px!important;padding-left:18px!important;padding-right:18px!important}}
+</style>
 </head>
 <body>
 <div class="vpage" style="width:100%;background:transparent;color:#EFE8DC;font-family:'Inter',system-ui,sans-serif;font-weight:300">
@@ -167,9 +178,9 @@ input::placeholder{text-transform:uppercase}
   <section class="t-hero">
     <div class="t-ph" aria-hidden="true"></div>
     <header style="position:relative;display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;padding:32px clamp(20px,4.5vw,64px)">
-      <a href="/" aria-label="Dimora delle Storie — home" style="display:inline-flex;min-height:44px;align-items:center"><img src="/img/logo-icona.svg" alt="" style="height:52px;width:auto"></a>
+      <a class="brand" href="/" aria-label="Dimora delle Storie — torna alla home"><img src="/img/logo-icona.svg" alt="" style="height:52px;width:auto;display:block"><b>Dimora<br>delle Storie</b></a>
       <nav class="topnav" style="display:flex;flex-wrap:wrap;gap:28px;align-items:center;font-size:13px;letter-spacing:.06em;padding:12px 28px;border-radius:999px;background:rgba(239,232,220,.08);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.18)">
-        <a href="/#dimore" style="text-decoration:none">Dimore</a><a href="/la-dimora" style="text-decoration:none">La casa</a><a href="/storie" style="text-decoration:none">Storie</a><a href="/tempio-pausania" style="text-decoration:none">Tempio</a><a href="/#prenota" style="text-decoration:none">Contatti</a>
+        <a href="/" style="text-decoration:none">Home</a><a href="/#dimore" style="text-decoration:none">Dimore</a><a href="/la-dimora" style="text-decoration:none">La casa</a><a href="/storie" style="text-decoration:none">Storie</a><a href="/tempio-pausania" style="text-decoration:none" aria-current="page">Tempio</a><a href="/#prenota" style="text-decoration:none">Contatti</a>
       </nav>
     </header>
     <div class="t-title">
@@ -196,7 +207,7 @@ input::placeholder{text-transform:uppercase}
   </section>
   <section class="t-sec t-story">
     <div><h2>Dal Libro delle Storie</h2><p class="lead" style="margin:0">Le storie di Tempio, dei suoi personaggi e della Gallura, da sfogliare come un libro antico.</p></div>
-    <a class="card" href="/storie/dove-dormire-a-tempio-pausania"><span>Capitolo II · Storie di Tempio</span><strong>Dove dormire a Tempio Pausania</strong><em>Leggi la storia →</em></a>
+    <a class="card" href="/storie/leggenda-dell-antiquario"><span>Capitolo II · Storie di Tempio</span><strong>La leggenda dell&#x27;Antiquario</strong><em>Leggi la storia →</em></a>
   </section>
   <section class="t-sec t-final">
     <h2>Dalla città alla Dimora</h2>
@@ -204,7 +215,7 @@ input::placeholder{text-transform:uppercase}
     <p class="lead" style="margin:8px 0 0;text-align:center">Tre dimore in una residenza del 1930, nel cuore del centro storico.</p>
     <a class="t-btn" href="https://wa.me/393791656864">Verifica disponibilità</a>
   </section>
-  <section class="t-sec t-src"><p>Fonti: <a href="https://www.sardegnaturismo.it/it/esplora/tempio-pausania" rel="noopener">Sardegna Turismo — Tempio Pausania</a> · <a href="https://www.italia.it/it/sardegna/tempio-pausania" rel="noopener">Italia.it — Tempio Pausania</a> · <a href="https://www.touringclub.it/destinazioni/tempio-pausania" rel="noopener">Touring Club Italiano — Tempio Pausania</a> · <a href="https://it.wikivoyage.org/wiki/Tempio_Pausania" rel="noopener">Wikivoyage — Tempio Pausania</a> · <a href="https://sardegnaturismo.it/it/esplora/monte-limbara" rel="noopener">Sardegna Turismo — Monte Limbara</a> · <a href="https://www.italia.it/it/sardegna/massiccio-del-limbara" rel="noopener">Italia.it — Massiccio del Limbara</a></p></section>
+  <section class="t-sec t-src"><p>Fonti: </p></section>
   <footer style="border-top:1px solid rgba(239,232,220,.12);padding:56px clamp(20px,4.5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:32px;font-size:14px;line-height:1.8;color:rgba(239,232,220,.74)">
     <div style="display:flex;flex-direction:column;gap:8px"><a href="/" style="text-decoration:none;font-family:'Bodoni Moda',Georgia,serif;font-size:19px;color:#EFE8DC;text-transform:uppercase;letter-spacing:.08em">Dimora delle Storie</a><span>Piazza Eleonora d'Arborea 6<br>07029 Tempio Pausania (SS)</span></div>
     <div style="display:flex;flex-direction:column;gap:4px"><a href="tel:+393791656864" style="text-decoration:none">+39 379 165 6864</a><a href="mailto:info@dimoradellestorie.com" style="text-decoration:none">info@dimoradellestorie.com</a><a href="https://www.instagram.com/dimoradellestorie" style="text-decoration:none">Instagram · @dimoradellestorie</a></div>

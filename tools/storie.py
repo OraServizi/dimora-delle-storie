@@ -21,7 +21,7 @@ def absolutize(s):
     return s
 
 def head(title, desc, canonical, og_img, jsonld, og_type="website"):
-    h = loft[:HEAD_END]
+    h = re.sub(r'<style id="galleria">.*?</style>\n?', '', loft[:HEAD_END], flags=re.S)
     h = re.sub(r'<title>.*?</title>', f'<title>{e(title)}</title>', h, flags=re.S)
     h = re.sub(r'<meta name="description"[^>]*>', f'<meta name="description" content="{e(desc)}">', h)
     h = re.sub(r'<link rel="canonical"[^>]*>', f'<link rel="canonical" href="{canonical}">', h)
@@ -40,7 +40,7 @@ def header_html():
     return '''    <header style="position:relative;display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;padding:32px clamp(20px,4.5vw,64px)">
       <a href="/" aria-label="Dimora delle Storie — home" style="display:inline-flex;min-height:44px;align-items:center"><img src="/img/logo-icona.svg" alt="" style="height:52px;width:auto"></a>
       <nav class="topnav" style="display:flex;flex-wrap:wrap;gap:28px;align-items:center;font-size:13px;letter-spacing:.06em;padding:12px 28px;border-radius:999px;background:rgba(239,232,220,.08);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.18)">
-        <a href="/#dimore" style="text-decoration:none">Dimore</a><a href="/la-dimora" style="text-decoration:none">La casa</a><a href="/storie" style="text-decoration:none">Storie</a><a href="/tempio-pausania" style="text-decoration:none">Tempio</a><a href="/#prenota" style="text-decoration:none">Contatti</a>
+        <a href="/" style="text-decoration:none">Home</a><a href="/#dimore" style="text-decoration:none">Dimore</a><a href="/la-dimora" style="text-decoration:none">La casa</a><a href="/storie" style="text-decoration:none">Storie</a><a href="/tempio-pausania" style="text-decoration:none">Tempio</a><a href="/#prenota" style="text-decoration:none">Contatti</a>
       </nav>
     </header>'''
 
@@ -398,7 +398,7 @@ def article_page(a):
   <main class="art">
 {a["corpo"]}
     <div class="art-nav"><a class="gold" href="https://wa.me/393791656864">Verifica disponibilità</a><a href="/storie#p{pnum}">Torna al libro</a></div>
-    <aside class="fonti"><h3>Fonti</h3><ul>{fonti}</ul></aside>
+    {('<aside class="fonti"><h3>Fonti</h3><ul>' + fonti + '</ul></aside>') if fonti else ''}
   </main>
 '''
     return absolutize(h + BODY_OPEN + body + FOOT)
