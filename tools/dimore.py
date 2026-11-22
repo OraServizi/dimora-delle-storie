@@ -4,7 +4,7 @@ dell'Antica Latteria 1930, pagina /la-dimora (facciata, sala da tè, leggenda),
 voce «La casa» nel menu. Idempotente: si può rilanciare."""
 import html, json, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from storie_data import LEGGENDA_ANTIQUARIO as ANTIQUARIO, LEGGENDA_LATTERIA as LAT_LEGGENDA
+from storie_data import LEGGENDA_ANTIQUARIO as ANTIQUARIO, LEGGENDA_LATTERIA as LAT_LEGGENDA, LEGGENDA_VIAGGIATORE as VIAGGIATORE
 
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://www.dimoradellestorie.com"
@@ -183,16 +183,14 @@ def latteria():
 
 def loft():
     s = rd("loft-dell-antiquario.html")
-    teaser = (f'<section class="racconto reveal" style="padding-top:0"><span class="k">Una leggenda della Dimora</span>'
-              f'<h2>Il loft dell\'antiquario</h2><p>Si racconta che questo fosse il rifugio prediletto di Vittorio Sanna, antiquario di Tempio nato nel 1875: '
-              f'qui, tra i suoi libri e i suoi tesori, sotto una parete di peonie blu, trovava ispirazione per le sue ricerche.</p>'
-              f'<div class="firma"><a href="/la-dimora#leggenda" style="color:#8FA2E6">Leggi la leggenda dell\'Antiquario →</a></div></section>')
+    teaser = racconto("Una leggenda della Dimora", "La leggenda dell'Antiquario", ANTIQUARIO, '<a href="/storie/leggenda-dell-antiquario" style="color:#8FA2E6">Anche nel Libro delle Storie →</a>', "leggenda")
     block = '<section class="gal-sec">' + galleria("loft", "Galleria · 12 foto", "Dentro il loft", "Loft dell'Antiquario") + '</section>\n' + teaser
     return put_block(put_css(s), block)
 
 def suite():
     s = rd("suite-del-viaggiatore.html")
-    block = '<section class="gal-sec">' + galleria("suite", "Galleria · 8 foto", "Dentro la suite", "Suite del Viaggiatore") + '</section>'
+    block = ('<section class="gal-sec">' + galleria("suite", "Galleria · 8 foto", "Dentro la suite", "Suite del Viaggiatore") + '</section>\n'
+             + racconto("Una leggenda della Dimora", "La leggenda del Viaggiatore", VIAGGIATORE, '<a href="/storie/leggenda-del-viaggiatore" style="color:#8FA2E6">Anche nel Libro delle Storie →</a>', "leggenda"))
     return put_block(put_css(s), block)
 
 # ------------------------------------------------------------------ /la-dimora
@@ -254,7 +252,7 @@ def la_dimora():
         for slug, img, n, k in [("loft-dell-antiquario", "loft.jpg", "Loft dell'Antiquario", "Ultimo piano · 45 mq"),
                                 ("suite-del-viaggiatore", "suite.jpg", "Suite del Viaggiatore", "Primo piano · 25 mq"),
                                 ("antica-latteria-1930", "latteria.jpg", "Antica Latteria 1930", "Due livelli · 38 mq")]) + '</div>'
-    body = hero_html + "\n" + intro + "\n" + facc + "\n" + te + "\n" + legg + "\n" + cards + "\n<!--dimore-->\n" + LB + "\n<!--/dimore-->\n"
+    body = hero_html + "\n" + intro + "\n" + facc + "\n" + te + "\n" + cards + "\n<!--dimore-->\n" + LB + "\n<!--/dimore-->\n"
     return put_css(h + body_open + body + tpl[foot:])
 
 
@@ -298,7 +296,7 @@ if "/la-dimora<" not in sm:
     sm = re.sub(r'(antica-latteria-1930</loc><lastmod>)[^<]*', r'\g<1>2026-11-22', sm)
     wr("sitemap.xml", sm)
 sm = rd("sitemap.xml")
-for slug in ["leggenda-dell-antiquario", "leggenda-della-latteria"]:
+for slug in ["leggenda-dell-antiquario", "leggenda-del-viaggiatore", "leggenda-della-latteria"]:
     if f"/storie/{slug}<" not in sm:
         sm = sm.replace("</urlset>", f"  <url><loc>{BASE}/storie/{slug}</loc><lastmod>2026-11-22</lastmod><priority>0.7</priority></url>\n</urlset>")
 wr("sitemap.xml", sm)

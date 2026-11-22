@@ -20,6 +20,12 @@ LEGGENDA_ANTIQUARIO = [
  "La dimora divenne presto un luogo d'incontro per artisti, scrittori e collezionisti. Si diceva che, tra un bicchiere di vino e una conversazione, Vittorio raccontasse la storia di ogni oggetto, portando i suoi ospiti in un viaggio attraverso il tempo.",
  "Soggiornare oggi alla Dimora delle Storie significa sentire l'eco di quei racconti: ogni stanza custodisce una storia, e la vostra è la prossima.",
 ]
+LEGGENDA_VIAGGIATORE = [
+ "Nella primavera del 1929 la diligenza da Terranova si fermò in piazza e ne scese un uomo con un baule di cuoio e la pelle bruciata dal sole. Si chiamava Elia: era partito da Tempio a quindici anni come mozzo su un bastimento, e tornava dopo trent'anni di porti e di strade, dal Cairo a Smirne, da Marsiglia a Buenos Aires, fino alle dune del Sahara.",
+ "Vittorio Sanna, che collezionava storie quanto oggetti, gli offrì la stanza al primo piano, quella che si affaccia sulla sala da tè. Elia la arredò con quello che portava nel baule: stoffe color sabbia, una lampada d'ottone e tante boccette di vetro, ognuna piena della sabbia di un deserto attraversato, che nella luce del pomeriggio brillavano come oro.",
+ "La sera scendeva nella sala da tè, apriva le sue mappe sul tavolino e raccontava, mentre Vittorio prendeva appunti. Ripeteva sempre la stessa frase: «Ogni viaggio ci regala non solo nuove terre da scoprire, ma nuove dimensioni di noi stessi da esplorare». Al mattino attraversava la piazza per il latte di Caterina, che gli chiedeva ogni volta com'era il mare dall'altra parte.",
+ "Restò più a lungo di quanto avesse mai fatto altrove. Poi un giorno ripartì, come fanno i viaggiatori, lasciando sul comodino la sua bussola e una riga sul taccuino: «Per chi passa di qui e ha ancora strada da fare». La stanza ha conservato i suoi colori, la sabbia e l'oro, ed è ancora il punto di partenza per chi arriva a Tempio con la voglia di scoprire la Gallura.",
+]
 LEGGENDA_LATTERIA = [
  "Nel 1930, nella palazzina di fronte al palazzetto dell'Antiquario, aprì la latteria di Caterina Pes. Ogni mattina, prima che le campane di San Pietro suonassero le sei, i carri scendevano dal Limbara con i bidoni ancora freddi della notte. Caterina li faceva entrare uno alla volta e li allineava contro la parete di granito, che d'estate teneva il latte fresco meglio di qualunque ghiacciaia.",
  "Sul bancone c'erano un mestolo d'ottone, una bilancia e un grammofono. Caterina diceva che il latte si conserva meglio con la musica, e così la via si svegliava ogni giorno con un disco di canti galluresi. Le donne del vicinato arrivavano con le brocche, i bambini con le monete strette nel pugno, e Vittorio Sanna, l'antiquario, attraversava la piazza per la sua tazza di latte caldo, raccontando l'ultimo tesoro trovato.",
@@ -39,6 +45,19 @@ ARTICOLI = [
         "img": "/img/foto/loft-01.webp",
         "estratto": "Un antiquario nato nel 1875, un palazzetto di granito nel centro di Tempio e una parete di peonie blu: la storia da cui nasce il Loft dell'Antiquario.",
         "corpo": "".join(("<p class=\"lead\">" if i == 0 else "<p>") + p + "</p>\n" for i, p in enumerate(LEGGENDA_ANTIQUARIO)) + """<p><em>Una leggenda della Dimora: un racconto nato tra queste mura, da leggere la sera.</em> <a href="/loft-dell-antiquario">Scopri il Loft dell'Antiquario →</a></p>""",
+        "fonti": [],
+    },
+    {
+        "slug": "leggenda-del-viaggiatore",
+        "cap": "dimore",
+        "titolo": "La leggenda del Viaggiatore",
+        "sottotitolo": "Elia, la sabbia dei deserti e una bussola d'ottone",
+        "data": "2026-11-22",
+        "data_it": "22 novembre 2026",
+        "descrizione": "La leggenda di Elia, il viaggiatore tornato a Tempio Pausania nel 1929 dopo trent'anni di porti e deserti, ospite dell'antiquario Vittorio Sanna nella stanza che oggi è la Suite del Viaggiatore.",
+        "img": "/img/foto/suite-01.webp",
+        "estratto": "Partito mozzo a quindici anni, Elia tornò a Tempio nel 1929 con un baule di cuoio e la sabbia di ogni deserto: la storia della Suite del Viaggiatore.",
+        "corpo": "".join(("<p class=\"lead\">" if i == 0 else "<p>") + p + "</p>\n" for i, p in enumerate(LEGGENDA_VIAGGIATORE)) + """<p><em>Una leggenda della Dimora: un racconto nato tra queste mura, da leggere la sera.</em> <a href="/suite-del-viaggiatore">Scopri la Suite del Viaggiatore →</a></p>""",
         "fonti": [],
     },
     {
