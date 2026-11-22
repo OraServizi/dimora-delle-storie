@@ -114,7 +114,7 @@ addEventListener('keydown',ev=>{if(!lb.classList.contains('on'))return;if(ev.key
 let x0=null;lb.addEventListener('touchstart',ev=>x0=ev.touches[0].clientX,{passive:true});lb.addEventListener('touchend',ev=>{if(x0===null)return;const d=ev.changedTouches[0].clientX-x0;if(Math.abs(d)>40)show(i+(d<0?1:-1));x0=null});})();</script>'''
 
 def put_css(s):
-    s = re.sub(r'<style id="galleria">.*?</style>', '', s, flags=re.S)
+    s = re.sub(r'<style id="galleria">.*?</style>\n?', '', s, flags=re.S)
     return s.replace('</head>', CSS + '\n</head>', 1)
 
 def put_block(s, block):
@@ -134,7 +134,7 @@ def nav(s):
     return s.replace(NAV_OLD, NAV_NEW).replace(HOME_NAV_OLD, HOME_NAV_NEW)
 
 # ------------------------------------------------------------------ Antica Latteria 1930
-LAT_KICK = "Due livelli · Granito e legno · Tempio Pausania"
+LAT_KICK = "Due livelli · 38 mq · 2 ospiti · Tempio Pausania"
 LAT_QUOTE = "«Il granito custodisce il fresco del mattino e il calore delle sere: qui il tempo scorre lento, come il latte versato a mano.»"
 LAT_P = [
  "Nella palazzina di fronte alla Dimora, dove nel 1930 si vendeva davvero il latte, con la stessa facciata bianca e lo stesso portone azzurro delle altre dimore.",
@@ -168,7 +168,7 @@ def latteria():
                lambda m: m.group(1) + quote + paras + m.group(2), s, count=1, flags=re.S)
     li = "".join(f'<li style="padding:14px 0;border-top:1px solid rgba(239,232,220,.14)">{e(d)}</li>' for d in LAT_DOT)
     s = re.sub(r'(<ul style="list-style:none;margin:0 0 56px;[^"]*">).*?(</ul>)', lambda m: m.group(1) + li + m.group(2), s, count=1, flags=re.S)
-    desc = "Antica Latteria 1930: due livelli nel centro storico di Tempio Pausania, granito a vista, travi in legno, vasca con i piedini e giradischi. Prenota direttamente."
+    desc = "Antica Latteria 1930: 38 mq su due livelli per 2 persone, nel centro storico di Tempio Pausania, granito a vista, travi in legno, vasca con i piedini e giradischi. Prenota direttamente."
     s = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{e(desc)}">', s)
     s = re.sub(r'(<meta property="og:description" content=")[^"]*(">)', lambda m: m.group(1) + e(desc) + m.group(2), s)
     s = re.sub(r'("@type": "Accommodation", "name": "Antica Latteria 1930", "description": ")[^"]*(")', lambda m: m.group(1) + desc + m.group(2), s)
@@ -179,6 +179,8 @@ def latteria():
     <div><p class="reveal">La Latteria è nella palazzina proprio di fronte alla Dimora: facciata bianca, balcone in ferro battuto e portone azzurro, tra le case di granito del centro storico. Un ingresso tutto suo, a pochi passi dalla sala da tè.</p></div>
   </section>
   <section class="gal-sec" style="padding-top:12px"><div class="gal" data-gal>''' + galleria("latfuori", "", "", "Antica Latteria 1930").split('<div class="gal" data-gal>',1)[1] + '</section>\n')
+    s = re.sub(r', "floorSize": \{[^}]*\}, "occupancy": \{[^}]*\}', '', s)
+    s = re.sub(r'("amenityFeature": \[.*?\])', lambda m: m.group(1) + ', "floorSize": {"@type": "QuantitativeValue", "value": 38, "unitCode": "MTK"}, "occupancy": {"@type": "QuantitativeValue", "maxValue": 2}', s, count=1, flags=re.S)
     block = fuori + ('<section class="gal-sec">' + galleria("lat", "Galleria · 15 foto", "Dentro la Latteria", "Antica Latteria 1930") + '</section>\n'
              + racconto("Una leggenda della Dimora", "La leggenda della Latteria", LAT_LEGGENDA, "", "leggenda"))
     return put_block(put_css(s), block)
@@ -262,7 +264,7 @@ def la_dimora():
         f'<a class="dim-card reveal" href="/{slug}"><img src="/img/{img}" alt="{e(n)}" loading="lazy"><span><small>{e(k)}</small><b>{e(n)}</b></span></a>'
         for slug, img, n, k in [("loft-dell-antiquario", "loft.jpg", "Loft dell'Antiquario", "Ultimo piano · 45 mq"),
                                 ("suite-del-viaggiatore", "suite.jpg", "Suite del Viaggiatore", "Primo piano · 25 mq"),
-                                ("antica-latteria-1930", "latteria.jpg", "Antica Latteria 1930", "Due livelli · Granito e legno")]) + '</div>'
+                                ("antica-latteria-1930", "latteria.jpg", "Antica Latteria 1930", "Due livelli · 38 mq")]) + '</div>'
     body = hero_html + "\n" + intro + "\n" + facc + "\n" + te + "\n" + legg + "\n" + cards + "\n<!--dimore-->\n" + LB + "\n<!--/dimore-->\n"
     return put_css(h + body_open + body + tpl[foot:])
 
@@ -275,6 +277,7 @@ for p in ["index.html", "storie.html", "tempio-pausania.html", "storie/dove-dorm
     wr(p, nav(rd(p)))
 idx = rd("index.html")
 idx = idx.replace("[N] ospiti · [N] mq · [dotazioni]", "Vasca con i piedini · Giradischi · Climatizzazione · [N] ospiti")
+idx = idx.replace("Vasca con i piedini · Giradischi · Climatizzazione · [N] ospiti", "Vasca con i piedini · Giradischi · Climatizzazione · 2 ospiti").replace("03 — GRANITO E LEGNO", "03 — DUE LIVELLI · 38 MQ")
 wr("index.html", idx)
 sm = rd("sitemap.xml")
 if "/la-dimora<" not in sm:
