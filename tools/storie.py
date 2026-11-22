@@ -117,7 +117,7 @@ def face(i):
 leaves = ""
 for k in range(N // 2):
     leaves += f'<div class="leaf" data-k="{k}" style="z-index:{N//2-k}"><div class="side front">{face(2*k)}</div><div class="side back">{face(2*k+1)}</div></div>'
-deck = "".join(f'<div class="dpage">{face(i)}</div>' for i in range(N))
+deck = "".join(f'<div class="dpage">{face(i)}<span class="shade" aria-hidden="true"></span><span class="back" aria-hidden="true"></span></div>' for i in range(N))
 
 BOOK_CSS = r'''
 .book-wrap::before{content:'';position:absolute;inset:-6% -14%;background:radial-gradient(50% 50% at 50% 52%,rgba(3,5,16,.82),rgba(3,5,16,.45) 55%,rgba(3,5,16,0) 75%);pointer-events:none;z-index:0}
@@ -190,13 +190,23 @@ BOOK_CSS = r'''
 .click-l{left:0;cursor:w-resize}.click-r{right:0;cursor:e-resize}
 .book a,.book button{position:relative;z-index:300}
 .book-shadow{position:absolute;left:4%;right:4%;bottom:-26px;height:40px;background:radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.55),rgba(0,0,0,0));filter:blur(6px);pointer-events:none}
-.deck{display:none}
+.deck{display:none}.deck-hint{display:none}
 @media (max-width:820px){
  .book,.book-shadow,.click-l,.click-r{display:none}
- .deck{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;width:calc(100% + 32px);margin:0 -16px;padding:4px 16px 18px;box-sizing:border-box;scrollbar-width:none;-webkit-overflow-scrolling:touch}
- .deck::-webkit-scrollbar{display:none}
- .dpage{flex:0 0 84%;scroll-snap-align:center;position:relative;aspect-ratio:.7/1;filter:drop-shadow(0 14px 22px rgba(0,0,0,.45))}
+ .deck{display:block;position:relative;width:min(86%,420px);margin:0 auto 26px;aspect-ratio:.7/1;perspective:1600px;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+ .deck::before,.deck::after{content:"";position:absolute;inset:0;border-radius:4px;background:#E9E0CF;box-shadow:0 14px 26px rgba(0,0,0,.45);transform:translate(5px,5px)}
+ .deck::after{transform:translate(2.5px,2.5px);background:#EFE7D8;box-shadow:none}
+ .dpage{position:absolute;inset:0;z-index:2;transform-origin:left center;transform-style:preserve-3d;will-change:transform;transition:transform .75s cubic-bezier(.25,.75,.2,1)}
+ .dpage.drag{transition:none}
+ .dpage>.face,.dpage>.shade{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+ .dpage>.back{position:absolute;inset:0;border-radius:4px;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden;background:linear-gradient(90deg,rgba(0,0,0,.22) 0%,rgba(0,0,0,0) 22%,rgba(255,255,255,.18) 70%,rgba(0,0,0,.12) 100%),#E6DCC8;box-shadow:inset -12px 0 18px -12px rgba(0,0,0,.35)}
+ .dpage.gone-done>.back{visibility:hidden}
+ .dpage .face{box-shadow:inset 14px 0 18px -12px rgba(0,0,0,.35)}
+ .dpage .shade{position:absolute;inset:0;z-index:50;pointer-events:none;border-radius:4px;background:linear-gradient(90deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,0) 30%,rgba(255,255,255,.35) 55%,rgba(0,0,0,.25) 100%);opacity:var(--sh,0);transition:opacity .75s ease}
+ .dpage.drag .shade{transition:none}
+ .deck-hint{display:block;text-align:center;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(239,232,220,.6);margin:-8px 0 14px}
  .dpage .face{border-radius:4px;padding:28px 24px}
+ .deck::before,.deck::after{z-index:0}
  .pg-p{font-size:14px}.pg-t{font-size:20px}.op-t{font-size:26px}.cover-title{font-size:30px}
 }
 @media (prefers-reduced-motion:reduce){.leaf,.book{transition:none}.cover-hint{animation:none}}
@@ -291,13 +301,30 @@ function layout(){leaves.forEach((lf,k)=>{lf.classList.toggle('flipped',k<cur);}
 function zfix(k,forward){const lf=leaves[k];lf.style.zIndex=L+5;setTimeout(()=>{leaves.forEach((x,j)=>{x.style.zIndex=j<cur?j+1:L-j;});},reduce?0:600);}
 function go(to,withSound=true){to=Math.max(0,Math.min(L,to));if(to===cur)return;const fwd=to>cur;const steps=Math.abs(to-cur);
  let i=0;const step=()=>{const k=fwd?cur:cur-1;cur+=fwd?1:-1;zfix(k,fwd);layout();if(sfx&&withSound)Sound.flip(steps>1?.7:1);i++;if(i<steps)setTimeout(step,reduce?0:170);};step();}
-const deck=document.querySelector('.deck');const dpages=[...deck.querySelectorAll('.dpage')];const NP=dpages.length;let last=0,tm;
+const deck=document.querySelector('.deck');const dpages=[...deck.querySelectorAll('.dpage')];const NP=dpages.length;let last=0;
 const isDeck=()=>getComputedStyle(book).display==='none';
-const dStep=()=>dpages.length>1?dpages[1].offsetLeft-dpages[0].offsetLeft:1;
-function deckGo(i,smooth=true){i=Math.max(0,Math.min(NP-1,i));deck.scrollTo({left:dpages[i].offsetLeft-dpages[0].offsetLeft,behavior:(smooth&&!reduce)?'smooth':'auto'});}
+function dpaint(){dpages.forEach((pg,i)=>{const gone=i<last;pg.style.transform=gone?'rotateY(-180deg)':'rotateY(0deg)';pg.classList.toggle('gone-done',gone);pg.style.zIndex=gone?i+2:NP-i+2;pg.style.setProperty('--sh',0);pg.inert=i!==last;});}
 function deckUI(){count.textContent=last===0?'Copertina':(last===NP-1?'Fine':(last+' / '+(NP-2)));
  document.getElementById('bk-prev').disabled=last===0;document.getElementById('bk-next').disabled=last===NP-1;}
-deck.addEventListener('scroll',()=>{clearTimeout(tm);tm=setTimeout(()=>{const i=Math.round(deck.scrollLeft/dStep());if(i!==last){last=i;if(sfx)Sound.flip(.75);deckUI();}},90);},{passive:true});
+function deckGo(i,snd=true){i=Math.max(0,Math.min(NP-1,i));if(i===last)return;const fwd=i>last;const steps=Math.abs(i-last);let n=0;
+ const step=()=>{const k=fwd?last:last-1;const pg=dpages[k];pg.classList.remove('gone-done');pg.style.zIndex=NP+10;pg.style.setProperty('--sh',.9);last+=fwd?1:-1;
+  requestAnimationFrame(()=>{pg.style.transform=fwd?'rotateY(-180deg)':'rotateY(0deg)';});
+  setTimeout(()=>{pg.style.setProperty('--sh',0);dpaint();},reduce?0:760);
+  if(sfx&&snd)Sound.flip(steps>1?.7:.9);deckUI();n++;if(n<steps)setTimeout(step,reduce?0:150);};step();}
+let x0=null,y0=0,dx=0,dir=0,pgD=null,W=1,lock=null;
+deck.addEventListener('touchstart',ev=>{if(ev.target.closest('a,button,input,textarea,select'))return;const t=ev.touches[0];x0=t.clientX;y0=t.clientY;dx=0;dir=0;pgD=null;lock=null;W=deck.clientWidth;},{passive:true});
+deck.addEventListener('touchmove',ev=>{if(x0===null)return;const t=ev.touches[0];dx=t.clientX-x0;const dy=t.clientY-y0;
+ if(lock===null&&(Math.abs(dx)>8||Math.abs(dy)>8))lock=Math.abs(dx)>Math.abs(dy)?'x':'y';if(lock!=='x')return;
+ if(!dir){dir=dx<0?1:-1;pgD=dir>0?(last<NP-1?dpages[last]:null):(last>0?dpages[last-1]:null);if(pgD){pgD.classList.add('drag');pgD.classList.remove('gone-done');pgD.style.zIndex=NP+10;}}
+ if(!pgD)return;const f=Math.max(0,Math.min(1,Math.abs(dx)/W));const ang=dir>0?-180*f:-180*(1-f);
+ pgD.style.transform='rotateY('+ang+'deg)';pgD.style.setProperty('--sh',Math.sin(f*Math.PI)*.9+.05);},{passive:true});
+deck.addEventListener('touchend',()=>{if(x0===null)return;const moved=lock==='x'&&pgD;x0=null;if(!moved)return;pgD.classList.remove('drag');
+ const f=Math.abs(dx)/W;const ok=f>.22;const pg=pgD;pgD=null;
+ if(ok){last+=dir;pg.style.transform=dir>0?'rotateY(-180deg)':'rotateY(0deg)';if(sfx)Sound.flip(.9);deckUI();}
+ else{pg.style.transform=dir>0?'rotateY(0deg)':'rotateY(-180deg)';}
+ pg.style.setProperty('--sh',0);setTimeout(dpaint,reduce?0:760);});
+deck.addEventListener('click',ev=>{if(ev.target.closest('a,button'))return;const r=deck.getBoundingClientRect();deckGo(ev.clientX<r.left+r.width*.35?last-1:last+1);});
+dpaint();
 function openPage(p,snd=true){if(isDeck())deckGo(p,snd);else go(Math.floor((p+1)/2),snd);}
 document.getElementById('bk-prev').onclick=()=>isDeck()?deckGo(last-1):go(cur-1);
 document.getElementById('bk-next').onclick=()=>isDeck()?deckGo(last+1):go(cur+1);
@@ -344,7 +371,8 @@ def storie_page():
         {leaves}
       </div>
       <div class="book-shadow" aria-hidden="true"></div>
-      <div class="deck" role="region" aria-label="Il Libro delle Storie, da scorrere">{deck}</div>
+      <div class="deck" role="region" aria-label="Il Libro delle Storie, da sfogliare">{deck}</div>
+      <span class="deck-hint">Sfogliate con il dito o toccate il bordo della pagina</span>
     </div>
     <div class="book-ui">
       <button type="button" class="bk-btn" id="bk-prev" aria-label="Pagina precedente">←</button>
