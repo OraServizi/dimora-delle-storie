@@ -84,6 +84,12 @@ for c in CAPITOLI:
         pages.append(page(f'''<article class="pg"><span class="pg-k">{e(c["titolo"])} · {e(a["data_it"])}</span>
 <h3 class="pg-t"><a href="/storie/{a["slug"]}">{e(a["titolo"])}</a></h3><p class="pg-st">{e(a["sottotitolo"])}</p>
 <p class="pg-p dropcap">{e(a["estratto"])}</p><a class="pg-more" href="/storie/{a["slug"]}">Leggi la storia →</a></article>'''))
+    if c["id"] == "ospiti":
+        pages.append(page('''<div class="pg foglio"><span class="pg-k">Le storie degli ospiti · il vostro foglio</span>
+<h3 class="pg-t">Scrivi la tua storia</h3><p class="pg-st">Questa pagina è ancora bianca: aspetta voi.</p>
+<p class="pg-p">Un ricordo del soggiorno, una passeggiata tra le piazze di granito, una giornata sul Limbara, una poesia nata nella sala da tè. Scrivetela qui: la leggeremo con cura e le più belle entreranno in questo capitolo.</p>
+<span class="foglio-righe" aria-hidden="true"></span>
+<a class="pg-more" href="/scrivi-la-tua-storia" data-foglio>Prendi la penna →</a></div>'''))
     for t, d in IN_ARRIVO.get(c["id"], []):
         pages.append(page(f'''<div class="pg soon"><span class="pg-k">{e(c["titolo"])} · prossimamente</span>
 <h3 class="pg-t">{e(t)}</h3><p class="pg-p">{e(d)}</p><span class="soon-seal" aria-hidden="true">In arrivo</span></div>'''))
@@ -173,6 +179,7 @@ BOOK_CSS = r'''
 .toc-n{'''+SERIF+''';color:#9A7434;font-size:14px}.toc-t{'''+SERIF+''';font-size:clamp(14px,1.45vw,19px);letter-spacing:.07em;text-transform:uppercase;font-variation-settings:'opsz' 11}
 .toc-p{font-size:12px;color:#6A655C}
 .soon .pg-t{color:#5A5650}.soon-seal{margin-top:auto;align-self:flex-end;width:86px;height:86px;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7A2E2A;border:1.5px solid rgba(122,46,42,.6);box-shadow:inset 0 0 0 4px rgba(242,234,220,1),inset 0 0 0 5px rgba(122,46,42,.4);transform:rotate(-12deg);opacity:.75}
+.foglio .foglio-righe{flex:1;min-height:60px;margin:4px 0 8px;background:repeating-linear-gradient(180deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 27px,rgba(18,27,82,.16) 27px,rgba(18,27,82,.16) 28px);border-left:1px solid rgba(160,60,50,.35);margin-left:-4px}
 .folio{position:absolute;bottom:clamp(10px,2.4%,22px);left:0;right:0;text-align:center;font-size:11px;letter-spacing:.14em;color:#8A8478;'''+SERIF+'''}
 .book-ui{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center}
 .bk-btn{all:unset;cursor:pointer;min-height:44px;min-width:44px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 20px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(239,232,220,.06);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#EFE8DC}

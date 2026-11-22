@@ -149,5 +149,4 @@ IN_ARRIVO = {
     "lingua": [("La parola della settimana", "Una parola gallurese, il suo significato e come si pronuncia.")],
     "calendario": [("Natale nella Città di pietra", "Luci, tradizioni e cosa fare in centro a dicembre."),
                    ("Carrasciali Timpiesu", "Il Carnevale storico di Tempio: date e consigli.")],
-    "ospiti": [("La vostra storia", "Questa pagina aspetta voi: scrivete la vostra storia su dimoradellestorie.com/scrivi-la-tua-storia.")],
 }

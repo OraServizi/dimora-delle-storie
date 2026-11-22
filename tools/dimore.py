@@ -372,21 +372,9 @@ const r=await fetch('/api/storia',{method:'POST',headers:{'Content-Type':'applic
 if(r.ok&&j.ok){f.innerHTML='<div class="grazie"><h2>Grazie!</h2><p>La vostra storia è arrivata alla Dimora. La leggeremo con cura e, se la pubblicheremo nel Libro delle Storie, vi scriveremo per avvisarvi.</p><p><a href="/storie" style="color:#E2B76A">Sfoglia il Libro delle Storie →</a></p></div>';f.scrollIntoView({behavior:'smooth',block:'start'});return}
 throw new Error(j.errore||'errore')}catch(err){es.innerHTML='Non siamo riusciti a inviare la storia. Riprovate tra poco, oppure scriveteci a <a href="mailto:info@dimoradellestorie.com" style="color:#E2B76A">info@dimoradellestorie.com</a>.';b.disabled=false;b.textContent='Invia la storia'}})})();</script>"""
 
-def scrivi():
+def form_html(cls="modulo reveal"):
     opts = "".join(f'<option>{e(x)}</option>' for x in ["Loft dell'Antiquario", "Suite del Viaggiatore", "Antica Latteria 1930", "Altro / non ancora ospite"])
-    body = f"""  <section class="scrivi">
-    <div class="intro">
-      <p class="reveal" style="{SERIF};font-style:italic;font-size:clamp(18px,1.92vw,25px);line-height:1.5;color:#8FA2E6;text-transform:uppercase;letter-spacing:.07em">«E la prossima storia, magari, la scrivete voi.»</p>
-      <p class="reveal">Il Libro delle Storie raccoglie le leggende della Dimora, le storie di Tempio e le poesie della Gallura. Ora ha un capitolo che aspetta voi: le storie degli ospiti.</p>
-      <p class="reveal">Un ricordo del soggiorno, una passeggiata tra le piazze di granito, una giornata sul Limbara, un incontro, una poesia nata nella sala da tè: ogni storia vera, o inventata con il cuore, è benvenuta.</p>
-      <ol class="reveal">
-        <li>Scrivete la vostra storia nel modulo, con un titolo e, se volete, una foto.</li>
-        <li>La leggiamo con cura: possiamo proporvi qualche piccola correzione, sempre con il vostro accordo.</li>
-        <li>Se la pubblichiamo, entra nel Libro delle Storie con la firma che avete scelto, e vi scriviamo per avvisarvi.</li>
-      </ol>
-      <p class="reveal" style="font-size:15px;color:rgba(239,232,220,.65)">Grazie fin d'ora: ogni storia rende la Dimora un po' più vostra.</p>
-    </div>
-    <form class="modulo reveal" id="form-storia" novalidate>
+    return f"""    <form class="{cls}" id="form-storia" novalidate>
       <h2>La vostra storia</h2>
       <label>Nome e cognome<input type="text" name="nome" required maxlength="80" autocomplete="name"></label>
       <label>Email (non sarà pubblicata)<input type="email" name="email" required maxlength="120" autocomplete="email"></label>
@@ -403,13 +391,57 @@ def scrivi():
       <p class="esito" id="esito" role="status" aria-live="polite"></p>
       <p class="privacy">Informativa: titolare del trattamento è Luca Cossu, Dimora delle Storie, Piazza Eleonora d'Arborea 6, 07029 Tempio Pausania (SS), info@dimoradellestorie.com. I dati inviati (nome, email, testo ed eventuale foto) sono usati solo per valutare e pubblicare la storia e per contattarvi in merito; l'email non viene mai pubblicata né ceduta a terzi. Potete chiedere in qualsiasi momento di correggere o rimuovere la storia e di cancellare i vostri dati scrivendo a info@dimoradellestorie.com.</p>
     </form>
-  </section>
+"""
+
+def scrivi():
+    opts = "".join(f'<option>{e(x)}</option>' for x in ["Loft dell'Antiquario", "Suite del Viaggiatore", "Antica Latteria 1930", "Altro / non ancora ospite"])
+    body = f"""  <section class="scrivi">
+    <div class="intro">
+      <p class="reveal" style="{SERIF};font-style:italic;font-size:clamp(18px,1.92vw,25px);line-height:1.5;color:#8FA2E6;text-transform:uppercase;letter-spacing:.07em">«E la prossima storia, magari, la scrivete voi.»</p>
+      <p class="reveal">Il Libro delle Storie raccoglie le leggende della Dimora, le storie di Tempio e le poesie della Gallura. Ora ha un capitolo che aspetta voi: le storie degli ospiti.</p>
+      <p class="reveal">Un ricordo del soggiorno, una passeggiata tra le piazze di granito, una giornata sul Limbara, un incontro, una poesia nata nella sala da tè: ogni storia vera, o inventata con il cuore, è benvenuta.</p>
+      <ol class="reveal">
+        <li>Scrivete la vostra storia nel modulo, con un titolo e, se volete, una foto.</li>
+        <li>La leggiamo con cura: possiamo proporvi qualche piccola correzione, sempre con il vostro accordo.</li>
+        <li>Se la pubblichiamo, entra nel Libro delle Storie con la firma che avete scelto, e vi scriviamo per avvisarvi.</li>
+      </ol>
+      <p class="reveal" style="font-size:15px;color:rgba(239,232,220,.65)">Grazie fin d'ora: ogni storia rende la Dimora un po' più vostra.</p>
+    </div>
+{form_html()}  </section>
 {FORM_JS}"""
     ld = {"@context": "https://schema.org", "@type": "WebPage", "name": "Scrivi la tua storia — Il Libro delle Storie", "url": f"{BASE}/scrivi-la-tua-storia",
           "isPartOf": {"@type": "WebSite", "name": "Dimora delle Storie", "url": BASE}}
     return shell("scrivi-la-tua-storia", "Scrivi la tua storia — Il Libro delle Storie | Dimora delle Storie",
                  "Avete soggiornato alla Dimora delle Storie a Tempio Pausania? Scrivete la vostra storia: le più belle entrano nel Libro delle Storie.",
                  "/img/foto/te-01.webp", ld, "/img/foto/te-01.webp", "Il pianoforte e il divano della sala da tè", "Il Libro delle Storie · Gli ospiti", "Scrivi la tua storia", body, FORM_CSS)
+
+CARTA_CSS = FORM_CSS + """
+.foglio-modal{position:fixed;inset:0;z-index:400;display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:4vh 16px;background:rgba(6,8,22,.86);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.foglio-modal.on{display:flex;animation:fade .5s ease both}
+.foglio-modal .modulo{width:min(640px,100%);margin:auto;background:#F2EADC repeating-linear-gradient(180deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 31px,rgba(18,27,82,.08) 31px,rgba(18,27,82,.08) 32px);border:0;box-shadow:0 40px 90px rgba(0,0,0,.6),inset 0 0 60px rgba(120,90,40,.15);color:#121B52;animation:up 0.8s cubic-bezier(.2,.7,.1,1) both}
+.foglio-modal .modulo h2{color:#121B52}
+.foglio-modal .modulo label{color:#5A5650}
+.foglio-modal .modulo input[type=text],.foglio-modal .modulo input[type=email],.foglio-modal .modulo select,.foglio-modal .modulo textarea{background:rgba(255,255,255,.55);border:0;border-bottom:1px solid rgba(18,27,82,.35);color:#121B52}
+.foglio-modal .modulo textarea{background:transparent repeating-linear-gradient(180deg,rgba(0,0,0,0) 0,rgba(0,0,0,0) 25px,rgba(18,27,82,.14) 25px,rgba(18,27,82,.14) 26px);line-height:26px;font-family:'Bodoni Moda',Georgia,serif;font-size:17px;border-left:1px solid rgba(160,60,50,.4)}
+.foglio-modal .modulo option{background:#F2EADC}
+.foglio-modal .modulo .check,.foglio-modal .modulo .conta,.foglio-modal .privacy{color:#4A463F!important}
+.foglio-modal .modulo button[type=submit]{background:#121B52;color:#F2EADC}
+.foglio-modal .modulo .esito{color:#7A2E2A}
+.foglio-modal .grazie p{color:#33302B}
+.foglio-modal .grazie a{color:#121B52!important}
+.foglio-x{position:fixed;top:18px;right:18px;z-index:410;width:48px;height:48px;border-radius:999px;border:1px solid rgba(239,232,220,.35);background:rgba(6,8,22,.6);color:#EFE8DC;font-size:20px;cursor:pointer}
+"""
+
+def libro_foglio(s):
+    s = re.sub(r'<style id="foglio">.*?</style>\n?', '', s, flags=re.S).replace('</head>', f'<style id="foglio">{CARTA_CSS}</style>\n</head>', 1)
+    s = re.sub(r'\n?<!--foglio-->.*?<!--/foglio-->\n?', '\n', s, flags=re.S)
+    modal = (f'<!--foglio--><div class="foglio-modal" role="dialog" aria-modal="true" aria-label="Scrivi la tua storia"><button type="button" class="foglio-x" aria-label="Chiudi">✕</button>{form_html("modulo")}</div>{FORM_JS}'
+             """<script>(()=>{const m=document.querySelector('.foglio-modal');if(!m)return;const x=m.querySelector('.foglio-x');let last;
+const open=a=>{last=a;m.classList.add('on');document.documentElement.style.overflow='hidden';setTimeout(()=>{const n=m.querySelector('input[name=nome]');n&&n.focus()},300)};
+const close=()=>{m.classList.remove('on');document.documentElement.style.overflow='';last&&last.focus()};
+document.querySelectorAll('[data-foglio]').forEach(a=>a.addEventListener('click',ev=>{ev.preventDefault();ev.stopPropagation();open(a)}));
+x.onclick=close;m.addEventListener('click',ev=>{if(ev.target===m)close()});addEventListener('keydown',ev=>{if(ev.key==='Escape'&&m.classList.contains('on'))close()});})();</script><!--/foglio-->""")
+    return s.replace('</body>', modal + '\n</body>', 1)
 
 # ------------------------------------------------------------------ esecuzione
 wr("antica-latteria-1930.html", nav(latteria()))
@@ -447,4 +479,5 @@ ATTIVO = {"index.html": "/", "loft-dell-antiquario.html": "/#dimore", "suite-del
 for p in ["index.html", "la-dimora.html", "loft-dell-antiquario.html", "suite-del-viaggiatore.html", "antica-latteria-1930.html",
           "storie.html", "tempio-pausania.html", "scrivi-la-tua-storia.html"] + [os.path.relpath(x, SITE) for x in glob.glob(f"{SITE}/storie/*.html")]:
     wr(p, cin(header_chiaro(nav(rd(p)), ATTIVO.get(p, "/storie"))))
+wr("storie.html", libro_foglio(rd("storie.html")))
 print("ok")
