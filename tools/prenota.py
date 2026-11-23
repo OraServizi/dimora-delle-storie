@@ -243,6 +243,8 @@ CERCA_CSS = """
 .esito a.p:hover{background:#E2B76A}
 .esito a.v{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,232,220,.7)}
 .esito.off{opacity:.5}
+.esito .prezzo{margin:0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(239,232,220,.7)}
+.esito .prezzo b{display:block;margin-bottom:2px;font-family:'Bodoni Moda',Georgia,serif;font-weight:400;font-size:28px;letter-spacing:.04em;color:#EFE8DC}
 """
 
 def cerca_js():
@@ -268,8 +270,8 @@ async function occupate(r,a,b){const da=giorno(a),ul=giorno(b);ul.setDate(ul.get
   return S}
 async function minimo(r,a){try{const R=await (await fetch(API+'GetBookingRestriction?apikey='+K,{method:'POST',body:new URLSearchParams({FromDate:a,ToDate:a,ResourceID:r.res})})).json();
   const v=(R||[]).find(x=>x.StartDate.slice(0,10)<=a&&x.EndDate.slice(0,10)>=a);return v&&v.MinMinutes?Math.ceil(v.MinMinutes/1440):1}catch(e){return 1}}
-const scheda=(r,stato,ok,link)=>'<article class="esito'+(ok?'':' off')+'"><img src="'+r.foto+'" alt="'+r.nome+'" loading="lazy"><div class="c"><span class="d">'+r.det+'</span><h3>'+r.nome+'</h3>'
-  +'<p class="s '+(ok?'ok':'no')+'">'+stato+'</p>'+(ok?'<a class="p" href="'+link+'">Prenota</a>':'')+'<a class="v" href="'+r.url+'">Scopri la dimora →</a></div></article>';
+const scheda=(r,stato,ok,link,pr)=>'<article class="esito'+(ok?'':' off')+'"><img src="'+r.foto+'" alt="'+r.nome+'" loading="lazy"><div class="c"><span class="d">'+r.det+'</span><h3>'+r.nome+'</h3>'
+  +'<p class="s '+(ok?'ok':'no')+'">'+stato+'</p>'+(ok&&pr?'<p class="prezzo"><b>€ '+pr.totale.toLocaleString('it-IT')+'</b> totale, pulizia inclusa</p>':'')+(ok?'<a class="p" href="'+link+'">Prenota</a>':'')+'<a class="v" href="'+r.url+'">Scopri la dimora →</a></div></article>';
 f.addEventListener('submit',async ev=>{ev.preventDefault();const a=f.arrivo.value,b=f.partenza.value,px=+f.ospiti.value;
   if(!a||!b){msg.textContent='Indicate le date di arrivo e di partenza.';return}
   if(b<=a){msg.textContent='La partenza deve essere successiva all\\'arrivo.';return}
@@ -277,6 +279,7 @@ f.addEventListener('submit',async ev=>{ev.preventDefault();const a=f.arrivo.valu
   if(!valida(a)||!valida(b)){msg.textContent='Controllate l\\'anno delle date: si può prenotare fino al '+it(max)+'.';out.innerHTML='';return}
   const N=notti(a,b);msg.textContent='Verifico le disponibilità…';out.innerHTML='';
   history.replaceState(null,'','?arrivo='+a+'&partenza='+b+'&ospiti='+px);
+  const P=fetch('/api/preventivo?arrivo='+a+'&partenza='+b+'&ospiti='+px).then(r=>r.ok?r.json():{}).then(j=>j.prezzi||{}).catch(()=>({}));
   try{const R=await Promise.all(Object.values(D).map(async r=>{
       if(px>r.max)return{r,ok:false,o:3,stato:'Fino a '+r.max+' ospiti'};
       const[S,mn]=await Promise.all([occupate(r,a,b),minimo(r,a)]);
@@ -286,7 +289,7 @@ f.addEventListener('submit',async ev=>{ev.preventDefault();const a=f.arrivo.valu
         link:'https://bol.mainapps.com/step2/'+r.res+'/'+a.replace(/-/g,'')+'-'+b.replace(/-/g,'')+'/'+px+'/nc/?apikey='+K+'&lang=it'}}));
     R.sort((x,y)=>x.o-y.o);const liberi=R.filter(x=>x.ok).length;
     msg.textContent=(liberi?(liberi==1?'Una dimora libera':liberi+' dimore libere'):'Nessuna dimora libera')+' dal '+it(a)+' al '+it(b)+' per '+px+(px==1?' ospite':' ospiti')+'.'+(liberi?'':(R.some(x=>x.o==1)&&!R.some(x=>x.o==2)?' In questo periodo il soggiorno minimo è di '+Math.max(...R.filter(x=>x.o==1).map(x=>+x.stato.match(/\\d+/)[0]))+' notti.':' Provate altre date o scriveteci: troveremo una soluzione.'));
-    out.innerHTML=R.map(x=>scheda(x.r,x.stato,x.ok,x.link)).join('')}
+    const PR=await P;out.innerHTML=R.map(x=>scheda(x.r,x.stato,x.ok,x.link,PR[x.r.res])).join('')}
   catch(e){msg.innerHTML='Non riusciamo a verificare le disponibilità in questo momento. Scriveteci su <a href=\""""+WA+"""\" style="color:#E2B76A">WhatsApp</a>.'}});
 const q=new URLSearchParams(location.search);if(q.get('arrivo')){f.arrivo.value=q.get('arrivo');f.partenza.value=q.get('partenza')||'';if(q.get('ospiti'))f.ospiti.value=q.get('ospiti');f.requestSubmit()}})();</script>"""
 
@@ -344,9 +347,50 @@ def sitemap():
         sm = sm.replace("</urlset>", f"  <url><loc>{BASE}/prenota</loc><lastmod>2026-11-23</lastmod></url>\n</urlset>")
     wr("sitemap.xml", sm)
 
+ESTERNI_CSS = """<style id="esterni-css">
+.esterni{position:relative;padding:clamp(64px,8vw,120px) clamp(20px,4.5vw,64px);overflow:hidden;border-top:1px solid rgba(239,232,220,.1)}
+.esterni .t{max-width:440px;margin:0 0 40px}
+.esterni .t span{display:block;margin-bottom:12px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#D4A65A}
+.esterni .t h2{margin:0 0 14px;font-family:'Bodoni Moda',Georgia,serif;font-weight:400;font-size:clamp(22px,2.6vw,34px);line-height:1.25;text-transform:uppercase;letter-spacing:.08em}
+.esterni .t p{margin:0 0 16px;font-size:15px;line-height:1.8;color:rgba(239,232,220,.75)}
+.esterni .t a{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#E2B76A}
+.esterni .f{display:grid;grid-template-columns:1.1fr .8fr 1.3fr;gap:clamp(12px,2vw,28px);align-items:start}
+.esterni figure{margin:0;position:relative}
+.esterni img{display:block;width:100%;object-fit:cover;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.esterni figure:nth-child(1) img{aspect-ratio:3/4;object-position:center 30%}
+.esterni figure:nth-child(2){margin-top:clamp(60px,9vw,140px)}
+.esterni figure:nth-child(2) img{aspect-ratio:1/1}
+.esterni figure:nth-child(3){margin-top:clamp(20px,3vw,40px)}
+.esterni figure:nth-child(3) img{aspect-ratio:4/5;clip-path:inset(0 0 0 0 round 0)}
+.esterni figcaption{margin-top:12px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(239,232,220,.55)}
+@media (min-width:900px){.esterni{display:grid;grid-template-columns:minmax(260px,.7fr) 2fr;gap:clamp(40px,5vw,80px);align-items:center}.esterni .t{margin:0}}
+@media (max-width:600px){.esterni .f{grid-template-columns:1fr 1fr}.esterni figure:nth-child(3){grid-column:1/-1;margin-top:0}.esterni figure:nth-child(3) img{aspect-ratio:16/10}.esterni figure:nth-child(2){margin-top:48px}}
+</style>"""
+
+ESTERNI = {  # pagina: (titolo, testo, [(foto, didascalia) x3])
+    "dimora": ("Due palazzetti, uno di fronte all'altro",
+               "La Dimora e l'Antica Latteria si guardano attraverso un vicolo di granito del centro storico: facciate bianche, portoni azzurri, balconi in ferro battuto.",
+               [("est-02", "La facciata della Dimora"), ("est-01", "Il vicolo di granito"), ("lat-18", "La palazzina della Latteria, di fronte")]),
+    "latteria": ("La palazzina della Latteria",
+                 "Di fronte alla Dimora, con la stessa facciata bianca e lo stesso portone azzurro: qui nel 1930 si vendeva davvero il latte.",
+                 [("lat-16", "La facciata della Latteria"), ("lat-19", "Il vicolo della Latteria"), ("est-02", "La Dimora, di fronte")]),
+}
+PAGINE_ESTERNI = {"loft-dell-antiquario.html": "dimora", "suite-del-viaggiatore.html": "dimora",
+                  "antica-latteria-1930.html": "latteria", "la-dimora-intera.html": "dimora", "prenota.html": "dimora"}
+
+def esterni(p, k):
+    tit, txt, foto = ESTERNI[k]
+    figs = "".join(f'<figure class="reveal"><img src="/img/foto/{f}.webp" alt="{e(c)} — Dimora delle Storie, Tempio Pausania" loading="lazy" decoding="async"><figcaption>{e(c)}</figcaption></figure>' for f, c in foto)
+    blk = (f'<section class="esterni"><div class="t reveal"><span>Gli esterni</span><h2>{e(tit)}</h2><p>{e(txt)}</p>'
+           f'<a href="/la-dimora">Scoprite la casa →</a></div><div class="f">{figs}</div></section>\n')
+    s = rd(p)
+    s = re.sub(r'<style id="esterni-css">.*?</style>\n?', '', s, flags=re.S).replace('</head>', ESTERNI_CSS + '\n</head>', 1)
+    wr(p, blocco(s, "est", blk, "  <footer"))
+
 if __name__ == "__main__":
     for p, k in PAGINE_ALLOGGIO.items(): alloggio(p, k)
     la_dimora_intera(); prenota(); home(); sitemap()
+    for p, k in PAGINE_ESTERNI.items(): esterni(p, k)
     fatte = set(PAGINE_ALLOGGIO) | {"index.html", "la-dimora-intera.html", "prenota.html"}
     for p in [os.path.basename(x) for x in glob.glob(f"{SITE}/*.html")] + [os.path.relpath(x, SITE) for x in glob.glob(f"{SITE}/storie/*.html")]:
         if p not in fatte: wr(p, comune(rd(p)))

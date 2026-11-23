@@ -220,6 +220,25 @@ input::placeholder{text-transform:uppercase}
 .ml-cal .ml-confirm-booking{display:inline-flex!important;align-items:center;justify-content:center;min-height:52px;padding:0 44px!important;margin-top:18px;border:0!important;border-radius:999px!important;background:#D4A65A!important;color:#0F111A!important;font:500 13px 'Inter',system-ui,sans-serif!important;letter-spacing:.18em;text-transform:uppercase;text-decoration:none!important}
 .ml-cal .ml-confirm-booking:hover{background:#E2B76A!important}
 </style>
+<style id="esterni-css">
+.esterni{position:relative;padding:clamp(64px,8vw,120px) clamp(20px,4.5vw,64px);overflow:hidden;border-top:1px solid rgba(239,232,220,.1)}
+.esterni .t{max-width:440px;margin:0 0 40px}
+.esterni .t span{display:block;margin-bottom:12px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#D4A65A}
+.esterni .t h2{margin:0 0 14px;font-family:'Bodoni Moda',Georgia,serif;font-weight:400;font-size:clamp(22px,2.6vw,34px);line-height:1.25;text-transform:uppercase;letter-spacing:.08em}
+.esterni .t p{margin:0 0 16px;font-size:15px;line-height:1.8;color:rgba(239,232,220,.75)}
+.esterni .t a{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#E2B76A}
+.esterni .f{display:grid;grid-template-columns:1.1fr .8fr 1.3fr;gap:clamp(12px,2vw,28px);align-items:start}
+.esterni figure{margin:0;position:relative}
+.esterni img{display:block;width:100%;object-fit:cover;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.esterni figure:nth-child(1) img{aspect-ratio:3/4;object-position:center 30%}
+.esterni figure:nth-child(2){margin-top:clamp(60px,9vw,140px)}
+.esterni figure:nth-child(2) img{aspect-ratio:1/1}
+.esterni figure:nth-child(3){margin-top:clamp(20px,3vw,40px)}
+.esterni figure:nth-child(3) img{aspect-ratio:4/5;clip-path:inset(0 0 0 0 round 0)}
+.esterni figcaption{margin-top:12px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(239,232,220,.55)}
+@media (min-width:900px){.esterni{display:grid;grid-template-columns:minmax(260px,.7fr) 2fr;gap:clamp(40px,5vw,80px);align-items:center}.esterni .t{margin:0}}
+@media (max-width:600px){.esterni .f{grid-template-columns:1fr 1fr}.esterni figure:nth-child(3){grid-column:1/-1;margin-top:0}.esterni figure:nth-child(3) img{aspect-ratio:16/10}.esterni figure:nth-child(2){margin-top:48px}}
+</style>
 </head>
 <body>
 <div class="vpage" style="width:100%;background:transparent;color:#EFE8DC;font-family:'Inter',system-ui,sans-serif;font-weight:300">
@@ -296,6 +315,8 @@ lb.addEventListener('click',ev=>{if(ev.target===lb)close()});
 addEventListener('keydown',ev=>{if(!lb.classList.contains('on'))return;if(ev.key==='Escape')close();if(ev.key==='ArrowLeft')show(i-1);if(ev.key==='ArrowRight')show(i+1)});
 let x0=null;lb.addEventListener('touchstart',ev=>x0=ev.touches[0].clientX,{passive:true});lb.addEventListener('touchend',ev=>{if(x0===null)return;const d=ev.changedTouches[0].clientX-x0;if(Math.abs(d)>40)show(i+(d<0?1:-1));x0=null});})();</script>
 <!--/dimore-->
+<!--est--><section class="esterni"><div class="t reveal"><span>Gli esterni</span><h2>Due palazzetti, uno di fronte all&#x27;altro</h2><p>La Dimora e l&#x27;Antica Latteria si guardano attraverso un vicolo di granito del centro storico: facciate bianche, portoni azzurri, balconi in ferro battuto.</p><a href="/la-dimora">Scoprite la casa →</a></div><div class="f"><figure class="reveal"><img src="/img/foto/est-02.webp" alt="La facciata della Dimora — Dimora delle Storie, Tempio Pausania" loading="lazy" decoding="async"><figcaption>La facciata della Dimora</figcaption></figure><figure class="reveal"><img src="/img/foto/est-01.webp" alt="Il vicolo di granito — Dimora delle Storie, Tempio Pausania" loading="lazy" decoding="async"><figcaption>Il vicolo di granito</figcaption></figure><figure class="reveal"><img src="/img/foto/lat-18.webp" alt="La palazzina della Latteria, di fronte — Dimora delle Storie, Tempio Pausania" loading="lazy" decoding="async"><figcaption>La palazzina della Latteria, di fronte</figcaption></figure></div></section>
+<!--/est-->
   <footer style="border-top:1px solid rgba(239,232,220,.12);padding:56px clamp(20px,4.5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:32px;font-size:14px;line-height:1.8;color:rgba(239,232,220,.74)">
     <div style="display:flex;flex-direction:column;gap:8px"><a href="/" style="text-decoration:none;font-family:'Bodoni Moda',Georgia,serif;font-size:19px;color:#EFE8DC;text-transform:uppercase;letter-spacing:.08em">Dimora delle Storie</a><span>Piazza Eleonora d'Arborea 6<br>07029 Tempio Pausania (SS)</span><span style="font-size:12px;letter-spacing:.12em;color:rgba(239,232,220,.55)">CIN IT090070C2000S8992</span></div>
     <div style="display:flex;flex-direction:column;gap:4px"><a href="tel:+393791656864" style="text-decoration:none">+39 379 165 6864</a><a href="mailto:info@dimoradellestorie.com" style="text-decoration:none">info@dimoradellestorie.com</a><a href="https://www.instagram.com/dimoradellestorie" style="text-decoration:none">Instagram · @dimoradellestorie</a></div>

@@ -120,6 +120,25 @@ input::placeholder{text-transform:uppercase}
 
 
 
+<style id="esterni-css">
+.esterni{position:relative;padding:clamp(64px,8vw,120px) clamp(20px,4.5vw,64px);overflow:hidden;border-top:1px solid rgba(239,232,220,.1)}
+.esterni .t{max-width:440px;margin:0 0 40px}
+.esterni .t span{display:block;margin-bottom:12px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#D4A65A}
+.esterni .t h2{margin:0 0 14px;font-family:'Bodoni Moda',Georgia,serif;font-weight:400;font-size:clamp(22px,2.6vw,34px);line-height:1.25;text-transform:uppercase;letter-spacing:.08em}
+.esterni .t p{margin:0 0 16px;font-size:15px;line-height:1.8;color:rgba(239,232,220,.75)}
+.esterni .t a{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#E2B76A}
+.esterni .f{display:grid;grid-template-columns:1.1fr .8fr 1.3fr;gap:clamp(12px,2vw,28px);align-items:start}
+.esterni figure{margin:0;position:relative}
+.esterni img{display:block;width:100%;object-fit:cover;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.esterni figure:nth-child(1) img{aspect-ratio:3/4;object-position:center 30%}
+.esterni figure:nth-child(2){margin-top:clamp(60px,9vw,140px)}
+.esterni figure:nth-child(2) img{aspect-ratio:1/1}
+.esterni figure:nth-child(3){margin-top:clamp(20px,3vw,40px)}
+.esterni figure:nth-child(3) img{aspect-ratio:4/5;clip-path:inset(0 0 0 0 round 0)}
+.esterni figcaption{margin-top:12px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(239,232,220,.55)}
+@media (min-width:900px){.esterni{display:grid;grid-template-columns:minmax(260px,.7fr) 2fr;gap:clamp(40px,5vw,80px);align-items:center}.esterni .t{margin:0}}
+@media (max-width:600px){.esterni .f{grid-template-columns:1fr 1fr}.esterni figure:nth-child(3){grid-column:1/-1;margin-top:0}.esterni figure:nth-child(3) img{aspect-ratio:16/10}.esterni figure:nth-child(2){margin-top:48px}}
+</style>
 <style>
 .book-wrap::before{content:'';position:absolute;inset:-6% -14%;background:radial-gradient(50% 50% at 50% 52%,rgba(3,5,16,.82),rgba(3,5,16,.45) 55%,rgba(3,5,16,0) 75%);pointer-events:none;z-index:0}
 .book,.deck{z-index:1}.book-shadow{z-index:1;bottom:-34px;height:56px;background:radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.85),rgba(0,0,0,0))}
