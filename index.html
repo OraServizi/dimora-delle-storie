@@ -170,6 +170,7 @@ input::placeholder{text-transform:uppercase}
 .btn-prenota{display:inline-flex;align-items:center;min-height:44px;box-sizing:border-box;padding:0 28px;border-radius:999px;background:#D4A65A;color:#0F111A!important;text-decoration:none;font:500 12px 'Inter',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:background .25s,transform .25s}
 .btn-prenota:hover{background:#E2B76A;transform:translateY(-1px)}
 .btn-prenota[aria-current]{background:transparent;color:#E2B76A!important;border:1px solid rgba(226,183,106,.6)}
+@media (max-width:1180px){.topnav{gap:18px!important;padding-left:20px!important;padding-right:20px!important}.btn-prenota{padding:0 22px}}
 @media (max-width:700px){.btn-prenota{padding:0 20px;letter-spacing:.16em}}
 .cal-sec{padding:clamp(56px,7vw,96px) clamp(20px,4.5vw,64px);border-top:1px solid rgba(239,232,220,.1)}
 .cal-head{max-width:760px;margin:0 0 36px}
@@ -214,8 +215,7 @@ input::placeholder{text-transform:uppercase}
 
   <section class="hero" style="position:relative;min-height:900px;overflow:hidden;display:flex;flex-direction:column">
     <img class="heroimg" src="img/loft.jpg" alt="Il Loft dell'Antiquario: testiera in velluto blu e peonie dipinte, riflessa in un tavolo di vetro" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%">
-    <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,26,.75) 0%,rgba(15,17,26,.25) 28%,rgba(15,17,26,.35) 55%,rgba(15,17,26,.96) 100%)"></div>
-    <div class="light" aria-hidden="true" style="position:absolute;inset:0;mix-blend-mode:soft-light;background-image:radial-gradient(40% 50% at 50% 50%,rgba(212,166,90,.7),rgba(212,166,90,0) 70%)"></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,17,26,.78) 0%,rgba(15,17,26,.5) 32%,rgba(15,17,26,0) 58%),linear-gradient(180deg,rgba(15,17,26,.55) 0%,rgba(15,17,26,0) 18%,rgba(15,17,26,0) 68%,rgba(15,17,26,.96) 100%)"></div>
     <div class="bl-hero bl-vid" aria-hidden="true" style="position:absolute;width:680px;height:680px;pointer-events:none;-webkit-mask-image:radial-gradient(closest-side,#000 48%,rgba(0,0,0,0) 100%);mask-image:radial-gradient(closest-side,#000 48%,rgba(0,0,0,0) 100%);right:-110px;top:-80px;opacity:.97"><video class="herovid" muted playsinline autoplay preload="auto" poster="img/peonia-sboccia-q-poster.jpg" style="width:100%;height:100%;object-fit:cover;display:block"><source src="img/peonia-sboccia-q.webm" type="video/webm"><source src="img/peonia-sboccia-q.mp4" type="video/mp4"></video></div>
 
     <header style="position:relative;display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;padding:32px clamp(20px,4.5vw,64px)">
