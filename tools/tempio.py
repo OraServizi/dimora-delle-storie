@@ -82,7 +82,7 @@ def page():
     h = S.head(title, desc, f"{BASE}/tempio-pausania", "/img/loft.jpg", ld)
     h += f"<style>{CSS}</style>\n"
     if HAS_VIDEO:
-        media = f'<video autoplay muted loop playsinline preload="metadata" poster="/img/tempio-drone.jpg" aria-label="Il centro storico di Tempio Pausania visto dal drone"><source src="{VIDEO}" type="video/mp4"></video>'
+        media = f'<video autoplay muted loop playsinline preload="metadata" poster="/img/tempio-drone.jpg" aria-label="Il centro storico di Tempio Pausania"><source src="{VIDEO}" type="video/mp4"></video>'
         soon = ""
     else:
         media = '<div class="t-ph" aria-hidden="true"></div>'
@@ -125,7 +125,7 @@ def page():
     <h2>Dalla città alla Dimora</h2>
     <div class="frame" aria-hidden="true"><span>Dal cielo della Gallura fino alla vostra stanza · video in arrivo</span></div>
     <p class="lead" style="margin:8px 0 0;text-align:center">Tre dimore in una residenza del 1930, nel cuore del centro storico.</p>
-    <a class="t-btn" href="https://wa.me/393791656864">Verifica disponibilità</a>
+    <a class="t-btn" href="/prenota">Verifica disponibilità</a>
   </section>
   <section class="t-sec t-src"><p>Fonti: {fonti}</p></section>
 '''
