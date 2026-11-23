@@ -276,8 +276,9 @@ const f=document.getElementById('cerca'),out=document.getElementById('esiti'),ms
 const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 const giorno=s=>{const[a,b,c]=s.split('-').map(Number);return new Date(a,b-1,c)};
 const it=s=>s.split('-').reverse().join('/');
-const oggi=iso(new Date());f.arrivo.min=oggi;
-f.arrivo.addEventListener('change',()=>{if(!f.arrivo.value)return;const m=giorno(f.arrivo.value);m.setDate(m.getDate()+1);f.partenza.min=iso(m);
+const oggi=iso(new Date()),lim=new Date();lim.setFullYear(lim.getFullYear()+2);const max=iso(lim);f.arrivo.min=oggi;f.arrivo.max=max;f.partenza.max=max;
+const valida=v=>/^\d{4}-\d{2}-\d{2}$/.test(v)&&v>=oggi&&v<=max;
+f.arrivo.addEventListener('change',()=>{if(!valida(f.arrivo.value))return;const m=giorno(f.arrivo.value);m.setDate(m.getDate()+1);f.partenza.min=iso(m);
   if(!f.partenza.value||f.partenza.value<=f.arrivo.value){m.setDate(m.getDate()+1);f.partenza.value=iso(m)}});
 const notti=(a,b)=>{const L=[];for(let d=giorno(a);iso(d)<b;d.setDate(d.getDate()+1))L.push(iso(d));return L};
 async function occupate(r,a,b){const da=giorno(a),ul=giorno(b);ul.setDate(ul.getDate()-1);
@@ -296,6 +297,7 @@ f.addEventListener('submit',async ev=>{ev.preventDefault();const a=f.arrivo.valu
   if(!a||!b){msg.textContent='Indicate le date di arrivo e di partenza.';return}
   if(b<=a){msg.textContent='La partenza deve essere successiva all\'arrivo.';return}
   if(a<oggi){msg.textContent='La data di arrivo è già passata.';return}
+  if(!valida(a)||!valida(b)){msg.textContent='Controllate l\'anno delle date: si può prenotare fino al '+it(max)+'.';out.innerHTML='';return}
   const N=notti(a,b);msg.textContent='Verifico le disponibilità…';out.innerHTML='';
   history.replaceState(null,'','?arrivo='+a+'&partenza='+b+'&ospiti='+px);
   try{const R=await Promise.all(Object.values(D).map(async r=>{
