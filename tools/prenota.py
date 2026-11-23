@@ -142,7 +142,7 @@ def alloggio(p, chiave):
     wr(p, s)
 
 # ------------------------------------------------------------------ template pagine nuove
-def pagina(slug, title, desc, og_img, ld, hero_img, hero_alt, kicker, h1, body, extra_css=""):
+def pagina(slug, title, desc, og_img, ld, hero_img, hero_alt, kicker, h1, body, extra_css="", hero_h="min(560px,70vh)"):
     tpl = rd("loft-dell-antiquario.html")
     for t in ["dimore", "cal", "pb", "li"]:
         tpl = re.sub(rf'\n?<!--{t}-->.*?<!--/{t}-->\n?', '\n' if t in ("dimore", "cal") else '', tpl, flags=re.S)
@@ -159,7 +159,7 @@ def pagina(slug, title, desc, og_img, ld, hero_img, hero_alt, kicker, h1, body, 
     h = h.replace('url(fonts/', 'url(/fonts/').replace('href="fonts/', 'href="/fonts/').replace('href="img/', 'href="/img/')
     if extra_css: h += f'<style id="pagina">{extra_css}</style>\n'
     header = re.search(r'    <header.*?</header>', tpl, flags=re.S).group(0).replace('src="img/', 'src="/img/').replace(' aria-current="page"', '')
-    hero_html = f"""  <section style="position:relative;min-height:min(560px,70vh);overflow:hidden;display:flex;flex-direction:column">
+    hero_html = f"""  <section style="position:relative;min-height:{hero_h};overflow:hidden;display:flex;flex-direction:column">
     <img class="heroimg" src="{hero_img}" alt="{e(hero_alt)}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.75">
     <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,26,.75) 0%,rgba(15,17,26,.25) 35%,#0F111A 100%)"></div>
 {header}
@@ -221,7 +221,7 @@ SCHEDE = {  # chiave: (foto, dettagli)
 }
 
 CERCA_CSS = """
-.cerca{padding:clamp(56px,7vw,96px) clamp(20px,4.5vw,64px) clamp(80px,9vw,120px)}
+.cerca{padding:clamp(36px,5vw,64px) clamp(20px,4.5vw,64px) clamp(80px,9vw,120px)}
 .cerca-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:18px;align-items:end;padding:clamp(20px,3vw,36px);border:1px solid rgba(226,183,106,.3);background:linear-gradient(180deg,rgba(15,17,40,.72),rgba(15,17,40,.42));box-shadow:0 30px 80px rgba(0,0,0,.4)}
 .cerca-form label{display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(239,232,220,.7)}
 .cerca-form input,.cerca-form select{display:block;width:100%;box-sizing:border-box;margin-top:10px;min-height:52px;padding:0 16px;border:1px solid rgba(239,232,220,.25);border-radius:2px;background:rgba(5,7,20,.6);color:#EFE8DC;font:16px 'Inter',system-ui,sans-serif;color-scheme:dark}
@@ -304,7 +304,7 @@ def prenota():
     desc = "Prenota direttamente alla Dimora delle Storie, Tempio Pausania: scegli le date e vedi subito le dimore libere tra Loft dell'Antiquario, Suite del Viaggiatore, Antica Latteria 1930 e la Dimora intera."
     ld = {"@context": "https://schema.org", "@type": "WebPage", "name": "Prenota — Dimora delle Storie", "url": f"{BASE}/prenota", "description": desc}
     s = pagina("prenota", "Prenota — Dimora delle Storie, Tempio Pausania", desc, "/img/loft.jpg", ld, "/img/loft.jpg",
-               "Loft dell'Antiquario, Dimora delle Storie", "Prenotazione diretta · senza commissioni", "Prenota il tuo soggiorno", body, CERCA_CSS)
+               "Loft dell'Antiquario, Dimora delle Storie", "Prenotazione diretta · senza commissioni", "Prenota il tuo soggiorno", body, CERCA_CSS, hero_h="min(360px,46vh)")
     wr("prenota.html", comune(s, attivo=True))
 
 # ------------------------------------------------------------------ home: collegamenti rimasti vuoti
