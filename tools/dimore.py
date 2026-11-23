@@ -480,4 +480,5 @@ for p in ["index.html", "la-dimora.html", "loft-dell-antiquario.html", "suite-de
           "storie.html", "tempio-pausania.html", "scrivi-la-tua-storia.html"] + [os.path.relpath(x, SITE) for x in glob.glob(f"{SITE}/storie/*.html")]:
     wr(p, cin(header_chiaro(nav(rd(p)), ATTIVO.get(p, "/storie"))))
 wr("storie.html", libro_foglio(rd("storie.html")))
+subprocess.run([sys.executable, "-B", f"{SITE}/tools/prenota.py"], check=True, stdout=subprocess.DEVNULL)  # prenotazioni Magellano
 print("ok")

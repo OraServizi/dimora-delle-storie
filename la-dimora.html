@@ -179,6 +179,39 @@ input::placeholder{text-transform:uppercase}
 .topnav a[aria-current]::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:1px;background:#D4A65A}
 @media (max-width:700px){.brand b{display:none}.topnav a[href="/"][aria-current]{display:none}.topnav{gap:13px!important;padding-left:18px!important;padding-right:18px!important}}
 </style>
+<style id="prenota-css">
+.btn-prenota{display:inline-flex;align-items:center;min-height:44px;box-sizing:border-box;padding:0 28px;border-radius:999px;background:#D4A65A;color:#0F111A!important;text-decoration:none;font:500 12px 'Inter',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:background .25s,transform .25s}
+.btn-prenota:hover{background:#E2B76A;transform:translateY(-1px)}
+.btn-prenota[aria-current]{background:transparent;color:#E2B76A!important;border:1px solid rgba(226,183,106,.6)}
+@media (max-width:700px){.btn-prenota{padding:0 20px;letter-spacing:.16em}}
+.cal-sec{padding:clamp(56px,7vw,96px) clamp(20px,4.5vw,64px);border-top:1px solid rgba(239,232,220,.1)}
+.cal-head{max-width:760px;margin:0 0 36px}
+.cal-head .k{display:block;margin-bottom:14px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#D4A65A}
+.cal-head h2{margin:0 0 16px;font-family:'Bodoni Moda',Georgia,serif;font-weight:400;font-size:clamp(24px,3vw,40px);line-height:1.2;text-transform:uppercase;letter-spacing:.08em}
+.cal-head p{margin:0;font-size:16px;line-height:1.8;color:rgba(239,232,220,.78)}
+.cal-box{position:relative;padding:clamp(18px,3vw,40px);border:1px solid rgba(226,183,106,.28);background:linear-gradient(180deg,rgba(15,17,40,.72),rgba(15,17,40,.42));box-shadow:0 30px 80px rgba(0,0,0,.4)}
+.cal-wait{margin:0;padding:60px 0;text-align:center;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:rgba(239,232,220,.55)}
+.cal-bar{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;justify-content:space-between;margin-top:24px;padding-top:24px;border-top:1px solid rgba(239,232,220,.14)}
+.cal-sel{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,232,220,.8)}
+.cal-btn{min-height:52px;padding:0 40px;border:0;border-radius:999px;background:#D4A65A;color:#0F111A;font:500 13px 'Inter',system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:background .25s}
+.cal-btn:hover{background:#E2B76A}
+.cal-alt{margin:22px 0 0;font-size:14px;letter-spacing:.04em;color:rgba(239,232,220,.6)}
+.cal-alt a{color:#E2B76A}
+.cal-tabs{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 28px}
+.cal-tabs button{min-height:44px;padding:0 22px;border:1px solid rgba(239,232,220,.22);border-radius:999px;background:transparent;color:#EFE8DC;font:400 12px 'Inter',system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.cal-tabs button[aria-pressed=true]{background:#EFE8DC;color:#0F111A;border-color:#EFE8DC}
+.cal-tabs small{opacity:.6;margin-left:6px;letter-spacing:.08em}
+/* calendarietto Magellano: adattato ai colori della Dimora */
+.ml-cal{color:#EFE8DC;font-family:'Inter',system-ui,sans-serif}
+.ml-cal .ml-m{display:inline-block;vertical-align:top;box-sizing:border-box;width:100%;padding:0 10px 10px}
+@media (min-width:760px){.ml-cal .ml-m{width:50%}}
+.ml-cal table{width:100%;border-collapse:collapse;background:transparent!important;color:inherit}
+.ml-cal th,.ml-cal caption{font-weight:400;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,232,220,.6);background:transparent!important;border:0!important}
+.ml-cal td{border:1px solid rgba(15,17,26,.9)!important;text-align:center;font-size:14px}
+.ml-cal button,.ml-cal input,.ml-cal select{font-family:inherit}
+.ml-cal select,.ml-cal input{background:rgba(5,7,20,.6);color:#EFE8DC;border:1px solid rgba(239,232,220,.25);border-radius:2px;padding:6px 8px}
+.ml-cal a{color:#E2B76A}
+</style>
 </head>
 <body>
 <div class="vpage" style="width:100%;background:transparent;color:#EFE8DC;font-family:'Inter',system-ui,sans-serif;font-weight:300">
@@ -190,7 +223,7 @@ input::placeholder{text-transform:uppercase}
       <a class="brand" href="/" aria-label="Dimora delle Storie — torna alla home"><img src="/img/logo-icona.svg" alt="" style="height:52px;width:auto;display:block"><b>Dimora<br>delle Storie</b></a>
       <nav class="topnav" style="display:flex;flex-wrap:wrap;gap:28px;align-items:center;font-size:13px;letter-spacing:.06em;padding:12px 28px;border-radius:999px;background:rgba(239,232,220,.08);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.18)">
         <a href="/" style="text-decoration:none">Home</a><a href="/#dimore" style="text-decoration:none">Dimore</a><a href="/la-dimora" style="text-decoration:none" aria-current="page">La casa</a><a href="/storie" style="text-decoration:none">Storie</a><a href="/tempio-pausania" style="text-decoration:none">Tempio</a><a href="/#prenota" style="text-decoration:none">Contatti</a>
-      </nav>
+      </nav><!--pb--><a class="btn-prenota" href="/prenota">Prenota</a><!--/pb-->
     </header>
     <div style="position:relative;flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;padding:0 clamp(20px,4.5vw,64px) 56px">
       <span class="fd" style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#D4A65A">Piazza Eleonora d'Arborea · 1930 · Tempio Pausania</span>
