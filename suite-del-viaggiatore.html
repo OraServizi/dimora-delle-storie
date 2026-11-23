@@ -201,16 +201,23 @@ input::placeholder{text-transform:uppercase}
 .cal-tabs button{min-height:44px;padding:0 22px;border:1px solid rgba(239,232,220,.22);border-radius:999px;background:transparent;color:#EFE8DC;font:400 12px 'Inter',system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
 .cal-tabs button[aria-pressed=true]{background:#EFE8DC;color:#0F111A;border-color:#EFE8DC}
 .cal-tabs small{opacity:.6;margin-left:6px;letter-spacing:.08em}
-/* calendarietto Magellano: adattato ai colori della Dimora */
-.ml-cal{color:#EFE8DC;font-family:'Inter',system-ui,sans-serif}
-.ml-cal .ml-m{display:inline-block;vertical-align:top;box-sizing:border-box;width:100%;padding:0 10px 10px}
-@media (min-width:760px){.ml-cal .ml-m{width:50%}}
-.ml-cal table{width:100%;border-collapse:collapse;background:transparent!important;color:inherit}
-.ml-cal th,.ml-cal caption{font-weight:400;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,232,220,.6);background:transparent!important;border:0!important}
-.ml-cal td{border:1px solid rgba(15,17,26,.9)!important;text-align:center;font-size:14px}
-.ml-cal button,.ml-cal input,.ml-cal select{font-family:inherit}
-.ml-cal select,.ml-cal input{background:rgba(5,7,20,.6);color:#EFE8DC;border:1px solid rgba(239,232,220,.25);border-radius:2px;padding:6px 8px}
-.ml-cal a{color:#E2B76A}
+/* calendarietto Magellano: usa le sue variabili CSS, ricolorate sulla Dimora */
+.ml-cal{--calendar-bg:transparent;--header-month-txt:#EFE8DC;--header-week-txt:rgba(239,232,220,.5);--days-border:transparent;--element-hover:rgba(212,166,90,.2);--disabled-element-hover:transparent;--free-day:transparent;--not-selectable-day:transparent;--selected-day:rgba(212,166,90,.2);--selected-day-first-last:#D4A65A;--busy-day:transparent;--days-contrast-bg:transparent;color:#EFE8DC;font-family:'Inter',system-ui,sans-serif}
+.ml-cal .ml-calendarWrapper{padding:0;border-radius:0;background:transparent}
+.ml-cal .ml-calendar .cal-day{color:#EFE8DC;font-size:14px}
+.ml-cal .ml-calendar .cal-day-block-booking{color:rgba(239,232,220,.45)}
+.ml-cal .ml-calendar tbody tr td button.cal-day-selected-first,.ml-cal .ml-calendar tbody tr td button.cal-day-selected-last{color:#0F111A!important;font-weight:500}
+.ml-cal .ml-calendar thead tr.month-title .month-name{font-family:'Bodoni Moda',Georgia,serif;font-weight:400;text-transform:uppercase!important;letter-spacing:.12em;font-size:16px}
+.ml-cal .ml-calendar thead tr.day-week .day-name{font-size:11px;letter-spacing:.14em;text-transform:uppercase!important}
+.ml-cal select{background:rgba(5,7,20,.6)!important;color:#EFE8DC!important;border:1px solid rgba(239,232,220,.25)!important;border-radius:2px}
+.ml-cal option{background:#0F111A}
+.ml-cal .ml-btn.prevMonth,.ml-cal .ml-btn.nextMonth{color:#E2B76A}
+.ml-cal .legend-item{border-color:rgba(239,232,220,.35)!important;background:transparent!important}
+.ml-cal .legend-title,.ml-cal .legend-label,.ml-cal .ml-bottom-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(239,232,220,.65)}
+.ml-cal .ml-bottom-row{margin-top:18px;padding-top:22px;border-top:1px solid rgba(239,232,220,.14)}
+.ml-cal .ml-checkin,.ml-cal .ml-checkout{font-family:'Bodoni Moda',Georgia,serif;font-size:18px;color:#EFE8DC}
+.ml-cal .ml-confirm-booking{display:inline-flex!important;align-items:center;justify-content:center;min-height:52px;padding:0 44px!important;margin-top:18px;border:0!important;border-radius:999px!important;background:#D4A65A!important;color:#0F111A!important;font:500 13px 'Inter',system-ui,sans-serif!important;letter-spacing:.18em;text-transform:uppercase;text-decoration:none!important}
+.ml-cal .ml-confirm-booking:hover{background:#E2B76A!important}
 </style>
 </head>
 <body>
@@ -245,7 +252,7 @@ input::placeholder{text-transform:uppercase}
     </aside>
   </main>
 <!--cal-->
-<section class="cal-sec" id="calendario" data-res="47540" data-grp="16915" data-max="2"><div class="cal-head"><span class="k">Disponibilità</span><h2>Scegliete le vostre date</h2><p>Il calendario mostra in tempo reale le notti libere del Suite del Viaggiatore. Selezionate arrivo e partenza, poi «Prenota»: la prenotazione si conclude sul portale sicuro della Dimora, senza commissioni.</p></div><div class="cal-box"><div id="ml-cal" class="ml-cal"><p class="cal-wait">Caricamento del calendario…</p></div><div class="cal-bar"><span class="cal-sel" aria-live="polite">Selezionate arrivo e partenza</span><button type="button" id="cal-prenota" class="cal-btn">Prenota</button></div></div><p class="cal-alt">Preferite parlarne con noi? <a href="https://wa.me/393791656864">WhatsApp</a> · <a href="tel:+393791656864">+39 379 165 6864</a></p></section>
+<section class="cal-sec" id="calendario" data-res="47540" data-grp="16915" data-max="2"><div class="cal-head"><span class="k">Disponibilità</span><h2>Scegliete le vostre date</h2><p>Il calendario mostra in tempo reale le notti libere del Suite del Viaggiatore. Selezionate arrivo e partenza, poi «Prenota»: la prenotazione si conclude sul portale sicuro della Dimora, senza commissioni.</p></div><div class="cal-box"><div id="ml-cal" class="ml-cal"><p class="cal-wait">Caricamento del calendario…</p></div><button type="button" id="cal-prenota" hidden></button></div><p class="cal-alt">Preferite parlarne con noi? <a href="https://wa.me/393791656864">WhatsApp</a> · <a href="tel:+393791656864">+39 379 165 6864</a></p></section>
 <script>(()=>{const box=document.getElementById('ml-cal');if(!box)return;
 const sec=box.closest('[data-res]'),btn0=document.getElementById('cal-prenota'),sel=document.querySelector('.cal-sel');
 const load=(src,css)=>new Promise((ok,ko)=>{const t=document.createElement(css?'link':'script');if(css){t.rel='stylesheet';t.href=src}else{t.src=src}t.onload=ok;t.onerror=ko;document.head.appendChild(t)});
