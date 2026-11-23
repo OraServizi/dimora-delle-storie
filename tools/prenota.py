@@ -363,6 +363,8 @@ ESTERNI_CSS = """<style id="esterni-css">
 .esterni figure:nth-child(3){margin-top:clamp(20px,3vw,40px)}
 .esterni figure:nth-child(3) img{aspect-ratio:4/5;clip-path:inset(0 0 0 0 round 0)}
 .esterni figcaption{margin-top:12px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(239,232,220,.55)}
+#dimore:has(+ #esterni),body:has(.esterni-home) #dimore{padding-bottom:40px!important}
+.esterni-home{border-top:0;padding-top:40px;padding-bottom:clamp(100px,10vw,160px)}
 @media (min-width:900px){.esterni{display:grid;grid-template-columns:minmax(260px,.7fr) 2fr;gap:clamp(40px,5vw,80px);align-items:center}.esterni .t{margin:0}}
 @media (max-width:600px){.esterni .f{grid-template-columns:1fr 1fr}.esterni figure:nth-child(3){grid-column:1/-1;margin-top:0}.esterni figure:nth-child(3) img{aspect-ratio:16/10}.esterni figure:nth-child(2){margin-top:48px}}
 </style>"""
@@ -375,7 +377,7 @@ ESTERNI = {  # pagina: (titolo, testo, [(foto, didascalia) x3])
                  "Di fronte alla Dimora, con la stessa facciata bianca e lo stesso portone azzurro: qui nel 1930 si vendeva davvero il latte.",
                  [("lat-16", "La facciata della Latteria"), ("lat-19", "Il vicolo della Latteria"), ("est-02", "La Dimora, di fronte")]),
 }
-PAGINE_ESTERNI = {"loft-dell-antiquario.html": "dimora", "suite-del-viaggiatore.html": "dimora",
+PAGINE_ESTERNI = {"index.html": "dimora", "loft-dell-antiquario.html": "dimora", "suite-del-viaggiatore.html": "dimora",
                   "antica-latteria-1930.html": "latteria", "la-dimora-intera.html": "dimora", "prenota.html": "dimora"}
 
 def esterni(p, k):
@@ -385,7 +387,9 @@ def esterni(p, k):
            f'<a href="/la-dimora">Scoprite la casa →</a></div><div class="f">{figs}</div></section>\n')
     s = rd(p)
     s = re.sub(r'<style id="esterni-css">.*?</style>\n?', '', s, flags=re.S).replace('</head>', ESTERNI_CSS + '\n</head>', 1)
-    wr(p, blocco(s, "est", blk, "  <footer"))
+    dove = '  <section id="storie"' if p == "index.html" else "  <footer"
+    if p == "index.html": blk = blk.replace('<section class="esterni">', '<section class="esterni esterni-home" id="esterni">')
+    wr(p, blocco(s, "est", blk, dove))
 
 if __name__ == "__main__":
     for p, k in PAGINE_ALLOGGIO.items(): alloggio(p, k)
