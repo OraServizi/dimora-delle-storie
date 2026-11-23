@@ -33,7 +33,8 @@ CSS = '''
 .t-hero{position:relative;min-height:100svh;overflow:hidden;display:flex;flex-direction:column}
 .t-hero video,.t-hero .t-ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .t-ph{background:radial-gradient(60% 50% at 50% 45%,rgba(150,170,240,.16),rgba(0,0,0,0) 70%)}
-.t-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,10,24,.6) 0%,rgba(8,10,24,.1) 35%,rgba(8,10,24,.35) 70%,rgba(11,14,34,.95) 100%);pointer-events:none}
+.t-hero::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 38% at 50% 62%,rgba(8,10,24,.55),rgba(8,10,24,0) 75%),linear-gradient(180deg,rgba(8,10,24,.6) 0%,rgba(8,10,24,.15) 30%,rgba(8,10,24,.4) 65%,rgba(11,14,34,.95) 100%);pointer-events:none}
+.t-hero .t-h1,.t-hero .t-sub,.t-hero .t-k{text-shadow:0 2px 24px rgba(0,0,0,.55)}
 .t-hero>*{position:relative;z-index:1}
 .t-title{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;text-align:center;gap:16px;padding:0 20px 14vh}
 .t-k{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#8FA2E6}
