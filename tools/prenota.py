@@ -282,7 +282,7 @@ f.addEventListener('submit',async ev=>{ev.preventDefault();const a=f.arrivo.valu
       return{r,ok:true,o:0,stato:'Disponibile · '+N.length+(N.length==1?' notte':' notti'),
         link:'https://bol.mainapps.com/step2/'+r.res+'/'+a.replace(/-/g,'')+'-'+b.replace(/-/g,'')+'/'+px+'/nc/?apikey='+K+'&lang=it'}}));
     R.sort((x,y)=>x.o-y.o);const liberi=R.filter(x=>x.ok).length;
-    msg.textContent=(liberi?(liberi==1?'Una dimora libera':liberi+' dimore libere'):'Nessuna dimora libera')+' dal '+it(a)+' al '+it(b)+' per '+px+(px==1?' ospite':' ospiti')+'.'+(liberi?'':' Provate altre date o scriveteci: troveremo una soluzione.');
+    msg.textContent=(liberi?(liberi==1?'Una dimora libera':liberi+' dimore libere'):'Nessuna dimora libera')+' dal '+it(a)+' al '+it(b)+' per '+px+(px==1?' ospite':' ospiti')+'.'+(liberi?'':(R.some(x=>x.o==1)&&!R.some(x=>x.o==2)?' In questo periodo il soggiorno minimo è di '+Math.max(...R.filter(x=>x.o==1).map(x=>+x.stato.match(/\\d+/)[0]))+' notti.':' Provate altre date o scriveteci: troveremo una soluzione.'));
     out.innerHTML=R.map(x=>scheda(x.r,x.stato,x.ok,x.link)).join('')}
   catch(e){msg.innerHTML='Non riusciamo a verificare le disponibilità in questo momento. Scriveteci su <a href=\""""+WA+"""\" style="color:#E2B76A">WhatsApp</a>.'}});
 const q=new URLSearchParams(location.search);if(q.get('arrivo')){f.arrivo.value=q.get('arrivo');f.partenza.value=q.get('partenza')||'';if(q.get('ospiti'))f.ospiti.value=q.get('ospiti');f.requestSubmit()}})();</script>"""
