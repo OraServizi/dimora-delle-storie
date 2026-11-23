@@ -372,10 +372,10 @@ ESTERNI_CSS = """<style id="esterni-css">
 ESTERNI = {  # pagina: (titolo, testo, [(foto, didascalia) x3])
     "dimora": ("Due palazzetti, uno di fronte all'altro",
                "La Dimora e l'Antica Latteria si guardano attraverso un vicolo di granito del centro storico: facciate bianche, portoni azzurri, balconi in ferro battuto.",
-               [("est-02", "La facciata della Dimora"), ("est-01", "Il vicolo di granito"), ("lat-18", "La palazzina della Latteria, di fronte")]),
+               [("g-home-facciata", "La facciata della Dimora"), ("g-est-02", "Il vicolo"), ("g-latf-01", "La palazzina della Latteria, di fronte")]),
     "latteria": ("La palazzina della Latteria",
                  "Di fronte alla Dimora, con la stessa facciata bianca e lo stesso portone azzurro: qui nel 1930 si vendeva davvero il latte.",
-                 [("lat-16", "La facciata della Latteria"), ("lat-19", "Il vicolo della Latteria"), ("est-02", "La Dimora, di fronte")]),
+                 [("g-latf-01", "La facciata della Latteria"), ("g-latf-02", "La Latteria nel vicolo"), ("g-est-01", "La Dimora, di fronte")]),
 }
 PAGINE_ESTERNI = {"index.html": "dimora", "loft-dell-antiquario.html": "dimora", "suite-del-viaggiatore.html": "dimora",
                   "antica-latteria-1930.html": "latteria", "la-dimora-intera.html": "dimora", "prenota.html": "dimora"}

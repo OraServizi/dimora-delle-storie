@@ -42,8 +42,22 @@ RIGHE = {
  "latfuori": [["18","16","19"]],
 }
 
+# Foto scelte da Luca (cartella SCELTA FOTO, 23/11/2026): ordine e didascalie in foto_ordine.json, file /img/foto/g-<chiave>-NN.webp
+_ORD = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "foto_ordine.json"), encoding="utf-8"))
+FOTO = {k: [(n, o, c) for n, o, c in v] for k, v in _ORD.items()}
+def _righe(nomi, schema=(2, 3)):
+    r, i, j = [[nomi[0]]], 1, 0
+    while i < len(nomi):
+        n = schema[j % len(schema)]
+        if len(nomi) - i - n == 1: n += 1
+        r.append(nomi[i:i + n]); i += n; j += 1
+    return r
+RIGHE = {k: _righe([n for n, _, _ in v]) for k, v in FOTO.items()}
+RIGHE["latfuori"] = [[n for n, _, _ in FOTO["latf"]]]
+def n_foto(k): return len(FOTO[k])
+
 def galleria(key, kicker, titolo, alt_pre):
-    fk = "lat" if key == "latfuori" else key
+    fk = "latf" if key == "latfuori" else key
     info = {n: (o, c) for n, o, c in FOTO[fk]}
     rows = []
     for riga in RIGHE[key]:
@@ -52,7 +66,7 @@ def galleria(key, kicker, titolo, alt_pre):
             o, c = info[n]
             ar = "2/3" if o == P else "3/2"
             grow = "0.6667" if o == P else "1.5"
-            src = f"/img/foto/{fk}-{n}.webp"
+            src = f"/img/foto/g-{fk}-{n}.webp"
             figs.append(f'<figure class="gf reveal" style="flex:{grow} 1 0;aspect-ratio:{ar}"><a href="{src}" data-cap="{e(c)}">'
                         f'<img src="{src}" alt="{e(alt_pre + " — " + c)}" loading="lazy" decoding="async" width="{1067 if o==P else 1600}" height="{1600 if o==P else 1067}"></a>'
                         f'<figcaption>{e(c)}</figcaption></figure>')
@@ -184,14 +198,14 @@ def latteria():
   <section class="gal-sec" style="padding-top:12px"><div class="gal" data-gal>''' + galleria("latfuori", "", "", "Antica Latteria 1930").split('<div class="gal" data-gal>',1)[1] + '</section>\n')
     s = re.sub(r', "floorSize": \{[^}]*\}, "occupancy": \{[^}]*\}', '', s)
     s = re.sub(r'("amenityFeature": \[.*?\])', lambda m: m.group(1) + ', "floorSize": {"@type": "QuantitativeValue", "value": 38, "unitCode": "MTK"}, "occupancy": {"@type": "QuantitativeValue", "maxValue": 2}', s, count=1, flags=re.S)
-    block = fuori + ('<section class="gal-sec">' + galleria("lat", "Galleria · 15 foto", "Dentro la Latteria", "Antica Latteria 1930") + '</section>\n'
+    block = fuori + ('<section class="gal-sec">' + galleria("lat", f"Galleria · {n_foto('lat')} foto", "Dentro la Latteria", "Antica Latteria 1930") + '</section>\n'
              + racconto("Una leggenda della Dimora", "La leggenda della Latteria", LAT_LEGGENDA, '<a href="/storie/leggenda-della-latteria" style="color:#8FA2E6">Anche nel Libro delle Storie →</a>', "leggenda"))
     return put_block(put_css(s), block)
 
 def loft():
     s = ospiti(rd("loft-dell-antiquario.html"), ">Ultimo piano · 45 mq · Tempio Pausania<", ">Ultimo piano · 45 mq · 2 ospiti · Tempio Pausania<")
     teaser = racconto("Una leggenda della Dimora", "La leggenda dell'Antiquario", ANTIQUARIO, '<a href="/storie/leggenda-dell-antiquario" style="color:#8FA2E6">Anche nel Libro delle Storie →</a>', "leggenda")
-    block = '<section class="gal-sec">' + galleria("loft", "Galleria · 12 foto", "Dentro il loft", "Loft dell'Antiquario") + '</section>\n' + teaser
+    block = '<section class="gal-sec">' + galleria("loft", f"Galleria · {n_foto('loft')} foto", "Dentro il loft", "Loft dell'Antiquario") + '</section>\n' + teaser
     return put_block(put_css(s), block)
 
 def ospiti(s, kick_old, kick_new):
@@ -201,7 +215,7 @@ def ospiti(s, kick_old, kick_new):
 
 def suite():
     s = ospiti(rd("suite-del-viaggiatore.html"), ">Primo piano · 25 mq · Tempio Pausania<", ">Primo piano · 25 mq · 2 ospiti · Tempio Pausania<")
-    block = ('<section class="gal-sec">' + galleria("suite", "Galleria · 8 foto", "Dentro la suite", "Suite del Viaggiatore") + '</section>\n'
+    block = ('<section class="gal-sec">' + galleria("suite", f"Galleria · {n_foto('suite')} foto", "Dentro la suite", "Suite del Viaggiatore") + '</section>\n'
              + racconto("Una leggenda della Dimora", "La leggenda del Viaggiatore", VIAGGIATORE, '<a href="/storie/leggenda-del-viaggiatore" style="color:#8FA2E6">Anche nel Libro delle Storie →</a>', "leggenda"))
     return put_block(put_css(s), block)
 
