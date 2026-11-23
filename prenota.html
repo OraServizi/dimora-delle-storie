@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Prenota — Dimora delle Storie, Tempio Pausania</title>
 <link rel="preload" href="/fonts/bodoni-moda.woff2" as="font" type="font/woff2" crossorigin>
-<meta name="description" content="Prenota direttamente alla Dimora delle Storie, Tempio Pausania: Loft dell&#x27;Antiquario, Suite del Viaggiatore, Antica Latteria 1930 o la Dimora intera.">
+<meta name="description" content="Prenota direttamente alla Dimora delle Storie, Tempio Pausania: scegli le date e vedi subito le dimore libere tra Loft dell&#x27;Antiquario, Suite del Viaggiatore, Antica Latteria 1930 e la Dimora intera.">
 <link rel="canonical" href="https://www.dimoradellestorie.com/prenota">
-<meta property="og:type" content="website"><meta property="og:title" content="Prenota — Dimora delle Storie, Tempio Pausania"><meta property="og:description" content="Prenota direttamente alla Dimora delle Storie, Tempio Pausania: Loft dell&#x27;Antiquario, Suite del Viaggiatore, Antica Latteria 1930 o la Dimora intera."><meta property="og:image" content="https://www.dimoradellestorie.com/img/loft.jpg"><meta property="og:locale" content="it_IT">
+<meta property="og:type" content="website"><meta property="og:title" content="Prenota — Dimora delle Storie, Tempio Pausania"><meta property="og:description" content="Prenota direttamente alla Dimora delle Storie, Tempio Pausania: scegli le date e vedi subito le dimore libere tra Loft dell&#x27;Antiquario, Suite del Viaggiatore, Antica Latteria 1930 e la Dimora intera."><meta property="og:image" content="https://www.dimoradellestorie.com/img/loft.jpg"><meta property="og:locale" content="it_IT">
 <link rel="icon" href="/img/logo-icona.svg" type="image/svg+xml">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Prenota — Dimora delle Storie", "url": "https://www.dimoradellestorie.com/prenota", "description": "Prenota direttamente alla Dimora delle Storie, Tempio Pausania: Loft dell'Antiquario, Suite del Viaggiatore, Antica Latteria 1930 o la Dimora intera."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Prenota — Dimora delle Storie", "url": "https://www.dimoradellestorie.com/prenota", "description": "Prenota direttamente alla Dimora delle Storie, Tempio Pausania: scegli le date e vedi subito le dimore libere tra Loft dell'Antiquario, Suite del Viaggiatore, Antica Latteria 1930 e la Dimora intera."}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet">
 <style>
@@ -179,6 +179,29 @@ input::placeholder{text-transform:uppercase}
 .topnav a[aria-current]::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:1px;background:#D4A65A}
 @media (max-width:700px){.brand b{display:none}.topnav a[href="/"][aria-current]{display:none}.topnav{gap:13px!important;padding-left:18px!important;padding-right:18px!important}}
 </style>
+<style id="pagina">
+.cerca{padding:clamp(56px,7vw,96px) clamp(20px,4.5vw,64px) clamp(80px,9vw,120px)}
+.cerca-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:18px;align-items:end;padding:clamp(20px,3vw,36px);border:1px solid rgba(226,183,106,.3);background:linear-gradient(180deg,rgba(15,17,40,.72),rgba(15,17,40,.42));box-shadow:0 30px 80px rgba(0,0,0,.4)}
+.cerca-form label{display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(239,232,220,.7)}
+.cerca-form input,.cerca-form select{display:block;width:100%;box-sizing:border-box;margin-top:10px;min-height:52px;padding:0 16px;border:1px solid rgba(239,232,220,.25);border-radius:2px;background:rgba(5,7,20,.6);color:#EFE8DC;font:16px 'Inter',system-ui,sans-serif;color-scheme:dark}
+.cerca-form input:focus,.cerca-form select:focus{outline:none;border-color:#D4A65A;box-shadow:0 0 0 3px rgba(212,166,90,.18)}
+.cerca-form option{background:#0F111A}
+.cerca-form button{min-height:52px;border:0;border-radius:999px;background:#D4A65A;color:#0F111A;font:500 13px 'Inter',system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;cursor:pointer}
+.cerca-form button:hover{background:#E2B76A}
+.cerca-msg{min-height:24px;margin:22px 0 0;font-size:14px;letter-spacing:.06em;color:#E2B76A}
+.esiti{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:24px;margin-top:20px}
+.esito{display:flex;flex-direction:column;border:1px solid rgba(239,232,220,.14);background:rgba(15,17,26,.55);transition:opacity .3s}
+.esito img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.esito .c{display:flex;flex-direction:column;gap:10px;flex:1;padding:22px}
+.esito .d{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(239,232,220,.6)}
+.esito h3{margin:0;font-family:'Bodoni Moda',Georgia,serif;font-weight:400;font-size:21px;text-transform:uppercase;letter-spacing:.08em}
+.esito .s{margin:auto 0 0;padding-top:12px;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.esito .s.ok{color:#E2B76A}.esito .s.no{color:rgba(239,232,220,.55)}
+.esito a.p{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin-top:6px;border-radius:999px;background:#D4A65A;color:#0F111A;text-decoration:none;font:500 12px 'Inter',system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase}
+.esito a.p:hover{background:#E2B76A}
+.esito a.v{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,232,220,.7)}
+.esito.off{opacity:.5}
+</style>
 <style id="prenota-css">
 .btn-prenota{display:inline-flex;align-items:center;min-height:44px;box-sizing:border-box;padding:0 28px;border-radius:999px;background:#D4A65A;color:#0F111A!important;text-decoration:none;font:500 12px 'Inter',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:background .25s,transform .25s}
 .btn-prenota:hover{background:#E2B76A;transform:translateY(-1px)}
@@ -236,37 +259,57 @@ input::placeholder{text-transform:uppercase}
       <h1 class="h1a" style="margin:0;font-family:'Bodoni Moda',Georgia,serif;font-weight:400;font-size:clamp(26px,4.6vw,64px);line-height:1.15;text-transform:uppercase;letter-spacing:.08em">Prenota il tuo soggiorno</h1>
     </div>
   </section>
-  <main>
-<section class="cal-sec" id="calendario" data-res="47201" data-grp="16915" data-max="2"><div class="cal-head"><span class="k">Prenotazione diretta</span><h2>Scegliete la dimora e le date</h2><p>Prenotando qui, direttamente con noi, avete il prezzo migliore e nessuna commissione. Scegliete la dimora, selezionate arrivo e partenza sul calendario e premete «Prenota»: la prenotazione si conclude sul portale sicuro della Dimora.</p></div><div class="cal-tabs" role="group" aria-label="Scegliete la dimora"><button type="button" data-k="loft" data-res="47201" data-grp="16915" data-max="2" aria-pressed="true">Loft dell&#x27;Antiquario<small>2 ospiti</small></button><button type="button" data-k="suite" data-res="47540" data-grp="16915" data-max="2" aria-pressed="false">Suite del Viaggiatore<small>2 ospiti</small></button><button type="button" data-k="latteria" data-res="50407" data-grp="18791" data-max="2" aria-pressed="false">Antica Latteria 1930<small>2 ospiti</small></button><button type="button" data-k="intera" data-res="48070" data-grp="16915" data-max="4" aria-pressed="false">La Dimora intera<small>4 ospiti</small></button></div><div class="cal-box"><div id="ml-cal" class="ml-cal"><p class="cal-wait">Caricamento del calendario…</p></div><button type="button" id="cal-prenota" hidden></button></div><p class="cal-alt">Preferite parlarne con noi? <a href="https://wa.me/393791656864">WhatsApp</a> · <a href="tel:+393791656864">+39 379 165 6864</a></p></section>
-<script>(()=>{const box=document.getElementById('ml-cal');if(!box)return;
-const sec=box.closest('[data-res]'),btn0=document.getElementById('cal-prenota'),sel=document.querySelector('.cal-sel');
-const load=(src,css)=>new Promise((ok,ko)=>{const t=document.createElement(css?'link':'script');if(css){t.rel='stylesheet';t.href=src}else{t.src=src}t.onload=ok;t.onerror=ko;document.head.appendChild(t)});
-const it=d=>d?d.split('-').reverse().join('/'):'';
-let pronto=null;
-const carica=()=>pronto||(pronto=load('https://bookingcalendar.mainapps.com/css/ml-calendar-bol.css',1)
-  .then(()=>load('https://bookingcalendar.mainapps.com/js/jquery-2.1.4.min.js'))
-  .then(()=>{window.$jma=jQuery.noConflict(true)})
-  .then(()=>load('https://bookingcalendar.mainapps.com/js/safe/ml-calendar-bol.js')));
-const avvia=()=>{const d=sec.dataset,now=new Date(),n=innerWidth<760?1:2;
-  const b=document.getElementById('cal-prenota'),nb=b.cloneNode(true);b.replaceWith(nb);
-  box.innerHTML='';sel&&(sel.textContent='Selezionate arrivo e partenza');
-  $jma('#ml-cal').mlCalendar({apikey:'YVQw8J6NyW',language:document.documentElement.lang==='en'?'en':'it',
-    resourceID:+d.res,realGroupID:+d.grp,year:now.getFullYear(),month:now.getMonth()+1,calNumber:n,cols:n,
-    calWrapper:'ml-m',startDay:1,scrollMonths:1,minYear:now.getFullYear(),minMonth:now.getMonth()+1,
-    dataStart:null,dataEnd:null,dateFormat:'dd/mm/yyyy',pax:Math.min(2,+d.max),minPax:1,maxPax:+d.max,
-    allowChildren:false,maxAge:17,submitSelector:'#cal-prenota',toolbar:1,monthTitle:1,legend:1,clickable:1,
-    labels:{checkIn:'Arrivo',checkOut:'Partenza',nights:'Notti',book:'Prenota',pax:'Ospiti',children:'Bambini',childrenAge:'Età',
-      selectable:'Libero',notSelectable:'Non selezionabile',notAvailable:'Occupato',legend:'Legenda'},
-    onChange:(f,t,p)=>{if(!sel)return;sel.textContent=f&&t?('Dal '+it(f)+' al '+it(t)+(p?' · '+p+' ospiti':'')):f?('Arrivo '+it(f)+' · scegliete la partenza'):'Selezionate arrivo e partenza'}})};
-const errore=()=>{box.innerHTML='<p class="cal-wait">Il calendario non si è caricato. Scriveteci su <a href="https://wa.me/393791656864">WhatsApp</a> per verificare le date.</p>'};
-const go=()=>carica().then(avvia).catch(errore);
-document.querySelectorAll('.cal-tabs button').forEach(t=>t.addEventListener('click',()=>{
-  document.querySelectorAll('.cal-tabs button').forEach(x=>x.setAttribute('aria-pressed',x===t));
-  Object.assign(sec.dataset,{res:t.dataset.res,grp:t.dataset.grp,max:t.dataset.max});history.replaceState(null,'','#'+t.dataset.k);go()}));
-const k=location.hash.slice(1),tab=document.querySelector('.cal-tabs [data-k="'+k+'"]');if(tab){tab.click();return}
-if(!('IntersectionObserver' in window)){go();return}
-const io=new IntersectionObserver(es=>{if(es.some(x=>x.isIntersecting)){io.disconnect();go()}},{rootMargin:'600px'});io.observe(sec)})();</script>
+  <main class="cerca">
+    <div class="cal-head"><span class="k">Prenotazione diretta</span><h2>Quando arrivate?</h2><p>Indicate le date e il numero di ospiti: vi mostriamo subito quali dimore sono libere. Prenotando qui, direttamente con noi, non pagate commissioni.</p></div>
+    <form class="cerca-form" id="cerca" novalidate>
+      <label>Arrivo<input type="date" name="arrivo" required></label>
+      <label>Partenza<input type="date" name="partenza" required></label>
+      <label>Ospiti<select name="ospiti"><option value="1">1 ospite</option><option value="2" selected>2 ospiti</option><option value="3">3 ospiti</option><option value="4">4 ospiti</option></select></label>
+      <button type="submit">Verifica disponibilità</button>
+    </form>
+    <p class="cerca-msg" id="cerca-msg" aria-live="polite"></p>
+    <div class="esiti" id="esiti"></div>
+    <p class="cal-alt">Preferite parlarne con noi? <a href="https://wa.me/393791656864">WhatsApp</a> · <a href="tel:+393791656864">+39 379 165 6864</a></p>
   </main>
+<script>(()=>{const D={"loft": {"res": 47201, "grp": 16915, "max": 2, "nome": "Loft dell'Antiquario", "url": "/loft-dell-antiquario", "foto": "/img/loft.jpg", "det": "Ultimo piano · 45 mq · 2 ospiti"}, "suite": {"res": 47540, "grp": 16915, "max": 2, "nome": "Suite del Viaggiatore", "url": "/suite-del-viaggiatore", "foto": "/img/suite.jpg", "det": "Primo piano · 25 mq · 2 ospiti"}, "latteria": {"res": 50407, "grp": 18791, "max": 2, "nome": "Antica Latteria 1930", "url": "/antica-latteria-1930", "foto": "/img/latteria.jpg", "det": "Due livelli · 38 mq · 2 ospiti"}, "intera": {"res": 48070, "grp": 16915, "max": 4, "nome": "La Dimora intera", "url": "/la-dimora-intera", "foto": "/img/foto/est-02.webp", "det": "Loft + Suite · 70 mq · fino a 4 ospiti"}},K='YVQw8J6NyW',API='https://adm.mainapps.com/api/booking/';
+const f=document.getElementById('cerca'),out=document.getElementById('esiti'),msg=document.getElementById('cerca-msg');if(!f)return;
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const giorno=s=>{const[a,b,c]=s.split('-').map(Number);return new Date(a,b-1,c)};
+const it=s=>s.split('-').reverse().join('/');
+const oggi=iso(new Date());f.arrivo.min=oggi;
+f.arrivo.addEventListener('change',()=>{if(!f.arrivo.value)return;const m=giorno(f.arrivo.value);m.setDate(m.getDate()+1);f.partenza.min=iso(m);
+  if(!f.partenza.value||f.partenza.value<=f.arrivo.value){m.setDate(m.getDate()+1);f.partenza.value=iso(m)}});
+const notti=(a,b)=>{const L=[];for(let d=giorno(a);iso(d)<b;d.setDate(d.getDate()+1))L.push(iso(d));return L};
+async function occupate(r,a,b){const da=giorno(a),ul=giorno(b);ul.setDate(ul.getDate()-1);
+  const n=(ul.getFullYear()-da.getFullYear())*12+ul.getMonth()-da.getMonth()+1;
+  const p=new URLSearchParams({apikey:K,language:'it',resourceID:r.res,realGroupID:r.grp,year:da.getFullYear(),month:da.getMonth()+1,calNumber:n,cols:n,startDay:1,
+    minMonth:da.getMonth()+1,minYear:da.getFullYear(),maxMonth:12,maxYear:da.getFullYear()+2,dateFormat:'dd/mm/yyyy',pax:2,legend:0,toolbar:0,monthTitle:0,clickable:1});
+  let h=await (await fetch(API+'LoadCalendar',{method:'POST',body:p})).text();try{h=JSON.parse(h)}catch(e){}
+  const doc=new DOMParser().parseFromString(h,'text/html'),S=new Set();
+  doc.querySelectorAll('button.cal-day[data-date]').forEach(x=>{const c=x.classList;if(c.contains('cal-day-block-booking')&&(!c.contains('cal-day-block-booking-last')||c.contains('cal-day-block-booking-first')))S.add(x.dataset.date)});
+  return S}
+async function minimo(r,a){try{const R=await (await fetch(API+'GetBookingRestriction?apikey='+K,{method:'POST',body:new URLSearchParams({FromDate:a,ToDate:a,ResourceID:r.res})})).json();
+  const v=(R||[]).find(x=>x.StartDate.slice(0,10)<=a&&x.EndDate.slice(0,10)>=a);return v&&v.MinMinutes?Math.ceil(v.MinMinutes/1440):1}catch(e){return 1}}
+const scheda=(r,stato,ok,link)=>'<article class="esito'+(ok?'':' off')+'"><img src="'+r.foto+'" alt="'+r.nome+'" loading="lazy"><div class="c"><span class="d">'+r.det+'</span><h3>'+r.nome+'</h3>'
+  +'<p class="s '+(ok?'ok':'no')+'">'+stato+'</p>'+(ok?'<a class="p" href="'+link+'">Prenota</a>':'')+'<a class="v" href="'+r.url+'">Scopri la dimora →</a></div></article>';
+f.addEventListener('submit',async ev=>{ev.preventDefault();const a=f.arrivo.value,b=f.partenza.value,px=+f.ospiti.value;
+  if(!a||!b){msg.textContent='Indicate le date di arrivo e di partenza.';return}
+  if(b<=a){msg.textContent='La partenza deve essere successiva all\'arrivo.';return}
+  if(a<oggi){msg.textContent='La data di arrivo è già passata.';return}
+  const N=notti(a,b);msg.textContent='Verifico le disponibilità…';out.innerHTML='';
+  history.replaceState(null,'','?arrivo='+a+'&partenza='+b+'&ospiti='+px);
+  try{const R=await Promise.all(Object.values(D).map(async r=>{
+      if(px>r.max)return{r,ok:false,o:3,stato:'Fino a '+r.max+' ospiti'};
+      const[S,mn]=await Promise.all([occupate(r,a,b),minimo(r,a)]);
+      if(N.some(n=>S.has(n)))return{r,ok:false,o:2,stato:'Non disponibile in queste date'};
+      if(N.length<mn)return{r,ok:false,o:1,stato:'Soggiorno minimo '+mn+' notti'};
+      return{r,ok:true,o:0,stato:'Disponibile · '+N.length+(N.length==1?' notte':' notti'),
+        link:'https://bol.mainapps.com/step2/'+r.res+'/'+a.replace(/-/g,'')+'-'+b.replace(/-/g,'')+'/'+px+'/nc/?apikey='+K+'&lang=it'}}));
+    R.sort((x,y)=>x.o-y.o);const liberi=R.filter(x=>x.ok).length;
+    msg.textContent=(liberi?(liberi==1?'Una dimora libera':liberi+' dimore libere'):'Nessuna dimora libera')+' dal '+it(a)+' al '+it(b)+' per '+px+(px==1?' ospite':' ospiti')+'.'+(liberi?'':' Provate altre date o scriveteci: troveremo una soluzione.');
+    out.innerHTML=R.map(x=>scheda(x.r,x.stato,x.ok,x.link)).join('')}
+  catch(e){msg.innerHTML='Non riusciamo a verificare le disponibilità in questo momento. Scriveteci su <a href="https://wa.me/393791656864" style="color:#E2B76A">WhatsApp</a>.'}});
+const q=new URLSearchParams(location.search);if(q.get('arrivo')){f.arrivo.value=q.get('arrivo');f.partenza.value=q.get('partenza')||'';if(q.get('ospiti'))f.ospiti.value=q.get('ospiti');f.requestSubmit()}})();</script>
   <footer style="border-top:1px solid rgba(239,232,220,.12);padding:56px clamp(20px,4.5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:32px;font-size:14px;line-height:1.8;color:rgba(239,232,220,.74)">
     <div style="display:flex;flex-direction:column;gap:8px"><a href="/" style="text-decoration:none;font-family:'Bodoni Moda',Georgia,serif;font-size:19px;color:#EFE8DC;text-transform:uppercase;letter-spacing:.08em">Dimora delle Storie</a><span>Piazza Eleonora d'Arborea 6<br>07029 Tempio Pausania (SS)</span><span style="font-size:12px;letter-spacing:.12em;color:rgba(239,232,220,.55)">CIN IT090070C2000S8992</span></div>
     <div style="display:flex;flex-direction:column;gap:4px"><a href="tel:+393791656864" style="text-decoration:none">+39 379 165 6864</a><a href="mailto:info@dimoradellestorie.com" style="text-decoration:none">info@dimoradellestorie.com</a><a href="https://www.instagram.com/dimoradellestorie" style="text-decoration:none">Instagram · @dimoradellestorie</a></div>

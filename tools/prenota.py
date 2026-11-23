@@ -213,18 +213,98 @@ def la_dimora_intera():
                "La Dimora intera", body, INTERA_CSS)
     wr("la-dimora-intera.html", comune(s))
 
+SCHEDE = {  # chiave: (foto, dettagli)
+    "loft": ("/img/loft.jpg", "Ultimo piano · 45 mq · 2 ospiti"),
+    "suite": ("/img/suite.jpg", "Primo piano · 25 mq · 2 ospiti"),
+    "latteria": ("/img/latteria.jpg", "Due livelli · 38 mq · 2 ospiti"),
+    "intera": ("/img/foto/est-02.webp", "Loft + Suite · 70 mq · fino a 4 ospiti"),
+}
+
+CERCA_CSS = """
+.cerca{padding:clamp(56px,7vw,96px) clamp(20px,4.5vw,64px) clamp(80px,9vw,120px)}
+.cerca-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:18px;align-items:end;padding:clamp(20px,3vw,36px);border:1px solid rgba(226,183,106,.3);background:linear-gradient(180deg,rgba(15,17,40,.72),rgba(15,17,40,.42));box-shadow:0 30px 80px rgba(0,0,0,.4)}
+.cerca-form label{display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(239,232,220,.7)}
+.cerca-form input,.cerca-form select{display:block;width:100%;box-sizing:border-box;margin-top:10px;min-height:52px;padding:0 16px;border:1px solid rgba(239,232,220,.25);border-radius:2px;background:rgba(5,7,20,.6);color:#EFE8DC;font:16px 'Inter',system-ui,sans-serif;color-scheme:dark}
+.cerca-form input:focus,.cerca-form select:focus{outline:none;border-color:#D4A65A;box-shadow:0 0 0 3px rgba(212,166,90,.18)}
+.cerca-form option{background:#0F111A}
+.cerca-form button{min-height:52px;border:0;border-radius:999px;background:#D4A65A;color:#0F111A;font:500 13px 'Inter',system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;cursor:pointer}
+.cerca-form button:hover{background:#E2B76A}
+.cerca-msg{min-height:24px;margin:22px 0 0;font-size:14px;letter-spacing:.06em;color:#E2B76A}
+.esiti{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:24px;margin-top:20px}
+.esito{display:flex;flex-direction:column;border:1px solid rgba(239,232,220,.14);background:rgba(15,17,26,.55);transition:opacity .3s}
+.esito img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.esito .c{display:flex;flex-direction:column;gap:10px;flex:1;padding:22px}
+.esito .d{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(239,232,220,.6)}
+.esito h3{margin:0;font-family:'Bodoni Moda',Georgia,serif;font-weight:400;font-size:21px;text-transform:uppercase;letter-spacing:.08em}
+.esito .s{margin:auto 0 0;padding-top:12px;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.esito .s.ok{color:#E2B76A}.esito .s.no{color:rgba(239,232,220,.55)}
+.esito a.p{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin-top:6px;border-radius:999px;background:#D4A65A;color:#0F111A;text-decoration:none;font:500 12px 'Inter',system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase}
+.esito a.p:hover{background:#E2B76A}
+.esito a.v{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,232,220,.7)}
+.esito.off{opacity:.5}
+"""
+
+def cerca_js():
+    dati = json.dumps({k: {"res": v[0], "grp": v[1], "max": v[2], "nome": v[3], "url": v[4], "foto": SCHEDE[k][0], "det": SCHEDE[k][1]}
+                       for k, v in ALLOGGI.items()}, ensure_ascii=False)
+    return """<script>(()=>{const D=""" + dati + """,K='""" + APIKEY + """',API='https://adm.mainapps.com/api/booking/';
+const f=document.getElementById('cerca'),out=document.getElementById('esiti'),msg=document.getElementById('cerca-msg');if(!f)return;
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const giorno=s=>{const[a,b,c]=s.split('-').map(Number);return new Date(a,b-1,c)};
+const it=s=>s.split('-').reverse().join('/');
+const oggi=iso(new Date());f.arrivo.min=oggi;
+f.arrivo.addEventListener('change',()=>{if(!f.arrivo.value)return;const m=giorno(f.arrivo.value);m.setDate(m.getDate()+1);f.partenza.min=iso(m);
+  if(!f.partenza.value||f.partenza.value<=f.arrivo.value){m.setDate(m.getDate()+1);f.partenza.value=iso(m)}});
+const notti=(a,b)=>{const L=[];for(let d=giorno(a);iso(d)<b;d.setDate(d.getDate()+1))L.push(iso(d));return L};
+async function occupate(r,a,b){const da=giorno(a),ul=giorno(b);ul.setDate(ul.getDate()-1);
+  const n=(ul.getFullYear()-da.getFullYear())*12+ul.getMonth()-da.getMonth()+1;
+  const p=new URLSearchParams({apikey:K,language:'it',resourceID:r.res,realGroupID:r.grp,year:da.getFullYear(),month:da.getMonth()+1,calNumber:n,cols:n,startDay:1,
+    minMonth:da.getMonth()+1,minYear:da.getFullYear(),maxMonth:12,maxYear:da.getFullYear()+2,dateFormat:'dd/mm/yyyy',pax:2,legend:0,toolbar:0,monthTitle:0,clickable:1});
+  let h=await (await fetch(API+'LoadCalendar',{method:'POST',body:p})).text();try{h=JSON.parse(h)}catch(e){}
+  const doc=new DOMParser().parseFromString(h,'text/html'),S=new Set();
+  doc.querySelectorAll('button.cal-day[data-date]').forEach(x=>{const c=x.classList;if(c.contains('cal-day-block-booking')&&(!c.contains('cal-day-block-booking-last')||c.contains('cal-day-block-booking-first')))S.add(x.dataset.date)});
+  return S}
+async function minimo(r,a){try{const R=await (await fetch(API+'GetBookingRestriction?apikey='+K,{method:'POST',body:new URLSearchParams({FromDate:a,ToDate:a,ResourceID:r.res})})).json();
+  const v=(R||[]).find(x=>x.StartDate.slice(0,10)<=a&&x.EndDate.slice(0,10)>=a);return v&&v.MinMinutes?Math.ceil(v.MinMinutes/1440):1}catch(e){return 1}}
+const scheda=(r,stato,ok,link)=>'<article class="esito'+(ok?'':' off')+'"><img src="'+r.foto+'" alt="'+r.nome+'" loading="lazy"><div class="c"><span class="d">'+r.det+'</span><h3>'+r.nome+'</h3>'
+  +'<p class="s '+(ok?'ok':'no')+'">'+stato+'</p>'+(ok?'<a class="p" href="'+link+'">Prenota</a>':'')+'<a class="v" href="'+r.url+'">Scopri la dimora →</a></div></article>';
+f.addEventListener('submit',async ev=>{ev.preventDefault();const a=f.arrivo.value,b=f.partenza.value,px=+f.ospiti.value;
+  if(!a||!b){msg.textContent='Indicate le date di arrivo e di partenza.';return}
+  if(b<=a){msg.textContent='La partenza deve essere successiva all\\'arrivo.';return}
+  if(a<oggi){msg.textContent='La data di arrivo è già passata.';return}
+  const N=notti(a,b);msg.textContent='Verifico le disponibilità…';out.innerHTML='';
+  history.replaceState(null,'','?arrivo='+a+'&partenza='+b+'&ospiti='+px);
+  try{const R=await Promise.all(Object.values(D).map(async r=>{
+      if(px>r.max)return{r,ok:false,o:3,stato:'Fino a '+r.max+' ospiti'};
+      const[S,mn]=await Promise.all([occupate(r,a,b),minimo(r,a)]);
+      if(N.some(n=>S.has(n)))return{r,ok:false,o:2,stato:'Non disponibile in queste date'};
+      if(N.length<mn)return{r,ok:false,o:1,stato:'Soggiorno minimo '+mn+' notti'};
+      return{r,ok:true,o:0,stato:'Disponibile · '+N.length+(N.length==1?' notte':' notti'),
+        link:'https://bol.mainapps.com/step2/'+r.res+'/'+a.replace(/-/g,'')+'-'+b.replace(/-/g,'')+'/'+px+'/nc/?apikey='+K+'&lang=it'}}));
+    R.sort((x,y)=>x.o-y.o);const liberi=R.filter(x=>x.ok).length;
+    msg.textContent=(liberi?(liberi==1?'Una dimora libera':liberi+' dimore libere'):'Nessuna dimora libera')+' dal '+it(a)+' al '+it(b)+' per '+px+(px==1?' ospite':' ospiti')+'.'+(liberi?'':' Provate altre date o scriveteci: troveremo una soluzione.');
+    out.innerHTML=R.map(x=>scheda(x.r,x.stato,x.ok,x.link)).join('')}
+  catch(e){msg.innerHTML='Non riusciamo a verificare le disponibilità in questo momento. Scriveteci su <a href=\""""+WA+"""\" style="color:#E2B76A">WhatsApp</a>.'}});
+const q=new URLSearchParams(location.search);if(q.get('arrivo')){f.arrivo.value=q.get('arrivo');f.partenza.value=q.get('partenza')||'';if(q.get('ospiti'))f.ospiti.value=q.get('ospiti');f.requestSubmit()}})();</script>"""
+
 def prenota():
-    tabs = '<div class="cal-tabs" role="group" aria-label="Scegliete la dimora">' + "".join(
-        f'<button type="button" data-k="{k}" data-res="{v[0]}" data-grp="{v[1]}" data-max="{v[2]}" aria-pressed="{str(k=="loft").lower()}">'
-        f'{e(v[3])}<small>{v[2]} ospiti</small></button>' for k, v in ALLOGGI.items()) + '</div>'
-    body = ("  <main>\n" + sezione_calendario("loft", kicker="Prenotazione diretta", titolo="Scegliete la dimora e le date",
-            testo="Prenotando qui, direttamente con noi, avete il prezzo migliore e nessuna commissione. Scegliete la dimora, "
-                  "selezionate arrivo e partenza sul calendario e premete «Prenota»: la prenotazione si conclude sul portale sicuro della Dimora.",
-            tabs=tabs) + "\n  </main>")
-    desc = "Prenota direttamente alla Dimora delle Storie, Tempio Pausania: Loft dell'Antiquario, Suite del Viaggiatore, Antica Latteria 1930 o la Dimora intera."
+    body = f"""  <main class="cerca">
+    <div class="cal-head"><span class="k">Prenotazione diretta</span><h2>Quando arrivate?</h2><p>Indicate le date e il numero di ospiti: vi mostriamo subito quali dimore sono libere. Prenotando qui, direttamente con noi, non pagate commissioni.</p></div>
+    <form class="cerca-form" id="cerca" novalidate>
+      <label>Arrivo<input type="date" name="arrivo" required></label>
+      <label>Partenza<input type="date" name="partenza" required></label>
+      <label>Ospiti<select name="ospiti"><option value="1">1 ospite</option><option value="2" selected>2 ospiti</option><option value="3">3 ospiti</option><option value="4">4 ospiti</option></select></label>
+      <button type="submit">Verifica disponibilità</button>
+    </form>
+    <p class="cerca-msg" id="cerca-msg" aria-live="polite"></p>
+    <div class="esiti" id="esiti"></div>
+    <p class="cal-alt">Preferite parlarne con noi? <a href="{WA}">WhatsApp</a> · <a href="tel:{TEL.replace(" ", "")}">{TEL}</a></p>
+  </main>
+{cerca_js()}"""
+    desc = "Prenota direttamente alla Dimora delle Storie, Tempio Pausania: scegli le date e vedi subito le dimore libere tra Loft dell'Antiquario, Suite del Viaggiatore, Antica Latteria 1930 e la Dimora intera."
     ld = {"@context": "https://schema.org", "@type": "WebPage", "name": "Prenota — Dimora delle Storie", "url": f"{BASE}/prenota", "description": desc}
     s = pagina("prenota", "Prenota — Dimora delle Storie, Tempio Pausania", desc, "/img/loft.jpg", ld, "/img/loft.jpg",
-               "Loft dell'Antiquario, Dimora delle Storie", "Prenotazione diretta · senza commissioni", "Prenota il tuo soggiorno", body)
+               "Loft dell'Antiquario, Dimora delle Storie", "Prenotazione diretta · senza commissioni", "Prenota il tuo soggiorno", body, CERCA_CSS)
     wr("prenota.html", comune(s, attivo=True))
 
 # ------------------------------------------------------------------ home: collegamenti rimasti vuoti
