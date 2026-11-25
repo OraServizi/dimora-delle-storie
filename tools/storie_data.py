@@ -139,6 +139,43 @@ ARTICOLI = [
             ("Italia.it — Massiccio del Limbara", "https://www.italia.it/it/sardegna/massiccio-del-limbara"),
         ],
     },
+    {
+        "slug": "natale-a-tempio-pausania",
+        "cap": "calendario",
+        "titolo": "Natale nella Città di pietra",
+        "sottotitolo": "Cosa fare a Tempio Pausania a dicembre",
+        "data": "2026-12-03",
+        "data_it": "3 dicembre 2026",
+        "descrizione": "Natale a Tempio Pausania: le luci sul granito del centro storico, i papassini, i presepi della Gallura, il Limbara d'inverno e le serate nella sala da tè della Dimora.",
+        "img": "/img/foto/g-te-01.webp",
+        "estratto": "Le luci sulle facciate di granito, il profumo dei papassini, i presepi dei paesi vicini e il Limbara che a volte si imbianca: dicembre a Tempio, raccontato dalla Dimora.",
+        "corpo": """
+<p class="lead">A dicembre Tempio Pausania cambia passo. Le facciate di granito del centro storico si accendono di luci, le piazze si riempiono di bancarelle e, la sera, l'aria fredda che scende dal Limbara profuma di legna e di dolci. È il mese in cui la «Città di pietra» si gira meglio a piedi, con calma, magari dopo una tazza di tè.</p>
+
+<h2>Le luci del centro</h2>
+<p>Ogni anno il Comune e la Pro Loco preparano il Natale in centro: un grande albero in piazza Gallura, le vie addobbate, i mercatini con l'artigianato e i prodotti della Gallura, musica e giochi per i bambini fino all'Epifania. Il programma cambia di anno in anno: lo trovate sui canali del Comune di Tempio Pausania e della Pro Loco, e se ci scrivete vi diciamo noi cosa c'è in città durante il vostro soggiorno.</p>
+<p>Il percorso più bello parte dalla Dimora, in piazza Eleonora d'Arborea: si sale verso piazza San Pietro, con la Cattedrale e gli oratori, si attraversa piazza Gallura e si scende lungo le vie lastricate di granito. Al tramonto, con i lampioni accesi, la pietra prende un colore caldo che d'estate non si vede.</p>
+
+<h2>I papassini e la tavola delle feste</h2>
+<p>A Natale, in Gallura, non mancano i papassini, i biscotti con l'uva passa, le noci e le mandorle, spesso coperti di glassa bianca. Accanto ai dolci, a tavola arriva la suppa cuata, il piatto simbolo di Tempio, e un bicchiere di Moscato di Tempio o di Vermentino di Gallura. Nelle pasticcerie e nei forni del centro si trovano i dolci tradizionali da portare a casa.</p>
+
+<h2>I presepi della Gallura</h2>
+<p>Dicembre è anche il mese dei presepi viventi e delle feste nei paesi vicini. A Calangianus, a pochi chilometri, la festa <em>Pasca di Natali in Carrera</em> trasforma il centro in un grande presepe a cielo aperto, animato anche dai carrulanti di Tempio. A Berchidda la <em>Notte de Chelu</em> porta i presepi a grandezza naturale nei rioni, con i cori polifonici. Le date cambiano ogni anno: verificatele prima di partire.</p>
+
+<h2>Il Limbara d'inverno</h2>
+<p>Alle spalle della città, il Monte Limbara d'inverno ha un'altra luce: boschi silenziosi, aria tersa e, nelle giornate più fredde, qualche spolverata di neve sulle creste. Una passeggiata nel bosco, al ritorno un tè caldo: è il modo migliore per passare una giornata di dicembre.</p>
+
+<h2>Le sere nella sala da tè</h2>
+<p>Quando fuori fa freddo, la Dimora dà il meglio di sé. Nella sala da tè ci sono il pianoforte verticale, i libri su Tempio e sulla Gallura e il volume di poesie della casa: è il posto giusto per chiudere la giornata, come facevano gli ospiti dell'antiquario nella <a href="/storie/leggenda-della-sala-da-te">leggenda della sala da tè</a>.</p>
+<p>Le nostre tre dimore sono pronte anche per l'inverno, con climatizzazione e piumini caldi: il <a href="/loft-dell-antiquario">Loft dell'Antiquario</a>, la <a href="/suite-del-viaggiatore">Suite del Viaggiatore</a> e l'<a href="/antica-latteria-1930">Antica Latteria 1930</a>. Per le feste i posti sono pochi: <a href="/prenota">verificate le date</a> o scriveteci su <a href="https://wa.me/393791656864">WhatsApp</a>.</p>
+""",
+        "fonti": [
+            ("Sardegna Turismo — Mercatini, presepi e delizie: il Natale in Sardegna", "https://www.sardegnaturismo.it/it/node/257916"),
+            ("Sardegna Turismo — Tempio Pausania", "https://www.sardegnaturismo.it/it/esplora/tempio-pausania"),
+            ("Italia.it — Tempio Pausania", "https://www.italia.it/it/sardegna/tempio-pausania"),
+            ("L'Unione Sarda — Pasca di Natali in Carrera a Calangianus", "https://www.unionesarda.it/news-sardegna/gallura/tradizioni-fede-musica-e-sapori-a-calangianus-torna-la-pasca-di-natali-in-carrera-xir9kwmj"),
+        ],
+    },
 ]
 
 # Pagine «in arrivo» (dal piano editoriale)
@@ -147,6 +184,5 @@ IN_ARRIVO = {
     "tempio": [("Bernardo De Muro, il tenore di Tempio", "La voce nata nella Città di pietra nel 1881.")],
     "poesia": [("Una poesia dal libro della casa", "Versi scelti dal volume che vi aspetta in salotto.")],
     "lingua": [("La parola della settimana", "Una parola gallurese, il suo significato e come si pronuncia.")],
-    "calendario": [("Natale nella Città di pietra", "Luci, tradizioni e cosa fare in centro a dicembre."),
-                   ("Carrasciali Timpiesu", "Il Carnevale storico di Tempio: date e consigli.")],
+    "calendario": [("Carrasciali Timpiesu", "Il Carnevale storico di Tempio: date e consigli.")],
 }
