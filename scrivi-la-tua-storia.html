@@ -10,8 +10,6 @@
 <meta property="og:type" content="website"><meta property="og:title" content="Scrivi la tua storia | Dimora delle Storie"><meta property="og:description" content="Avete soggiornato alla Dimora delle Storie a Tempio Pausania? Scrivete la vostra storia: le più belle entrano nel Libro delle Storie."><meta property="og:image" content="https://www.dimoradellestorie.com/img/foto/te-01.webp"><meta property="og:locale" content="it_IT"><meta property="og:url" content="https://www.dimoradellestorie.com/scrivi-la-tua-storia"><meta property="og:site_name" content="Dimora delle Storie"><meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/img/logo-icona.svg" type="image/svg+xml">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Scrivi la tua storia — Il Libro delle Storie", "url": "https://www.dimoradellestorie.com/scrivi-la-tua-storia", "isPartOf": {"@type": "WebSite", "name": "Dimora delle Storie", "url": "https://www.dimoradellestorie.com"}}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet">
 <style>
 @font-face{font-family:'Bodoni Moda';src:url(/fonts/bodoni-moda.woff2) format('woff2');font-weight:400 900;font-style:normal;font-display:swap}
 @font-face{font-family:'Bodoni Moda';src:url(/fonts/bodoni-moda-italic.woff2) format('woff2');font-weight:400 900;font-style:italic;font-display:swap}
@@ -267,6 +265,7 @@ input::placeholder{text-transform:uppercase}
 .ml-cal .ml-confirm-booking{display:inline-flex!important;align-items:center;justify-content:center;min-height:52px;padding:0 44px!important;margin-top:18px;border:0!important;border-radius:999px!important;background:#D4A65A!important;color:#0F111A!important;font:500 13px 'Inter',system-ui,sans-serif!important;letter-spacing:.18em;text-transform:uppercase;text-decoration:none!important}
 .ml-cal .ml-confirm-booking:hover{background:#E2B76A!important}
 </style>
+<style id="inter-font">@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url(/fonts/inter-latin-300-normal.woff2) format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/inter-latin-400-normal.woff2) format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/inter-latin-500-normal.woff2) format('woff2')}</style>
 </head>
 <body>
 <div class="vpage" style="width:100%;background:transparent;color:#EFE8DC;font-family:'Inter',system-ui,sans-serif;font-weight:300">
@@ -328,7 +327,7 @@ const r=await fetch('/api/storia',{method:'POST',headers:{'Content-Type':'applic
 if(r.ok&&j.ok){f.innerHTML='<div class="grazie"><h2>Grazie!</h2><p>La vostra storia è arrivata alla Dimora. La leggeremo con cura e, se la pubblicheremo nel Libro delle Storie, vi scriveremo per avvisarvi.</p><p><a href="/storie" style="color:#E2B76A">Sfoglia il Libro delle Storie →</a></p></div>';f.scrollIntoView({behavior:'smooth',block:'start'});return}
 throw new Error(j.errore||'errore')}catch(err){es.innerHTML='Non siamo riusciti a inviare la storia. Riprovate tra poco, oppure scriveteci a <a href="mailto:info@dimoradellestorie.com" style="color:#E2B76A">info@dimoradellestorie.com</a>.';b.disabled=false;b.textContent='Invia la storia'}})})();</script>
   <footer style="border-top:1px solid rgba(239,232,220,.12);padding:56px clamp(20px,4.5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:32px;font-size:14px;line-height:1.8;color:rgba(239,232,220,.74)">
-    <div style="display:flex;flex-direction:column;gap:8px"><a href="/" style="text-decoration:none;font-family:'Bodoni Moda',Georgia,serif;font-size:19px;color:#EFE8DC;text-transform:uppercase;letter-spacing:.08em">Dimora delle Storie</a><span>Piazza Eleonora d'Arborea 6<br>07029 Tempio Pausania (SS)</span><span style="font-size:12px;letter-spacing:.12em;color:rgba(239,232,220,.55)">CIN IT090070C2000S8992</span></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><a href="/" style="text-decoration:none;font-family:'Bodoni Moda',Georgia,serif;font-size:19px;color:#EFE8DC;text-transform:uppercase;letter-spacing:.08em">Dimora delle Storie</a><span>Piazza Eleonora d'Arborea 6<br>07029 Tempio Pausania (SS)</span><span style="font-size:12px;letter-spacing:.12em;color:rgba(239,232,220,.55)">CIN IT090070C2000S8992</span><span><a href="/privacy" style="text-decoration:none">Privacy</a> · <a href="/cookie" style="text-decoration:none">Cookie</a></span></div>
     <div style="display:flex;flex-direction:column;gap:4px"><a href="tel:+393791656864" style="text-decoration:none">+39 379 165 6864</a><a href="mailto:info@dimoradellestorie.com" style="text-decoration:none">info@dimoradellestorie.com</a><a href="https://www.instagram.com/dimoradellestorie" style="text-decoration:none">Instagram · @dimoradellestorie</a></div>
   </footer>
 </div>

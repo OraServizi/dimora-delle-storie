@@ -2,12 +2,40 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/contatti", "destination": "/prenota", "permanent": true },
-    { "source": "/contacts", "destination": "/prenota", "permanent": true },
-    { "source": "/step1/:path*", "destination": "/prenota", "permanent": true },
-    { "source": "/terms", "destination": "/", "permanent": true },
-    { "source": "/condizioni-generali", "destination": "/", "permanent": true },
-    { "source": "/cookie-policy", "destination": "/", "permanent": true },
-    { "source": "/informativa-sulla-privacy", "destination": "/", "permanent": true }
+    {
+      "source": "/contatti",
+      "destination": "/prenota",
+      "permanent": true
+    },
+    {
+      "source": "/contacts",
+      "destination": "/prenota",
+      "permanent": true
+    },
+    {
+      "source": "/step1/:path*",
+      "destination": "/prenota",
+      "permanent": true
+    },
+    {
+      "source": "/terms",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/condizioni-generali",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/cookie-policy",
+      "destination": "/cookie",
+      "permanent": true
+    },
+    {
+      "source": "/informativa-sulla-privacy",
+      "destination": "/privacy",
+      "permanent": true
+    }
   ]
 }

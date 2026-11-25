@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Informativa privacy | Dimora delle Storie</title>
+<link rel="preload" href="/fonts/bodoni-moda.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="description" content="Come Dimora delle Storie, a Tempio Pausania, tratta i dati di chi visita il sito, chiede informazioni, prenota o scrive una storia.">
+<link rel="canonical" href="https://www.dimoradellestorie.com/privacy">
+<meta property="og:type" content="website"><meta property="og:title" content="Informativa privacy | Dimora delle Storie"><meta property="og:description" content="Come Dimora delle Storie, a Tempio Pausania, tratta i dati di chi visita il sito, chiede informazioni, prenota o scrive una storia."><meta property="og:image" content="https://www.dimoradellestorie.com/img/loft.jpg"><meta property="og:locale" content="it_IT"><meta property="og:url" content="https://www.dimoradellestorie.com/privacy"><meta property="og:site_name" content="Dimora delle Storie"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/img/logo-icona.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Informativa privacy | Dimora delle Storie", "url": "https://www.dimoradellestorie.com/privacy", "inLanguage": "it-IT"}</script>
+<style>
+@font-face{font-family:'Bodoni Moda';src:url(/fonts/bodoni-moda.woff2) format('woff2');font-weight:400 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Bodoni Moda';src:url(/fonts/bodoni-moda-italic.woff2) format('woff2');font-weight:400 900;font-style:italic;font-display:swap}
+[style*="Bodoni"],[style*="Bodoni"] *{font-optical-sizing:none;font-variation-settings:'opsz' 11}
+
+body{margin:0;background:#0F111A}
+a{color:#EFE8DC}a:hover{color:#D4A65A}
+@keyframes candle{0%{background-position:30% 40%}50%{background-position:62% 52%}100%{background-position:30% 40%}}
+@keyframes up{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes zoom{from{transform:scale(1.15)}to{transform:scale(1)}}
+@keyframes heroZoom{from{transform:scale(1.12)}to{transform:scale(1.0)}}
+@keyframes drawLine{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes sheen{0%{background-position:0 0,0 0,140% 0}100%{background-position:0 0,0 0,-40% 0}}
+.light{background-size:200% 200%;animation:candle 18s ease-in-out infinite}
+.heroimg{animation:heroZoom 14s cubic-bezier(.2,.6,.2,1) both}
+@keyframes logoIn{0%{opacity:0;transform:scale(.55);filter:blur(12px) drop-shadow(0 0 0 rgba(226,183,106,0))}35%{opacity:1}100%{opacity:1;transform:scale(1);filter:blur(0) drop-shadow(0 4px 24px rgba(0,0,0,.5))}}
+@keyframes logoGlow{0%,100%{filter:drop-shadow(0 4px 24px rgba(0,0,0,.5)) drop-shadow(0 0 0 rgba(226,183,106,0))}50%{filter:drop-shadow(0 4px 24px rgba(0,0,0,.5)) drop-shadow(0 0 18px rgba(226,183,106,.45))}}
+.logoin{transform-origin:28% 60%;animation:logoIn 5s cubic-bezier(.22,.61,.36,1) .1s both,logoGlow 6s ease-in-out 5.2s infinite}
+.h1a{animation:up 1.4s cubic-bezier(.2,.7,.1,1) .3s both}
+.h1b{animation:up 1.4s cubic-bezier(.2,.7,.1,1) .55s both}
+.fd{animation:fade 1.8s ease 2.4s both}
+.reveal{animation:up linear both;animation-timeline:view();animation-range:entry 0% cover 28%}
+.pic{animation:zoom linear both;animation-timeline:view();animation-range:entry 0% exit 0%}
+@keyframes blBase{from{opacity:0;filter:blur(16px)}to{opacity:1;filter:blur(0)}}
+@keyframes blOpen1{from{opacity:0;transform:scale(.58) rotate(-14deg);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes blOpen2{from{opacity:0;transform:scale(.42) rotate(18deg);filter:blur(6px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes blOpen3{from{opacity:0;transform:scale(.25) rotate(-24deg);filter:blur(4px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes brth{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.018) rotate(.7deg)}}
+@keyframes shine{0%,70%,100%{opacity:0;transform:translateX(-35%)}80%{opacity:.55}95%{opacity:0;transform:translateX(35%)}}
+@keyframes dust{0%{opacity:0;transform:translate(0,0)}15%{opacity:.95}100%{opacity:0;transform:translate(var(--dx),-110px)}}
+.bloom .bl{transform-origin:48% 55.5%}
+.bloom .bl-core{transform-origin:47% 54.6%}
+.bloom img{transform-origin:48% 55.5%}
+.bloom .br1{animation:brth 13s ease-in-out infinite}
+.bloom .br2{animation:brth 9s ease-in-out infinite reverse}
+.bloom .br3{animation:brth 7s ease-in-out infinite}
+.bloom .bl-shine{background:radial-gradient(30% 22% at 48% 50%,rgba(255,244,220,.35),rgba(255,244,220,0) 70%);mix-blend-mode:soft-light;animation:shine 12s ease-in-out 4s infinite}
+.bloom .dust{position:absolute;border-radius:50%;background:#E8C27A;box-shadow:0 0 6px rgba(232,194,122,.8);opacity:0;animation:dust 7s ease-out infinite}
+.bloom.load .bl-base{animation:blBase 1.8s ease both}
+.bloom.load .bl-outer{animation:blOpen1 3.2s cubic-bezier(.16,.8,.24,1) .5s both}
+.bloom.load .bl-mid{animation:blOpen2 3.2s cubic-bezier(.16,.8,.24,1) 1s both}
+.bloom.load .bl-core{animation:blOpen3 3.2s cubic-bezier(.16,.8,.24,1) 1.5s both}
+.bloom.scroll .bl{animation-timeline:view();animation-fill-mode:both;animation-timing-function:cubic-bezier(.16,.8,.24,1)}
+.bloom.scroll .bl-base{animation-name:blBase;animation-range:entry 0% cover 25%}
+.bloom.scroll .bl-outer{animation-name:blOpen1;animation-range:entry 10% cover 40%}
+.bloom.scroll .bl-mid{animation-name:blOpen2;animation-range:entry 20% cover 47%}
+.bloom.scroll .bl-core{animation-name:blOpen3;animation-range:entry 30% cover 55%}
+.flower-hero path{stroke-dasharray:1;stroke-dashoffset:1;animation:drawLine 4s cubic-bezier(.6,0,.2,1) 1s both}
+@keyframes pile{0%{transform:translate(-6%,-4%) scale(1)}50%{transform:translate(5%,3%) scale(1.08)}100%{transform:translate(-6%,-4%) scale(1)}}
+.velvet{background-color:#121B52;background-image:radial-gradient(60% 55% at 22% 28%,rgba(64,88,186,.55),rgba(18,27,82,0) 70%),radial-gradient(55% 60% at 78% 72%,rgba(44,64,156,.45),rgba(18,27,82,0) 70%),radial-gradient(80% 60% at 62% 8%,rgba(5,8,32,.65),rgba(5,8,32,0) 70%),radial-gradient(70% 55% at 8% 92%,rgba(5,8,32,.75),rgba(5,8,32,0) 70%),radial-gradient(40% 30% at 50% 50%,rgba(30,44,120,.4),rgba(30,44,120,0) 70%)}
+.pile{animation:pile 26s ease-in-out infinite}
+@keyframes pFloat{from{transform:translate3d(0,0,0)}to{transform:translate3d(var(--dx),var(--dy),0)}}
+@keyframes pTwinkle{0%,100%{opacity:0;scale:.7}20%{opacity:var(--o);scale:1}45%{opacity:calc(var(--o) * .45);scale:.85}65%{opacity:var(--o);scale:1.05}85%{opacity:calc(var(--o) * .25);scale:.8}}
+.pollen-layer{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden;mix-blend-mode:screen}
+.pollen{position:absolute;border-radius:50%;background:radial-gradient(circle,#FFF8E8 0,#EECB86 38%,rgba(238,203,134,0) 70%);box-shadow:0 0 10px 1px rgba(238,203,134,.5);animation-name:pFloat,pTwinkle;animation-timing-function:ease-in-out,ease-in-out;animation-iteration-count:infinite,infinite;animation-direction:alternate,normal}
+.pollen.star{box-shadow:0 0 14px 3px rgba(255,236,190,.6),0 0 2px 1px #FFF8E8}
+.pollen.star::before,.pollen.star::after{content:"";position:absolute;left:50%;top:50%;width:360%;height:1px;background:linear-gradient(90deg,rgba(255,240,205,0),rgba(255,248,230,.75),rgba(255,240,205,0));transform:translate(-50%,-50%)}
+.pollen.star::after{transform:translate(-50%,-50%) rotate(90deg)}
+@media (prefers-reduced-motion:reduce){.pollen-layer{display:none}}
+@media (max-width:700px){
+.hero{min-height:0!important}
+.topnav{gap:16px!important;padding:8px 16px!important;font-size:11px!important;letter-spacing:.04em!important}
+.topnav a:last-child{display:none}
+.bl-hero{width:400px!important;height:400px!important;right:-170px!important;top:50px!important;opacity:.5!important}
+.bl-m{width:360px!important;height:360px!important;left:50%!important;top:10px!important;margin:0 0 0 -180px!important;opacity:.75}
+.sec-man{padding:330px 20px 100px!important}
+.bl-p{width:360px!important;height:360px!important;right:-150px!important;top:auto!important;bottom:-30px!important;margin:0!important;opacity:.45}
+#prenota{padding:110px 20px 240px!important}
+#dimore{gap:96px!important;padding-bottom:110px!important}
+.ph{height:440px!important}
+#tempio{padding:96px 20px!important;gap:40px!important}
+.tcard{padding:28px 0!important}
+.bookbar{grid-template-columns:1fr 1fr!important;margin-bottom:28px!important}
+.bookbar label{padding:14px 16px!important}
+.bookbar label:nth-child(2){border-right:0!important}
+.bookbar label:nth-child(3){grid-column:1 / -1;border-right:0!important;border-top:1px solid rgba(239,232,220,.18)}
+.bookbar button{grid-column:1 / -1}
+.bookbar input{width:100%;min-width:0}
+.bookbar label{min-width:0}
+}
+
+@media (max-width:440px){.topnav{gap:16px!important;padding:10px 16px!important;font-size:12px!important}}
+</style>
+
+<style>html{scroll-behavior:smooth}</style>
+
+<style>html{scroll-behavior:smooth}</style>
+<style>
+html{background:#0B0E22}body{background:transparent!important}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:#121B52 url(/img/velluto-largo.jpg) center/cover no-repeat}
+body::after{content:"";position:fixed;inset:-10%;z-index:-1;pointer-events:none;background:radial-gradient(55% 45% at 30% 25%,rgba(150,170,240,.13),rgba(0,0,0,0) 70%),radial-gradient(60% 55% at 75% 80%,rgba(3,5,18,.4),rgba(0,0,0,0) 70%),radial-gradient(130% 120% at 50% 50%,rgba(6,9,30,0) 40%,rgba(4,6,20,.62) 100%),linear-gradient(rgba(9,12,34,.16),rgba(9,12,34,.16));background-size:140% 140%,150% 150%,100% 100%,100% 100%;animation:velLight 46s ease-in-out infinite alternate}
+@keyframes velLight{0%{background-position:0% 0%,100% 100%,center,center}50%{background-position:60% 30%,30% 60%,center,center}100%{background-position:100% 70%,0% 20%,center,center}}
+@media (prefers-reduced-motion:reduce){body::after{animation:none}}
+.vpage{background:transparent!important}
+.vpage>section:first-of-type:has(>img)+*{background:linear-gradient(180deg,#0F111A 0,rgba(15,17,26,.6) 90px,rgba(15,17,26,0) 260px)}
+.vpage footer{background:linear-gradient(180deg,rgba(5,7,20,.2),rgba(5,7,20,.85))}
+.vpage main.art{background:radial-gradient(70% 100% at 50% 40%,rgba(8,10,28,.55),rgba(8,10,28,0) 80%),linear-gradient(180deg,#0F111A 0,rgba(15,17,26,0) 240px)}
+</style>
+<style id="tutto-maiuscolo">
+body,body *{text-transform:uppercase}
+p{letter-spacing:.045em}
+.art p,.art li,.pg-p,.ex-s,.op-i,.indice-seo p,input,textarea{text-transform:none!important;letter-spacing:normal!important}
+input::placeholder{text-transform:uppercase}
+</style>
+
+
+
+<style id="nav-chiara">
+.brand{display:inline-flex;align-items:center;gap:14px;min-height:44px;text-decoration:none}
+.brand b{font-family:'Bodoni Moda',Georgia,serif;font-variation-settings:'opsz' 11;font-weight:400;font-size:15px;letter-spacing:.16em;line-height:1.25;color:#EFE8DC}
+.brand:hover b{color:#D4A65A}
+.topnav a[aria-current]{color:#D4A65A;position:relative}
+.topnav a[aria-current]::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:1px;background:#D4A65A}
+@media (max-width:700px){.brand b{display:none}.topnav a[href="/"][aria-current]{display:none}.topnav{gap:13px!important;padding-left:18px!important;padding-right:18px!important}}
+</style>
+<style id="esterni-css">
+.esterni{position:relative;padding:clamp(64px,8vw,120px) clamp(20px,4.5vw,64px);overflow:hidden;border-top:1px solid rgba(239,232,220,.1)}
+.esterni .t{max-width:440px;margin:0 0 40px}
+.esterni .t span{display:block;margin-bottom:12px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#D4A65A}
+.esterni .t h2{margin:0 0 14px;font-family:'Bodoni Moda',Georgia,serif;font-weight:400;font-size:clamp(22px,2.6vw,34px);line-height:1.25;text-transform:uppercase;letter-spacing:.08em}
+.esterni .t p{margin:0 0 16px;font-size:15px;line-height:1.8;color:rgba(239,232,220,.75)}
+.esterni .t a{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#E2B76A}
+.esterni .f{display:grid;grid-template-columns:1.1fr .8fr 1.3fr;gap:clamp(12px,2vw,28px);align-items:start}
+.esterni figure{margin:0;position:relative}
+.esterni img{display:block;width:100%;object-fit:cover;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.esterni figure:nth-child(1) img{aspect-ratio:3/4;object-position:center 30%}
+.esterni figure:nth-child(2){margin-top:clamp(60px,9vw,140px)}
+.esterni figure:nth-child(2) img{aspect-ratio:1/1}
+.esterni figure:nth-child(3){margin-top:clamp(20px,3vw,40px)}
+.esterni figure:nth-child(3) img{aspect-ratio:4/5;clip-path:inset(0 0 0 0 round 0)}
+.esterni figcaption{margin-top:12px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(239,232,220,.55)}
+#dimore:has(+ #esterni),body:has(.esterni-home) #dimore{padding-bottom:40px!important}
+.esterni-home{border-top:0;padding-top:40px;padding-bottom:clamp(100px,10vw,160px)}
+@media (min-width:900px){.esterni{display:grid;grid-template-columns:minmax(260px,.7fr) 2fr;gap:clamp(40px,5vw,80px);align-items:center}.esterni .t{margin:0}}
+@media (max-width:600px){.esterni .f{grid-template-columns:1fr 1fr}.esterni figure:nth-child(3){grid-column:1/-1;margin-top:0}.esterni figure:nth-child(3) img{aspect-ratio:16/10}.esterni figure:nth-child(2){margin-top:48px}}
+</style>
+<style>
+@media (max-width:440px){.topnav{gap:16px!important;padding:10px 16px!important;font-size:12px!important}}
+.l-sec{padding:clamp(40px,6vw,80px) clamp(20px,4.5vw,64px) clamp(80px,9vw,130px);max-width:860px;margin:0 auto}
+.l-sec h1{margin:0 0 10px;font-family:'Bodoni Moda',Georgia,serif;font-weight:400;font-size:clamp(26px,4vw,46px);letter-spacing:.1em;text-transform:uppercase;line-height:1.15}
+.l-sec .agg{margin:0 0 40px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#8FA2E6}
+.l-sec h2{margin:44px 0 12px;font-family:'Bodoni Moda',Georgia,serif;font-weight:400;font-size:clamp(17px,1.8vw,21px);letter-spacing:.1em;text-transform:uppercase;color:#E2B76A}
+.l-sec p,.l-sec li{font-size:16px;line-height:1.8;color:rgba(239,232,220,.82)}
+.l-sec ul{padding-left:20px;margin:0 0 12px}
+.l-sec a{color:#E2B76A}
+</style>
+<style id="prenota-css">
+.btn-prenota{display:inline-flex;align-items:center;min-height:44px;box-sizing:border-box;padding:0 28px;border-radius:999px;background:#D4A65A;color:#0F111A!important;text-decoration:none;font:500 12px 'Inter',system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:background .25s,transform .25s}
+.btn-prenota:hover{background:#E2B76A;transform:translateY(-1px)}
+.btn-prenota[aria-current]{background:transparent;color:#E2B76A!important;border:1px solid rgba(226,183,106,.6)}
+@media (min-width:701px) and (max-width:1180px){.topnav{gap:18px!important;padding-left:20px!important;padding-right:20px!important}.btn-prenota{padding:0 22px}}
+@media (max-width:700px){header:has(.btn-prenota){row-gap:14px!important}header .btn-prenota{order:2;margin-left:auto;min-height:40px;padding:0 18px;font-size:11px;letter-spacing:.16em}header .topnav{order:3;width:100%;box-sizing:border-box;justify-content:center}}
+.cal-sec{padding:clamp(56px,7vw,96px) clamp(20px,4.5vw,64px);border-top:1px solid rgba(239,232,220,.1)}
+.cal-head{max-width:760px;margin:0 0 36px}
+.cal-head .k{display:block;margin-bottom:14px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#D4A65A}
+.cal-head h2{margin:0 0 16px;font-family:'Bodoni Moda',Georgia,serif;font-weight:400;font-size:clamp(24px,3vw,40px);line-height:1.2;text-transform:uppercase;letter-spacing:.08em}
+.cal-head p{margin:0;font-size:16px;line-height:1.8;color:rgba(239,232,220,.78)}
+.cal-box{position:relative;padding:clamp(18px,3vw,40px);border:1px solid rgba(226,183,106,.28);background:linear-gradient(180deg,rgba(15,17,40,.72),rgba(15,17,40,.42));box-shadow:0 30px 80px rgba(0,0,0,.4)}
+.cal-wait{margin:0;padding:60px 0;text-align:center;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:rgba(239,232,220,.55)}
+.cal-bar{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;justify-content:space-between;margin-top:24px;padding-top:24px;border-top:1px solid rgba(239,232,220,.14)}
+.cal-sel{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,232,220,.8)}
+.cal-btn{min-height:52px;padding:0 40px;border:0;border-radius:999px;background:#D4A65A;color:#0F111A;font:500 13px 'Inter',system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:background .25s}
+.cal-btn:hover{background:#E2B76A}
+.cal-alt{margin:22px 0 0;font-size:14px;letter-spacing:.04em;color:rgba(239,232,220,.6)}
+.cal-alt a{color:#E2B76A}
+.cal-tabs{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 28px}
+.cal-tabs button{min-height:44px;padding:0 22px;border:1px solid rgba(239,232,220,.22);border-radius:999px;background:transparent;color:#EFE8DC;font:400 12px 'Inter',system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.cal-tabs button[aria-pressed=true]{background:#EFE8DC;color:#0F111A;border-color:#EFE8DC}
+.cal-tabs small{opacity:.6;margin-left:6px;letter-spacing:.08em}
+/* calendarietto Magellano: usa le sue variabili CSS, ricolorate sulla Dimora */
+.ml-cal{--calendar-bg:transparent;--header-month-txt:#EFE8DC;--header-week-txt:rgba(239,232,220,.5);--days-border:transparent;--element-hover:rgba(212,166,90,.2);--disabled-element-hover:transparent;--free-day:transparent;--not-selectable-day:transparent;--selected-day:rgba(212,166,90,.2);--selected-day-first-last:#D4A65A;--busy-day:transparent;--days-contrast-bg:transparent;color:#EFE8DC;font-family:'Inter',system-ui,sans-serif}
+.ml-cal .ml-calendarWrapper{padding:0;border-radius:0;background:transparent}
+.ml-cal .ml-calendar .cal-day{color:#EFE8DC;font-size:14px}
+.ml-cal .ml-calendar .cal-day-block-booking{color:rgba(239,232,220,.45)}
+.ml-cal .ml-calendar tbody tr td button.cal-day-selected-first,.ml-cal .ml-calendar tbody tr td button.cal-day-selected-last{color:#0F111A!important;font-weight:500}
+.ml-cal .ml-calendar thead tr.month-title .month-name{font-family:'Bodoni Moda',Georgia,serif;font-weight:400;text-transform:uppercase!important;letter-spacing:.12em;font-size:16px}
+.ml-cal .ml-calendar thead tr.day-week .day-name{font-size:11px;letter-spacing:.14em;text-transform:uppercase!important}
+.ml-cal select{background:rgba(5,7,20,.6)!important;color:#EFE8DC!important;border:1px solid rgba(239,232,220,.25)!important;border-radius:2px}
+.ml-cal option{background:#0F111A}
+.ml-cal .ml-btn.prevMonth,.ml-cal .ml-btn.nextMonth{color:#E2B76A}
+.ml-cal .legend-item{border-color:rgba(239,232,220,.35)!important;background:transparent!important}
+.ml-cal .legend-title,.ml-cal .legend-label,.ml-cal .ml-bottom-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(239,232,220,.65)}
+.ml-cal .ml-bottom-row{margin-top:18px;padding-top:22px;border-top:1px solid rgba(239,232,220,.14)}
+.ml-cal .ml-checkin,.ml-cal .ml-checkout{font-family:'Bodoni Moda',Georgia,serif;font-size:18px;color:#EFE8DC}
+.ml-cal .ml-confirm-booking{display:inline-flex!important;align-items:center;justify-content:center;min-height:52px;padding:0 44px!important;margin-top:18px;border:0!important;border-radius:999px!important;background:#D4A65A!important;color:#0F111A!important;font:500 13px 'Inter',system-ui,sans-serif!important;letter-spacing:.18em;text-transform:uppercase;text-decoration:none!important}
+.ml-cal .ml-confirm-booking:hover{background:#E2B76A!important}
+</style>
+<style id="inter-font">@font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:swap;src:url(/fonts/inter-latin-300-normal.woff2) format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/inter-latin-400-normal.woff2) format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/inter-latin-500-normal.woff2) format('woff2')}</style>
+</head>
+<body>
+<div class="vpage" style="width:100%;background:transparent;color:#EFE8DC;font-family:'Inter',system-ui,sans-serif;font-weight:300">
+  <div class="pollen-layer" aria-hidden="true"><span class="pollen star" style="left:47.0%;top:76.4%;width:5px;height:5px;--dx:-88px;--dy:-75px;--o:0.47;animation-duration:27.3s,6.1s;animation-delay:-14.2s,-1.1s"></span><span class="pollen" style="left:3.3%;top:6.1%;width:4px;height:4px;--dx:-42px;--dy:-113px;--o:0.74;animation-duration:21.4s,4.8s;animation-delay:-11.9s,-0.9s"></span><span class="pollen" style="left:94.0%;top:40.3%;width:5px;height:5px;--dx:-59px;--dy:-198px;--o:0.58;animation-duration:19.1s,7.8s;animation-delay:-4.2s,-1.7s"></span><span class="pollen" style="left:66.3%;top:6.0%;width:4px;height:4px;--dx:-134px;--dy:-204px;--o:0.59;animation-duration:16.9s,7.3s;animation-delay:-19.8s,-0.2s"></span><span class="pollen" style="left:53.1%;top:43.9%;width:4px;height:4px;--dx:-49px;--dy:-197px;--o:0.77;animation-duration:24.2s,4.8s;animation-delay:-12.8s,-1.8s"></span><span class="pollen" style="left:26.3%;top:29.3%;width:2px;height:2px;--dx:132px;--dy:-149px;--o:0.64;animation-duration:23.1s,5.3s;animation-delay:-4.3s,-6.0s"></span><span class="pollen" style="left:79.0%;top:30.6%;width:2px;height:2px;--dx:-70px;--dy:-107px;--o:0.70;animation-duration:21.6s,6.7s;animation-delay:-1.9s,-1.5s"></span><span class="pollen" style="left:60.1%;top:69.5%;width:5px;height:5px;--dx:-112px;--dy:-79px;--o:0.61;animation-duration:26.7s,6.6s;animation-delay:-19.8s,-1.6s"></span><span class="pollen" style="left:20.3%;top:33.4%;width:3px;height:3px;--dx:46px;--dy:-238px;--o:0.67;animation-duration:15.7s,4.4s;animation-delay:-19.7s,-1.0s"></span><span class="pollen" style="left:20.1%;top:16.2%;width:3px;height:3px;--dx:-83px;--dy:-129px;--o:0.47;animation-duration:22.6s,6.0s;animation-delay:-17.2s,-7.9s"></span><span class="pollen" style="left:63.6%;top:3.8%;width:3px;height:3px;--dx:-103px;--dy:-126px;--o:0.51;animation-duration:24.2s,6.8s;animation-delay:-19.5s,-6.1s"></span><span class="pollen" style="left:49.0%;top:78.2%;width:3px;height:3px;--dx:80px;--dy:-161px;--o:0.54;animation-duration:15.4s,6.3s;animation-delay:-8.9s,-7.9s"></span><span class="pollen star" style="left:12.5%;top:86.5%;width:5px;height:5px;--dx:-135px;--dy:-93px;--o:0.80;animation-duration:25.0s,7.8s;animation-delay:-17.3s,-5.5s"></span><span class="pollen" style="left:45.5%;top:69.5%;width:4px;height:4px;--dx:108px;--dy:-69px;--o:0.79;animation-duration:19.6s,6.1s;animation-delay:-14.3s,-3.7s"></span><span class="pollen" style="left:81.9%;top:32.6%;width:4px;height:4px;--dx:30px;--dy:-219px;--o:0.66;animation-duration:18.9s,4.8s;animation-delay:-5.9s,-3.0s"></span><span class="pollen" style="left:16.6%;top:85.3%;width:5px;height:5px;--dx:-100px;--dy:-63px;--o:0.62;animation-duration:16.0s,5.5s;animation-delay:-6.1s,-3.4s"></span><span class="pollen" style="left:30.7%;top:58.7%;width:4px;height:4px;--dx:-23px;--dy:-62px;--o:0.83;animation-duration:14.5s,5.9s;animation-delay:-16.6s,-2.2s"></span><span class="pollen" style="left:20.2%;top:81.4%;width:4px;height:4px;--dx:26px;--dy:-197px;--o:0.61;animation-duration:25.4s,5.5s;animation-delay:-4.0s,-1.7s"></span><span class="pollen" style="left:29.7%;top:95.9%;width:3px;height:3px;--dx:-103px;--dy:-53px;--o:0.54;animation-duration:27.6s,7.5s;animation-delay:-13.9s,-7.1s"></span><span class="pollen" style="left:93.5%;top:27.7%;width:3px;height:3px;--dx:-68px;--dy:-144px;--o:0.46;animation-duration:20.8s,5.2s;animation-delay:-9.5s,-0.0s"></span><span class="pollen" style="left:27.7%;top:27.2%;width:2px;height:2px;--dx:-15px;--dy:-174px;--o:0.81;animation-duration:17.4s,5.2s;animation-delay:-17.9s,-7.8s"></span><span class="pollen" style="left:60.5%;top:84.7%;width:3px;height:3px;--dx:116px;--dy:-54px;--o:0.58;animation-duration:15.3s,6.3s;animation-delay:-3.8s,-3.0s"></span><span class="pollen" style="left:49.2%;top:30.6%;width:4px;height:4px;--dx:80px;--dy:-118px;--o:0.83;animation-duration:17.6s,7.2s;animation-delay:-8.0s,-1.7s"></span><span class="pollen" style="left:76.7%;top:4.8%;width:3px;height:3px;--dx:132px;--dy:-188px;--o:0.83;animation-duration:17.4s,7.4s;animation-delay:-8.2s,-7.3s"></span><span class="pollen star" style="left:98.3%;top:79.7%;width:6px;height:6px;--dx:-129px;--dy:-167px;--o:0.55;animation-duration:20.9s,8.0s;animation-delay:-2.8s,-0.4s"></span><span class="pollen" style="left:79.9%;top:93.5%;width:3px;height:3px;--dx:-45px;--dy:-113px;--o:0.79;animation-duration:21.6s,4.3s;animation-delay:-9.9s,-3.8s"></span><span class="pollen" style="left:48.0%;top:47.8%;width:3px;height:3px;--dx:-159px;--dy:-77px;--o:0.78;animation-duration:24.2s,5.4s;animation-delay:-3.4s,-0.7s"></span><span class="pollen" style="left:35.9%;top:93.6%;width:5px;height:5px;--dx:40px;--dy:-168px;--o:0.70;animation-duration:16.8s,4.9s;animation-delay:-1.2s,-7.0s"></span><span class="pollen" style="left:3.9%;top:73.0%;width:3px;height:3px;--dx:70px;--dy:-58px;--o:0.61;animation-duration:25.4s,6.9s;animation-delay:-18.2s,-5.9s"></span><span class="pollen" style="left:42.8%;top:55.6%;width:3px;height:3px;--dx:-114px;--dy:-134px;--o:0.47;animation-duration:26.2s,5.2s;animation-delay:-14.2s,-1.6s"></span><span class="pollen" style="left:38.1%;top:22.9%;width:4px;height:4px;--dx:14px;--dy:-163px;--o:0.83;animation-duration:19.9s,5.3s;animation-delay:-5.5s,-3.5s"></span><span class="pollen" style="left:42.0%;top:6.9%;width:4px;height:4px;--dx:-45px;--dy:-184px;--o:0.78;animation-duration:27.5s,4.5s;animation-delay:-17.0s,-5.7s"></span><span class="pollen" style="left:26.6%;top:78.0%;width:3px;height:3px;--dx:61px;--dy:-200px;--o:0.48;animation-duration:15.3s,7.2s;animation-delay:-10.8s,-3.9s"></span><span class="pollen" style="left:14.3%;top:43.6%;width:3px;height:3px;--dx:-81px;--dy:-235px;--o:0.55;animation-duration:18.5s,7.4s;animation-delay:-6.2s,-0.5s"></span><span class="pollen" style="left:12.0%;top:70.7%;width:3px;height:3px;--dx:152px;--dy:-72px;--o:0.80;animation-duration:21.7s,6.4s;animation-delay:-15.3s,-2.1s"></span><span class="pollen" style="left:30.4%;top:38.9%;width:4px;height:4px;--dx:65px;--dy:-112px;--o:0.58;animation-duration:22.5s,6.7s;animation-delay:-15.0s,-5.2s"></span><span class="pollen star" style="left:14.8%;top:97.0%;width:5px;height:5px;--dx:82px;--dy:-114px;--o:0.74;animation-duration:24.1s,7.0s;animation-delay:-8.5s,-7.7s"></span><span class="pollen" style="left:46.0%;top:13.3%;width:3px;height:3px;--dx:139px;--dy:-159px;--o:0.77;animation-duration:20.8s,4.8s;animation-delay:-9.6s,-0.1s"></span><span class="pollen" style="left:66.3%;top:18.8%;width:3px;height:3px;--dx:-91px;--dy:-127px;--o:0.79;animation-duration:16.3s,6.8s;animation-delay:-14.8s,-4.7s"></span><span class="pollen" style="left:94.2%;top:13.4%;width:3px;height:3px;--dx:-124px;--dy:-58px;--o:0.81;animation-duration:22.9s,5.2s;animation-delay:-3.4s,-0.8s"></span><span class="pollen" style="left:5.2%;top:98.1%;width:5px;height:5px;--dx:130px;--dy:-204px;--o:0.55;animation-duration:19.2s,5.7s;animation-delay:-10.3s,-7.7s"></span><span class="pollen" style="left:82.1%;top:6.5%;width:3px;height:3px;--dx:46px;--dy:-209px;--o:0.66;animation-duration:16.3s,4.1s;animation-delay:-1.5s,-1.2s"></span><span class="pollen" style="left:86.2%;top:70.5%;width:3px;height:3px;--dx:-109px;--dy:-167px;--o:0.55;animation-duration:26.0s,7.9s;animation-delay:-9.4s,-6.2s"></span><span class="pollen" style="left:41.3%;top:71.8%;width:4px;height:4px;--dx:-76px;--dy:-183px;--o:0.73;animation-duration:22.8s,5.0s;animation-delay:-4.3s,-0.1s"></span><span class="pollen" style="left:69.1%;top:65.0%;width:4px;height:4px;--dx:-107px;--dy:-179px;--o:0.71;animation-duration:20.9s,5.4s;animation-delay:-3.2s,-3.7s"></span><span class="pollen" style="left:93.9%;top:27.7%;width:3px;height:3px;--dx:22px;--dy:-81px;--o:0.83;animation-duration:17.7s,7.5s;animation-delay:-6.9s,-5.2s"></span><span class="pollen" style="left:43.3%;top:56.7%;width:3px;height:3px;--dx:-139px;--dy:-246px;--o:0.64;animation-duration:18.7s,7.2s;animation-delay:-19.0s,-3.8s"></span><span class="pollen" style="left:51.1%;top:70.1%;width:2px;height:2px;--dx:77px;--dy:-125px;--o:0.67;animation-duration:24.7s,4.1s;animation-delay:-4.8s,-5.5s"></span><span class="pollen star" style="left:94.3%;top:28.2%;width:6px;height:6px;--dx:43px;--dy:-179px;--o:0.48;animation-duration:17.4s,5.8s;animation-delay:-4.9s,-1.5s"></span><span class="pollen" style="left:95.7%;top:12.8%;width:3px;height:3px;--dx:148px;--dy:-113px;--o:0.56;animation-duration:14.5s,7.8s;animation-delay:-13.9s,-5.0s"></span><span class="pollen" style="left:2.6%;top:39.6%;width:2px;height:2px;--dx:-139px;--dy:-131px;--o:0.72;animation-duration:15.3s,4.5s;animation-delay:-10.1s,-5.1s"></span><span class="pollen" style="left:77.3%;top:93.3%;width:3px;height:3px;--dx:-73px;--dy:-232px;--o:0.59;animation-duration:27.3s,6.4s;animation-delay:-7.5s,-7.1s"></span><span class="pollen" style="left:15.3%;top:57.0%;width:2px;height:2px;--dx:-126px;--dy:-79px;--o:0.54;animation-duration:14.6s,6.2s;animation-delay:-4.3s,-0.8s"></span><span class="pollen" style="left:76.0%;top:38.2%;width:2px;height:2px;--dx:-131px;--dy:-239px;--o:0.46;animation-duration:16.8s,5.0s;animation-delay:-8.9s,-0.6s"></span><span class="pollen" style="left:7.4%;top:13.4%;width:2px;height:2px;--dx:32px;--dy:-51px;--o:0.78;animation-duration:18.0s,4.5s;animation-delay:-15.4s,-6.5s"></span><span class="pollen" style="left:86.9%;top:87.7%;width:2px;height:2px;--dx:116px;--dy:-123px;--o:0.54;animation-duration:20.6s,6.7s;animation-delay:-4.5s,-4.2s"></span><span class="pollen" style="left:2.3%;top:5.6%;width:5px;height:5px;--dx:129px;--dy:-161px;--o:0.85;animation-duration:22.5s,5.0s;animation-delay:-4.4s,-0.5s"></span><span class="pollen" style="left:57.1%;top:60.3%;width:3px;height:3px;--dx:-103px;--dy:-74px;--o:0.67;animation-duration:22.8s,5.5s;animation-delay:-15.1s,-3.9s"></span><span class="pollen" style="left:79.5%;top:66.1%;width:4px;height:4px;--dx:149px;--dy:-149px;--o:0.65;animation-duration:15.4s,6.2s;animation-delay:-3.0s,-0.0s"></span><span class="pollen" style="left:81.5%;top:24.9%;width:3px;height:3px;--dx:95px;--dy:-216px;--o:0.75;animation-duration:16.8s,5.4s;animation-delay:-11.7s,-1.5s"></span></div>
+    <header style="position:relative;display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;padding:32px clamp(20px,4.5vw,64px)">
+      <a href="/" aria-label="Dimora delle Storie — home" style="display:inline-flex;min-height:44px;align-items:center"><img src="/img/logo-icona.svg" alt="" style="height:52px;width:auto"></a>
+      <nav class="topnav" style="display:flex;flex-wrap:wrap;gap:28px;align-items:center;font-size:13px;letter-spacing:.06em;padding:12px 28px;border-radius:999px;background:rgba(239,232,220,.08);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.18)">
+        <a href="/" style="text-decoration:none">Home</a><a href="/#dimore" style="text-decoration:none">Dimore</a><a href="/la-dimora" style="text-decoration:none">La casa</a><a href="/storie" style="text-decoration:none">Storie</a><a href="/tempio-pausania" style="text-decoration:none">Tempio</a><a href="/#prenota" style="text-decoration:none">Contatti</a>
+      </nav><!--pb--><a class="btn-prenota" href="/prenota">Prenota</a><!--/pb-->
+    </header>
+  <section class="l-sec">
+    <h1>Informativa privacy</h1>
+    <p class="agg">Aggiornata il 25 novembre 2026</p>
+    <h2>Chi tratta i dati</h2><p>Titolare del trattamento è Luca Cossu, titolare di Dimora delle Storie, Piazza Eleonora d'Arborea 6, 07029 Tempio Pausania (SS). Per qualsiasi domanda sui vostri dati potete scrivere a <a href="mailto:info@dimoradellestorie.com">info@dimoradellestorie.com</a>.</p><h2>Quali dati e perché</h2><p><strong>Navigazione.</strong> Il server che ospita il sito registra in modo automatico dati tecnici (indirizzo IP, data e ora, pagina richiesta, tipo di browser) necessari a far funzionare il sito e a proteggerlo da abusi. Base giuridica: legittimo interesse (art. 6.1.f GDPR).</p><p><strong>Richieste di informazioni.</strong> Se ci scrivete per email, WhatsApp o ci telefonate, usiamo i dati che ci date (nome, contatti, date del soggiorno) solo per rispondervi. Base giuridica: misure precontrattuali richieste da voi (art. 6.1.b).</p><p><strong>Verifica disponibilità e prenotazioni.</strong> Quando cercate le date sul sito, inviamo al nostro sistema di prenotazione solo le date e il numero di ospiti, senza dati personali. La prenotazione si completa sulle pagine del gestionale Magellano, che tratta i dati per nostro conto. Base giuridica: esecuzione del contratto (art. 6.1.b).</p><p><strong>Il Libro delle Storie.</strong> Se ci mandate una storia, riceviamo nome, email, la dimora in cui avete soggiornato, il testo, la firma ed eventualmente una foto. Li usiamo per valutare la storia e, se la pubblichiamo, per pubblicarla con la firma che avete scelto. Base giuridica: il vostro consenso (art. 6.1.a), che potete revocare in ogni momento chiedendoci di togliere la storia.</p><p><strong>Durante il soggiorno.</strong> Per legge registriamo i dati degli ospiti e li comunichiamo alla Questura (art. 109 TULPS, portale Alloggiati Web), e li usiamo per l'imposta di soggiorno e le statistiche turistiche. Base giuridica: obbligo di legge (art. 6.1.c).</p><h2>Per quanto tempo</h2><p>I dati delle richieste di informazioni per il tempo necessario a rispondere e, al massimo, per 24 mesi. Le storie non pubblicate le cancelliamo entro 12 mesi; quelle pubblicate restano online finché non ci chiedete di toglierle. I dati di prenotazione e di soggiorno per i tempi previsti dalle norme fiscali e di pubblica sicurezza. I dati tecnici di navigazione per pochi giorni, salvo necessità di accertare abusi.</p><h2>A chi li affidiamo</h2><p>Non vendiamo né cediamo i vostri dati. Li trattano per nostro conto solo i fornitori che ci servono per lavorare:</p><ul><li>Vercel Inc. (ospitalità del sito), con server anche negli Stati Uniti, sulla base delle garanzie previste dal GDPR (decisione di adeguatezza UE-USA e clausole contrattuali standard);</li><li>Register.it (posta elettronica);</li><li>Magellano (gestionale delle prenotazioni);</li><li>le autorità pubbliche, quando la legge lo richiede.</li></ul><p>Se ci contattate con WhatsApp o seguite il nostro profilo Instagram, quei dati sono trattati anche da Meta secondo le sue informative.</p><h2>I vostri diritti</h2><p>Potete chiederci in ogni momento di accedere ai vostri dati, correggerli, cancellarli, limitarne il trattamento, opporvi o riceverli in un formato leggibile (artt. 15-22 GDPR), e revocare un consenso già dato. Basta scrivere a <a href="mailto:info@dimoradellestorie.com">info@dimoradellestorie.com</a>. Se ritenete che i vostri dati siano trattati in modo scorretto potete rivolgervi al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" rel="noopener">garanteprivacy.it</a>).</p><h2>Cookie</h2><p>Il sito usa solo strumenti tecnici: i dettagli sono nella <a href="/cookie">cookie policy</a>.</p>
+  </section>
+  <footer style="border-top:1px solid rgba(239,232,220,.12);padding:56px clamp(20px,4.5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:32px;font-size:14px;line-height:1.8;color:rgba(239,232,220,.74)">
+    <div style="display:flex;flex-direction:column;gap:8px"><a href="/" style="text-decoration:none;font-family:'Bodoni Moda',Georgia,serif;font-size:19px;color:#EFE8DC;text-transform:uppercase;letter-spacing:.08em">Dimora delle Storie</a><span>Piazza Eleonora d'Arborea 6<br>07029 Tempio Pausania (SS)</span><span style="font-size:12px;letter-spacing:.12em;color:rgba(239,232,220,.55)">CIN IT090070C2000S8992</span><span><a href="/privacy" style="text-decoration:none">Privacy</a> · <a href="/cookie" style="text-decoration:none">Cookie</a></span></div>
+    <div style="display:flex;flex-direction:column;gap:4px"><a href="tel:+393791656864" style="text-decoration:none">+39 379 165 6864</a><a href="mailto:info@dimoradellestorie.com" style="text-decoration:none">info@dimoradellestorie.com</a><a href="https://www.instagram.com/dimoradellestorie" style="text-decoration:none">Instagram · @dimoradellestorie</a></div>
+  </footer>
+</div>
+</body>
+</html>

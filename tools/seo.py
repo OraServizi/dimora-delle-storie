@@ -79,12 +79,28 @@ def meta(s, p):
     s = re.sub(r'\n?\s*<a href="#"[^>]*>IT / EN</a>', '', s)
     return s
 
+INTER = ("<style id=\"inter-font\">" + "".join(
+    f"@font-face{{font-family:'Inter';font-style:normal;font-weight:{w};font-display:swap;src:url(/fonts/inter-latin-{w}-normal.woff2) format('woff2')}}"
+    for w in (300, 400, 500)) + "</style>")
+LEGALI = '<a href="/privacy" style="text-decoration:none">Privacy</a> · <a href="/cookie" style="text-decoration:none">Cookie</a>'
+
+def locale(s):
+    """Caratteri ospitati in casa (niente Google Fonts) e link a privacy e cookie nel piede."""
+    s = re.sub(r'<link[^>]*fonts\.(googleapis|gstatic)\.com[^>]*>\n?', '', s)
+    s = re.sub(r'<style id="inter-font">.*?</style>\n?', '', s, flags=re.S)
+    s = s.replace('</head>', INTER + '\n</head>', 1)
+    s = s.replace('<span>Privacy · Cookie</span>', f'<span>{LEGALI}</span>')
+    if LEGALI not in s:
+        s = s.replace('CIN IT090070C2000S8992</span></div>', f'CIN IT090070C2000S8992</span><span>{LEGALI}</span></div>', 1)
+    return s
+
 def home_jsonld(s):
     m = re.search(r'(<script type="application/ld\+json">)(.*?)(</script>)', s, flags=re.S)
     if not m: return s
     d = json.loads(m.group(2))
     if d.get("@type") != "LodgingBusiness": return s
     d["description"] = META["index.html"][1]
+    d["geo"] = {"@type": "GeoCoordinates", "latitude": 40.90374, "longitude": 9.10500}
     d["identifier"] = {"@type": "PropertyValue", "propertyID": "CIN", "value": CIN}
     d["numberOfRooms"] = 3
     d["hasMap"] = "https://www.google.com/maps/search/?api=1&query=Piazza+Eleonora+d%27Arborea+6%2C+07029+Tempio+Pausania"
@@ -109,7 +125,7 @@ def sitemap(tutte):
 def main():
     tutte = pagine()
     for p in tutte:
-        s = meta(rd(p), p)
+        s = locale(meta(rd(p), p))
         if p == "index.html":
             s = home_jsonld(s)
             if GSC not in s: s = re.sub(r'(<meta name="description"[^>]*>)', lambda m: m.group(1) + "\n" + GSC, s, count=1)

@@ -485,7 +485,7 @@ for slug in ["leggenda-dell-antiquario", "leggenda-del-viaggiatore", "leggenda-d
         sm = sm.replace("</urlset>", f"  <url><loc>{BASE}/storie/{slug}</loc><lastmod>2026-11-22</lastmod><priority>0.7</priority></url>\n</urlset>")
 wr("sitemap.xml", sm)
 import subprocess, glob
-for t in ["storie.py", "tempio.py"]:
+for t in ["storie.py", "tempio.py", "legali.py"]:
     subprocess.run([sys.executable, "-B", f"{SITE}/tools/{t}"], check=True, stdout=subprocess.DEVNULL)
 ATTIVO = {"index.html": "/", "loft-dell-antiquario.html": "/#dimore", "suite-del-viaggiatore.html": "/#dimore",
           "antica-latteria-1930.html": "/#dimore", "la-dimora.html": "/la-dimora", "storie.html": "/storie",
