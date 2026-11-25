@@ -10,3 +10,4 @@ Pubblicato su Vercel come sito statico.
 - `la-dimora.html` — la casa: facciata, sala da tè, leggenda dell'Antiquario
 - `img/foto/` — foto del fotografo ottimizzate (webp 1600 px) per le gallerie
 - `tools/dimore.py` — rigenera gallerie, testi della Latteria, pagina La Dimora e voce «La casa» del menu (`python3 tools/dimore.py`)
+- `tools/seo.py` — ultimo passaggio SEO (title/description brevi, og:url, twitter:card, dati strutturati della home, sitemap). Parte da solo alla fine di `storie.py`, `tempio.py` e `prenota.py`; per un nuovo articolo aggiungere title e description in `META`.

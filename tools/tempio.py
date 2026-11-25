@@ -134,3 +134,5 @@ def page():
 
 open(f"{SITE}/tempio-pausania.html", "w", encoding="utf-8").write(page())
 print("tempio-pausania.html", "video:" , HAS_VIDEO)
+
+import subprocess as _sp; _sp.run([sys.executable, "-B", os.path.join(SITE, "tools", "seo.py")], check=True, stdout=_sp.DEVNULL)  # ultimo passaggio SEO

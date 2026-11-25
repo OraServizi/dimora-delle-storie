@@ -8,7 +8,7 @@ Codici Magellano (mail di Alessandro Marin, 23/11/2026):
   apikey YVQw8J6NyW · gruppi: Dimora delle Storie 16915, Antica Latteria 1930 18791
   alloggi: Loft 47201, Suite 47540, Duplex 48070, Latteria 50407
 Le disponibilità di Duplex, Loft e Suite sono sincronizzate in Magellano."""
-import glob, html, json, os, re
+import glob, html, json, os, re, sys
 
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://www.dimoradellestorie.com"
@@ -398,4 +398,5 @@ if __name__ == "__main__":
     fatte = set(PAGINE_ALLOGGIO) | {"index.html", "la-dimora-intera.html", "prenota.html"}
     for p in [os.path.basename(x) for x in glob.glob(f"{SITE}/*.html")] + [os.path.relpath(x, SITE) for x in glob.glob(f"{SITE}/storie/*.html")]:
         if p not in fatte: wr(p, comune(rd(p)))
+    import subprocess; subprocess.run([sys.executable, "-B", f"{SITE}/tools/seo.py"], check=True, stdout=subprocess.DEVNULL)  # ultimo passaggio SEO
     print("ok")
