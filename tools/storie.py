@@ -446,3 +446,5 @@ open(f"{SITE}/storie.html", "w", encoding="utf-8").write(storie_page())
 for a in ARTICOLI:
     open(f"{SITE}/storie/{a['slug']}.html", "w", encoding="utf-8").write(article_page(a))
 print("pagine libro:", N, "fogli:", N // 2, "articoli:", art_page)
+
+import subprocess as _sp; _sp.run([sys.executable, "-B", os.path.join(SITE, "tools", "seo.py")], check=True, stdout=_sp.DEVNULL)  # ultimo passaggio SEO
