@@ -43,6 +43,8 @@ META = {
                    "Tempio Pausania, la Città di pietra ai piedi del Limbara: cosa vedere a piedi nel centro storico, i dintorni, come arrivare da Olbia."),
     "storie/dove-dormire-a-tempio-pausania.html": ("Dove dormire a Tempio Pausania: il centro storico",
                    "Dove dormire a Tempio Pausania: perché scegliere il centro storico in granito, cosa vedere a piedi e come arrivare da Olbia."),
+    "storie/natale-a-tempio-pausania.html": ("Natale a Tempio Pausania: cosa fare a dicembre",
+                   "Natale a Tempio Pausania: le luci sul granito del centro storico, i papassini, i presepi della Gallura e il Limbara d'inverno."),
     "storie/leggenda-dell-antiquario.html": ("La leggenda dell'Antiquario | Dimora delle Storie",
                    "Vittorio Sanna, l'antiquario di Tempio Pausania che si innamorò del palazzetto di granito oggi Dimora delle Storie, e del suo loft di velluto blu."),
     "storie/leggenda-del-viaggiatore.html": ("La leggenda del Viaggiatore, esploratore del Limbara",
