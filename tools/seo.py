@@ -16,6 +16,7 @@ SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://www.dimoradellestorie.com"
 NOME = "Dimora delle Storie"
 CIN = "IT090070C2000S8992"
+GSC = '<meta name="google-site-verification" content="jhGrYVoggbXWwPBEhrQ1hidz6IVTA56Iq5drewmk0Lc">'  # Search Console: non togliere
 e = html.escape
 
 # pagina: (title, description). Le pagine non elencate restano come le genera il loro script.
@@ -109,7 +110,9 @@ def main():
     tutte = pagine()
     for p in tutte:
         s = meta(rd(p), p)
-        if p == "index.html": s = home_jsonld(s)
+        if p == "index.html":
+            s = home_jsonld(s)
+            if GSC not in s: s = re.sub(r'(<meta name="description"[^>]*>)', lambda m: m.group(1) + "\n" + GSC, s, count=1)
         wr(p, s)
         t = html.unescape(re.search(r'<title>(.*?)</title>', s, re.S).group(1))
         d = html.unescape(re.search(r'<meta name="description" content="([^"]*)"', s).group(1))
